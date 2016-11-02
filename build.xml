@@ -39,6 +39,7 @@
                     <token key="db.username" value="${db.username}"/>
                     <token key="db.password" value="${db.password}"/>
                     <token key="db.name.backoffice" value="${db.name.backoffice}"/>
+                    <token key="db.name.core" value="${db.name.core}"/>
                 </replacetokens>
             </filterchain>
         </loadfile>
