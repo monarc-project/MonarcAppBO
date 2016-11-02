@@ -8,7 +8,7 @@ return array(
                     'host' => '@db.host@',
                     'user' => '@db.username@',
                     'password' => '@db.password@',
-                    'dbname' => '@db.name@',
+                    'dbname' => '@db.name.backoffice@',
                 )
             ),
             'orm_cli' => array(
@@ -16,7 +16,7 @@ return array(
                     'host' => '@db.host@',
                     'user' => '@db.username@',
                     'password' => '@db.password@',
-                    'dbname' => '@db.name@',
+                    'dbname' => '@db.name.backoffice@',
                 )
             )
         )

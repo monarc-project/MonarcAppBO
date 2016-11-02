@@ -38,7 +38,7 @@
                     <token key="db.host" value="${db.host}"/>
                     <token key="db.username" value="${db.username}"/>
                     <token key="db.password" value="${db.password}"/>
-                    <token key="db.name" value="${db.name}"/>
+                    <token key="db.name.backoffice" value="${db.name.backoffice}"/>
                 </replacetokens>
             </filterchain>
         </loadfile>
@@ -97,8 +97,8 @@
     </target>
 
     <target name="db-migration" description="Update the database version">
-        <exec command="${project.basedir}/scripts/client-upgrade-db.sh backoffice ${db.host} ${db.username} ${db.password} ${db.name}" passthru="true"/>
-        <exec command="${project.basedir}/scripts/client-upgrade-db.sh core ${db.host} ${db.username} ${db.password} ${db.name}" passthru="true"/>
+        <exec command="${project.basedir}/scripts/client-upgrade-db.sh backoffice ${db.host} ${db.username} ${db.password} ${db.name.backoffice}" passthru="true"/>
+        <exec command="${project.basedir}/scripts/client-upgrade-db.sh core ${db.host} ${db.username} ${db.password} ${db.name.core}" passthru="true"/>
     </target>
 
     <target name="reset-db"
