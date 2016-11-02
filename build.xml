@@ -32,6 +32,7 @@
     </target>
 
     <target name="setup-db" description="Setup Database Credentials">
+        <echo msg="Loading file ${project.basedir}/config/autoload/database.local.php.dist" />
         <loadfile property="db.config" file="${project.basedir}/config/autoload/database.local.php.dist">
             <filterchain>
                 <replacetokens>
@@ -43,6 +44,7 @@
                 </replacetokens>
             </filterchain>
         </loadfile>
+        <echo msg="Writing file ${project.basedir}/config/autoload/database.local.php" />
         <echo message="${db.config}" file="${project.basedir}/config/autoload/database.local.php"/>
     </target>
 
