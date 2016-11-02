@@ -3,3 +3,5 @@ deployment:
   hooks:
     AfterInstall:
       - command: scripts/migrate.sh
+    AfterActivate:
+      - command: scripts/restart-server.sh
