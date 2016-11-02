@@ -6,5 +6,5 @@ do
   sleep 2
 done
 
-chown -R www-data:www-data /var/www/continuousphp/current/*
+#chown -R www-data:www-data /var/www/continuousphp/current/*
 bin/phing -propertyfile /var/lib/continuousphp/credentials.ini init
