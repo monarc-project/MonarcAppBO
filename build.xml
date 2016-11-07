@@ -49,9 +49,11 @@
     </target>
 
     <target name="setup-languages" description="Setup Languages">
+        <echo msg="Loading file ${project.basedir}/config/autoload/languages.local.php.dist" />
         <loadfile property="languages.config" file="${project.basedir}/config/autoload/languages.local.php.dist">
             <!-- PLACE YOUR FILE MODIFICATIONS HERE -->
         </loadfile>
+        <echo msg="Writing file ${project.basedir}/config/autoload/languages.local.php" />
         <echo message="${languages.config}" file="${project.basedir}/config/autoload/languages.local.php"/>
     </target>
 
@@ -112,5 +114,5 @@
 
     <target name="init"
             description="Setup external dependencies and migrate data"
-            depends="setup-sec-auth, setup-db, db-migration"/>
+            depends="setup-languages, setup-sec-auth, setup-db, db-migration"/>
 </project>
