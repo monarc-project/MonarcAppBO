@@ -63,6 +63,7 @@
     </target>
 
     <target name="setup-sec-auth" description="Setup Security and Authentication">
+        <echo msg="Loading file ${project.basedir}/config/autoload/security-authentication.local.php.dist" />
         <loadfile property="sec.config" file="${project.basedir}/config/autoload/security-authentication.local.php.dist">
             <filterchain>
                 <replacetokens>
@@ -71,6 +72,7 @@
                 </replacetokens>
             </filterchain>
         </loadfile>
+        <echo msg="Writing file ${project.basedir}/config/autoload/security-authentication.local.php" />
         <echo message="${sec.config}" file="${project.basedir}/config/autoload/security-authentication.local.php"/>
     </target>
 
@@ -110,5 +112,5 @@
 
     <target name="init"
             description="Setup external dependencies and migrate data"
-            depends="setup-db, db-migration"/>
+            depends="setup-sec-auth, setup-db, db-migration"/>
 </project>
