@@ -25,7 +25,7 @@ return array(
                     'host' => 'localhost',
                     'port' => 3306,
                     'user' => 'user',
-                    'password' => 'password',
+                    'password' => '',
                     'dbname' => 'monarc_common',
                     'charset' => 'utf8',
                     'driverOptions' => array(
@@ -39,7 +39,7 @@ return array(
                     'host' => 'localhost',
                     'port' => 3306,
                     'user' => 'root',
-                    'password' => 'password',
+                    'password' => '',
                     'dbname' => 'monarc_cli',
                     'charset' => 'utf8',
                     'driverOptions' => array(

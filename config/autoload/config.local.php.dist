@@ -2,18 +2,9 @@
 
 return [
     'languages' => [
-        'fr' => [
-            'index' => 1,
-            'label' => 'Français',
-        ],
-        'en' => [
-            'index' => 2,
-            'label' => 'English',
-        ],
-        'de' => [
-            'index' => 3,
-            'label' => 'Deutsch',
-        ],
+        1 => 'Français',
+        2 => 'English',
+        3 => 'Deutsch'
     ],
     'defaultLanguageIndex' => 2
 ];
