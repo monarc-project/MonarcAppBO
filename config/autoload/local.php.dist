@@ -33,13 +33,6 @@ return array(
         ),
     ),
 
-    'languages' => [
-        1 => 'Français',
-        2 => 'English',
-        3 => 'Deutsch'
-    ],
-    'defaultLanguageIndex' => 2,
-
     /* Link with (ModuleCore)
     config['languages'] = [
         'fr' => array(
