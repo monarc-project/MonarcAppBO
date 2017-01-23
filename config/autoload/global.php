@@ -22,9 +22,9 @@ return array(
             'orm_default' => array(
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params' => array(
-                    'host' => 'localhost',
+                    'host' => '127.0.0.1',
                     'port' => 3306,
-                    'user' => 'user',
+                    'user' => 'root',
                     'password' => '',
                     'dbname' => 'monarc_common',
                     'charset' => 'utf8',
@@ -36,7 +36,7 @@ return array(
             'orm_cli' => array(
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params' => array(
-                    'host' => 'localhost',
+                    'host' => '127.0.0.1',
                     'port' => 3306,
                     'user' => 'root',
                     'password' => '',
