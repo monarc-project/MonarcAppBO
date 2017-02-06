@@ -166,3 +166,10 @@ If you have a mail server, you can keep default password and click on "Password 
 Create first user:
 
     php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/phinx.php
+
+License
+-------
+
+This software is licensed under [GNU Affero General Public License version 3](http://www.gnu.org/licenses/agpl-3.0.html)
+
+Copyright (C) 2016-2017 SMILE gie securitymadein.lu
