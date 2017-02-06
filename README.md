@@ -49,6 +49,7 @@ Change Sql Mode in my.cnf:
 There is 2 databases: 
 * monarc_common contain models and data create by smile.
 * monarc_master contain all user and authentication information
+
 Symbolics links
 ---------------
 
@@ -65,7 +66,15 @@ Create 2 symbolics links at project root:
     cd module
     ln -s ./../vendor/monarc/core MonarcCore;
     ln -s ./../vendor/monarc/backoffice MonarcBO;
-    
+
+There is 2 parts:
+* one only for front office
+* one common for front office and back office (private project)
+
+It is develop with zend framework 2
+
+![Arbo](public/img/arbo2.png "Arbo")
+
 Interfaces
 ----------
 Repository for angular at project root:
@@ -74,7 +83,14 @@ Repository for angular at project root:
     cd node_modules
     git clone https://github.com/CASES-LU/ng-backoffice.git ng_backoffice
     git clone https://github.com/CASES-LU/ng-anr.git ng_anr
+
+ There is 2 parts:
+ * one only for front office (ng_client)
+ * one common for front office and back office (private project) (ng_anr)
+ 
+ It is develop with angular framework version 1
      
+![Arbo](public/img/arbo3.png "Arbo")
        
 Web Server Setup
 ----------------
