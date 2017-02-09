@@ -187,7 +187,7 @@ This shell script use others shell script. May be you node to change rights of t
 Create Initial User and Client
 ------------------------------
 
-Modify email and password (firstname or lastname) of first user in /module/MonarcFO/migrations/seeds/adminUserInit.php 
+Modify email and password (firstname or lastname) of first user in /module/MonarcBO/migrations/seeds/adminUserInit.php 
 
 If you have a mail server, you can keep default password and click on "Password forgotten ?" after user creation.
 

@@ -58,7 +58,7 @@
     </target>
 
     <target name="setup-application" description="Setup Application config">
-        <loadfile property="app.config" file="${project.basedir}/config/application.config.php-dist-BO">
+        <loadfile property="app.config" file="/config/application.config.php">
             <!-- PLACE YOUR FILE MODIFICATIONS HERE -->
         </loadfile>
         <echo message="${app.config}" file="${project.basedir}/config/application.config.php"/>
