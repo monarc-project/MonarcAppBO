@@ -1,6 +1,8 @@
 Skeleton Monarc Project
 =======================
 
+*Disclaimer: This is a work in progress and software is still in alpha stage.*
+
 Introduction
 ------------
 Skeleton Monarc Project.
@@ -31,6 +33,7 @@ Alternately, clone the repository and manually invoke `composer` using the shipp
 (The `self-update` directive is to ensure you have an up-to-date `composer.phar`
 available.)
 
+![Arbo](public/img/arbo1.png "Arbo")
 
 Databases
 ---------
@@ -42,17 +45,36 @@ Create 2 databases:
 Change Sql Mode in my.cnf:
 
     sql-mode = MYSQL40
- 
- 
+    
+There is 2 databases: 
+* monarc_common contain models and data create by smile.
+* monarc_master contain all user and authentication information
+
 Symbolics links
 ---------------
+
+The project is splited on 2 parts :
+* an Api in charge of retrieve data
+* an interface to display data
+
+The Api is not direct modules of the project but libraries.
+You must create modules with symbolics link to libraries
+
 Create 2 symbolics links at project root: 
 
     mkdir module
     cd module
     ln -s ./../vendor/monarc/core MonarcCore;
     ln -s ./../vendor/monarc/backoffice MonarcBO;
-    
+
+There is 2 parts:
+* one only for front office
+* one common for front office and back office (private project)
+
+It is develop with zend framework 2
+
+![Arbo](public/img/arbo2.png "Arbo")
+
 Interfaces
 ----------
 Repository for angular at project root:
@@ -61,7 +83,14 @@ Repository for angular at project root:
     cd node_modules
     git clone https://github.com/CASES-LU/ng-backoffice.git ng_backoffice
     git clone https://github.com/CASES-LU/ng-anr.git ng_anr
+
+ There is 2 parts:
+ * one only for front office (ng_client)
+ * one common for front office and back office (private project) (ng_anr)
+ 
+ It is develop with angular framework version 1
      
+![Arbo](public/img/arbo3.png "Arbo")
        
 Web Server Setup
 ----------------
@@ -155,13 +184,27 @@ Play script (mandatory from the root of the project)(pull and migrations):
     
 This shell script use others shell script. May be you node to change rights of these others files
 
-Create Initial User
--------------------
+Create Initial User and Client
+------------------------------
 
-Modify email and password (firstname or lastname) of first user in /module/MonarcFO/migrations/seeds/adminUserInit.php 
+Modify email and password (firstname or lastname) of first user in /module/MonarcBO/migrations/seeds/adminUserInit.php 
 
 If you have a mail server, you can keep default password and click on "Password forgotten ?" after user creation.
 
 Create first user:
 
     php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/phinx.php
+    
+Data Model
+----------
+
+monarc_common
+![monarc_common](public/img/model-common.png "monarc_common")
+
+License
+-------
+
+This software is licensed under [GNU Affero General Public License version 3](http://www.gnu.org/licenses/agpl-3.0.html)
+
+Copyright (C) 2016-2017 SMILE gie securitymadein.lu
+
