@@ -1,6 +1,8 @@
 Skeleton Monarc Project
 =======================
 
+*Disclaimer: This is a work in progress and software is still in alpha stage.*
+
 Introduction
 ------------
 Skeleton Monarc Project.
@@ -8,26 +10,88 @@ Skeleton Monarc Project.
 Installation
 ------------
 
+PHP & MySQL
+-----------
+Install PHP (version 7.0 recommended) with Apache (or Nginx) with extensions : xml, mbstring, mysql, zip, unzip, mcrypt, intl, imagick (extension php)
+For Apache add mods : rewrite, ssl (a2enmod)
+  
+Install MySQL (version 5.7 recommended) or MariaDb equivalent
+       
+       
 Using Composer (recommended)
 ----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
-
-    curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository="https://rhea.netlor.fr/monarc/skeleton/raw/master/packages.json" monarc/skeleton ./monarc
 
 Alternately, clone the repository and manually invoke `composer` using the shipped
 `composer.phar`:
 
     cd my/project/dir
-    git clone ssh://gogs@rhea.netlor.fr:2222/monarc/skeleton.git ./monarc
+    git clone ssh://github.com/CASES-LU/MonarcAppBO.git ./monarc 
     cd monarc
     php composer.phar self-update
-    php composer.phar install -o
+    php composer.phar install -o (modifier le package.json deux errreurs passer en dev-beta le core et il y a un / en trop pour zm-core)
 
 (The `self-update` directive is to ensure you have an up-to-date `composer.phar`
 available.)
 
+![Arbo](public/img/arbo1.png "Arbo")
+
+Databases
+---------
+Create 2 databases: 
+
+    CREATE DATABASE monarc_master;
+    CREATE DATABASE monarc_common;
+    
+Change Sql Mode in my.cnf:
+
+    sql-mode = MYSQL40
+    
+There is 2 databases: 
+* monarc_common contain models and data create by smile.
+* monarc_master contain all user and authentication information
+
+Symbolics links
+---------------
+
+The project is splited on 2 parts :
+* an Api in charge of retrieve data
+* an interface to display data
+
+The Api is not direct modules of the project but libraries.
+You must create modules with symbolics link to libraries
+
+Create 2 symbolics links at project root: 
+
+    mkdir module
+    cd module
+    ln -s ./../vendor/monarc/core MonarcCore;
+    ln -s ./../vendor/monarc/backoffice MonarcBO;
+
+There is 2 parts:
+* one only for front office
+* one common for front office and back office (private project)
+
+It is develop with zend framework 2
+
+![Arbo](public/img/arbo2.png "Arbo")
+
+Interfaces
+----------
+Repository for angular at project root:
+
+    mkdir node_modules
+    cd node_modules
+    git clone https://github.com/CASES-LU/ng-backoffice.git ng_backoffice
+    git clone https://github.com/CASES-LU/ng-anr.git ng_anr
+
+ There is 2 parts:
+ * one only for front office (ng_client)
+ * one common for front office and back office (private project) (ng_anr)
+ 
+ It is develop with angular framework version 1
+     
+![Arbo](public/img/arbo3.png "Arbo")
+       
 Web Server Setup
 ----------------
 
@@ -63,7 +127,7 @@ project and you should be ready to go! It should look something like below:
 Database connection
 -------------------
 
-Create file `config/autoload.local.php`:
+Create file `config/autoload/local.php`:
 
     return array(
         'doctrine' => array(
@@ -73,9 +137,74 @@ Create file `config/autoload.local.php`:
                         'host' => 'host',
                         'user' => 'user',
                         'password' => 'password',
-                        'dbname' => 'monarc',
+                        'dbname' => 'monarc_common',
+                    ),
+                ),
+                'orm_cli' => array(
+                    'params' => array(
+                        'host' => 'host',
+                        'user' => 'user',
+                        'password' => 'password',
+                        'dbname' => 'monarc_master',
                     ),
                 ),
             ),
         ),
     );
+    
+    
+Configuration
+-------------
+
+Create file configuration
+
+    sudo cp /config/autoload/local.php.dist /config/autoload/local.php
+    
+Update connexion information to local.php and global.php 
+   
+Configuration files are stored in cache. 
+If yours changes have not been considered, empty cache by deleting file in /data/cache
+
+Install Grunt
+-------------
+
+    sudo apt-get install nodejs
+    sudo apt-get install npm
+    sudo npm install -g grunt-cli
+    
+Only for linux system:
+    
+    sudo ln -s /usr/bin/nodejs /usr/bin/node (seulement linux)
+
+Update project
+--------------
+Play script (mandatory from the root of the project)(pull and migrations): 
+
+    sudo /bin/bash ./scripts/update-all.sh
+    
+This shell script use others shell script. May be you node to change rights of these others files
+
+Create Initial User and Client
+------------------------------
+
+Modify email and password (firstname or lastname) of first user in /module/MonarcBO/migrations/seeds/adminUserInit.php 
+
+If you have a mail server, you can keep default password and click on "Password forgotten ?" after user creation.
+
+Create first user:
+
+    php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/phinx.php
+    
+Data Model
+----------
+
+monarc_common
+![monarc_common](public/img/model-common.png "monarc_common")
+
+License
+-------
+
+This software is licensed under [GNU Affero General Public License version 3](http://www.gnu.org/licenses/agpl-3.0.html)
+
+Copyright (C) 2016-2017 SMILE gie securitymadein.lu
+

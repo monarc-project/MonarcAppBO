@@ -32,34 +32,40 @@
     </target>
 
     <target name="setup-db" description="Setup Database Credentials">
+        <echo msg="Loading file ${project.basedir}/config/autoload/database.local.php.dist" />
         <loadfile property="db.config" file="${project.basedir}/config/autoload/database.local.php.dist">
             <filterchain>
                 <replacetokens>
                     <token key="db.host" value="${db.host}"/>
                     <token key="db.username" value="${db.username}"/>
                     <token key="db.password" value="${db.password}"/>
-                    <token key="db.name" value="${db.name}"/>
+                    <token key="db.name.backoffice" value="${db.name.backoffice}"/>
+                    <token key="db.name.core" value="${db.name.core}"/>
                 </replacetokens>
             </filterchain>
         </loadfile>
+        <echo msg="Writing file ${project.basedir}/config/autoload/database.local.php" />
         <echo message="${db.config}" file="${project.basedir}/config/autoload/database.local.php"/>
     </target>
 
     <target name="setup-languages" description="Setup Languages">
+        <echo msg="Loading file ${project.basedir}/config/autoload/languages.local.php.dist" />
         <loadfile property="languages.config" file="${project.basedir}/config/autoload/languages.local.php.dist">
             <!-- PLACE YOUR FILE MODIFICATIONS HERE -->
         </loadfile>
+        <echo msg="Writing file ${project.basedir}/config/autoload/languages.local.php" />
         <echo message="${languages.config}" file="${project.basedir}/config/autoload/languages.local.php"/>
     </target>
 
     <target name="setup-application" description="Setup Application config">
-        <loadfile property="app.config" file="${project.basedir}/config/application.config.php-dist-BO">
+        <loadfile property="app.config" file="/config/application.config.php">
             <!-- PLACE YOUR FILE MODIFICATIONS HERE -->
         </loadfile>
         <echo message="${app.config}" file="${project.basedir}/config/application.config.php"/>
     </target>
 
     <target name="setup-sec-auth" description="Setup Security and Authentication">
+        <echo msg="Loading file ${project.basedir}/config/autoload/security-authentication.local.php.dist" />
         <loadfile property="sec.config" file="${project.basedir}/config/autoload/security-authentication.local.php.dist">
             <filterchain>
                 <replacetokens>
@@ -68,6 +74,7 @@
                 </replacetokens>
             </filterchain>
         </loadfile>
+        <echo msg="Writing file ${project.basedir}/config/autoload/security-authentication.local.php" />
         <echo message="${sec.config}" file="${project.basedir}/config/autoload/security-authentication.local.php"/>
     </target>
 
@@ -97,8 +104,8 @@
     </target>
 
     <target name="db-migration" description="Update the database version">
-        <exec command="${project.basedir}/scripts/client-upgrade-db.sh backoffice ${db.host} ${db.username} ${db.password} ${db.name}" passthru="true"/>
-        <exec command="${project.basedir}/scripts/client-upgrade-db.sh core ${db.host} ${db.username} ${db.password} ${db.name}" passthru="true"/>
+        <exec command="${project.basedir}/scripts/client-upgrade-db.sh backoffice ${db.host} ${db.username} ${db.password} ${db.name.backoffice}" passthru="true"/>
+        <exec command="${project.basedir}/scripts/client-upgrade-db.sh core ${db.host} ${db.username} ${db.password} ${db.name.core}" passthru="true"/>
     </target>
 
     <target name="reset-db"
@@ -107,5 +114,5 @@
 
     <target name="init"
             description="Setup external dependencies and migrate data"
-            depends="setup-db, db-migration"/>
+            depends="setup-languages, setup-sec-auth, setup-db, db-migration"/>
 </project>
