@@ -112,5 +112,9 @@ return array(
             ),
         ),
     ),
+
+    'spool_path_create' => getcwd() .'/data/json/create/',//default location path where the json file enabling the creation of the environment of the client should be generated
+    'spool_path_delete' => getcwd() .'/data/json/delete/', //default location path where the json file enabling the deletion of the environment of the client should be generated
+
     // END DOCTRINE CONF
 );
