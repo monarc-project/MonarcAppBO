@@ -10,6 +10,14 @@
  * control, so do not include passwords or other sensitive information in this
  * file.
  */
+
+$appconfdir = getenv('APP_CONF_DIR') ? getenv('APP_CONF_DIR') : '';
+
+$datapath = "data";
+if( ! empty($appconfdir) ){
+    $datapath = $appconfdir.'/data';
+}
+
 return array(
     // DOCTRINE CONF
     'service_manager' => array(
@@ -86,7 +94,7 @@ return array(
                 'result_cache'          => 'mycache',
                 'driver'                => 'orm_default', // This driver will be defined later
                 'generate_proxies'      => true,
-                'proxy_dir'             => 'data/DoctrineORMModule/Proxy',
+                'proxy_dir'             => $datapath.'/DoctrineORMModule/Proxy',
                 'proxy_namespace'       => 'DoctrineORMModule\Proxy',
                 'filters'               => array(),
                 'datetime_functions'    => array(),
@@ -101,7 +109,7 @@ return array(
                 'result_cache'          => 'mycache',
                 'driver'                => 'orm_cli', // This driver will be defined later
                 'generate_proxies'      => true,
-                'proxy_dir'             => 'data/DoctrineORMModule/Proxy',
+                'proxy_dir'             => $datapath.'/DoctrineORMModule/Proxy',
                 'proxy_namespace'       => 'DoctrineORMModule\Proxy',
                 'filters'               => array(),
                 'datetime_functions'    => array(),
@@ -113,8 +121,8 @@ return array(
         ),
     ),
 
-    'spool_path_create' => getcwd() .'/data/json/create/',//default location path where the json file enabling the creation of the environment of the client should be generated
-    'spool_path_delete' => getcwd() .'/data/json/delete/', //default location path where the json file enabling the deletion of the environment of the client should be generated
+    'spool_path_create' => $datapath.'/json/create/',//default location path where the json file enabling the creation of the environment of the client should be generated
+    'spool_path_delete' => $datapath.'/json/delete/', //default location path where the json file enabling the deletion of the environment of the client should be generated
 
     // END DOCTRINE CONF
 );
