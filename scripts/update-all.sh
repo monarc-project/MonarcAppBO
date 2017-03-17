@@ -1,10 +1,44 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+bypass=0
+forceClearCache=0
+while getopts "hbc" option
+do
+	case $option in
+		h)
+			echo -e "Update or install all Monarc modules, frontend views and migrate database."
+			echo -e "\t-b\tbypass migrate database"
+			echo -e "\t-c\tforce clear cache"
+			echo -e "\t-h\tdisplay this message"
+			exit 1
+			;;
+		b)
+			bypass=1
+			echo "Migrate database don't execute !!!"
+			;;
+		c)
+			forceClearCache=1
+			;;
+	esac
+done
 
 pull_if_exists() {
 	if [ -d $1 ]; then
 		pushd $1
 		git pull
 		popd
+	fi
+}
+
+migrate_module() {
+	if [[ -d $2 ]]; then
+		$1 ./vendor/robmorgan/phinx/bin/phinx migrate -c ./$2/migrations/phinx.php
+		if [[ -d "${2}/hooks" && -f "${2}/.git/hooks/pre-commit.sh" ]]; then
+			cd $2/.git/hooks
+			ln -s ../../hooks/pre-commit.sh pre-commit 2>/dev/null
+			chmod u+x pre-commit
+			cd $2
+		fi
 	fi
 }
 
@@ -74,26 +108,9 @@ else
 	npm install
 fi
 
-
-if [ -d $pathCore ]; then
-	$phpcommand ./vendor/robmorgan/phinx/bin/phinx migrate -c ./$pathCore/migrations/phinx.php
-	if [ -d "${pathCore}/hooks" ]; then
-		cd $pathCore/.git/hooks
-		ln -s ../../hooks/pre-commit.sh pre-commit 2>/dev/null
-		chmod u+x pre-commit
-		cd $currentPath
-	fi
-fi
-
-if [ -d $pathBO ]; then
-	$phpcommand ./vendor/robmorgan/phinx/bin/phinx migrate -c ./$pathBO/migrations/phinx.php
-
-	if [ -d "${pathBO}/hooks" ]; then
-		cd $pathBO/.git/hooks
-		ln -s ../../hooks/pre-commit.sh pre-commit 2>/dev/null
-		chmod u+x pre-commit
-		cd $currentPath
-	fi
+if [[ $bypass -eq 0 ]]; then
+	migrate_module $phpcommand $pathCore
+	migrate_module $phpcommand $pathBO
 fi
 
 if [ -d node_modules/ng_backoffice ]; then
@@ -111,10 +128,18 @@ fi
 ./scripts/link_modules_resources.sh
 ./scripts/compile_translations.sh
 
-# Clear doctrine cache
-$phpcommand ./public/index.php orm:clear-cache:metadata
-$phpcommand ./public/index.php orm:clear-cache:query
-$phpcommand ./public/index.php orm:clear-cache:result
+if [[ $forceClearCache -eq 1 ]]; then
+	# Clear doctrine cache
+	# Move to MonarcCore Module.php
+	$phpcommand ./public/index.php orm:clear-cache:metadata
+	$phpcommand ./public/index.php orm:clear-cache:query
+	$phpcommand ./public/index.php orm:clear-cache:result
 
-# Clear ZF2 cache
-touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
+	# Clear ZF2 cache
+	touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
+fi
+
+if [[ $forceClearCache -eq 0 && $bypass -eq 0 ]]; then
+	# Clear ZF2 cache
+	touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
+fi
