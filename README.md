@@ -161,6 +161,7 @@ Update connexion information to local.php and global.php
 
 Configuration files are stored in cache.
 If yours changes have not been considered, empty cache by deleting file in /data/cache
+You might need to create the folders if non-existant. Also, the /data/cache folder needs to be owned by the internet user (www-data in ubuntu).
 
 Install Grunt
 -------------
