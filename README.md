@@ -20,15 +20,12 @@ Install MySQL (version 5.7 recommended) or MariaDb equivalent
 
 Using Composer (recommended)
 ----------------------------
-
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
+If not already done, install composer relevant to your distribution. Then, clone the repository and manually invoke `composer`:
 
     cd my/project/dir
     git clone ssh://github.com/CASES-LU/MonarcAppBO.git ./monarc
     cd monarc
-    php composer.phar self-update
-    php composer.phar install -o (modifier le package.json deux errreurs passer en dev-beta le core et il y a un / en trop pour zm-core)
+    composer install -o (modifier le package.json deux errreurs passer en dev-beta le core et il y a un / en trop pour zm-core)
 
 (The `self-update` directive is to ensure you have an up-to-date `composer.phar`
 available.)
@@ -182,7 +179,7 @@ Play script (mandatory from the root of the project)(pull and migrations):
 
     sudo /bin/bash ./scripts/update-all.sh
 
-This shell script use others shell script. May be you node to change rights of these others files
+This shell script use others shell script. May be you node to change rights of these others files. If you receive an error like "msgfmt command not found", install the necessary package. (gettext in ubuntu)
 
 Create Initial User and Client
 ------------------------------
