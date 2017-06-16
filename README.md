@@ -47,7 +47,10 @@ There are 2 databases:
 * monarc_common contain models and data create by smile.
 * monarc_master contain all user and authentication information
 
-Once the databases are created, go to the folder ***db-bootstrap***, extract the ***monarc-common.sql.gz*** and import it into the ***monarc_common*** database.
+Once the databases are created, extract and import the extracted file to the ***monarc_common*** database:
+    
+    gunzip -k db-bootstrap/monarc-common.sql.gz
+    mysql -u sqlmonarcuser -p monarc_common < bootstrap/monarc-common.sql
 
 Symbolics links
 ---------------
