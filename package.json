@@ -5,13 +5,13 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/CASES-LU/MonarcAppBO"
+    "url": "https://github.com/monarc-project/MonarcAppBO"
   },
   "author": "Netlor",
   "license": "Copyright",
   "dependencies": {
-    "ng_anr": "https://github.com/CASES-LU/ng-anr#master",
-    "ng_backoffice": "https://github.com/CASES-LU/ng-backoffice#master"
+    "ng_anr": "https://github.com/monarc-project/ng-anr#master",
+    "ng_backoffice": "https://github.com/monarc-project/ng-backoffice#master"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

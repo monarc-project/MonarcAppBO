@@ -23,7 +23,7 @@ Using Composer (recommended)
 If not already done, install composer relevant to your distribution. Then, clone the repository and manually invoke `composer`:
 
     cd my/project/dir
-    git clone ssh://github.com/CASES-LU/MonarcAppBO.git ./monarc
+    git clone ssh://github.com/monarc-project/MonarcAppBO.git ./monarc
     cd monarc
     composer install -o (modifier le package.json deux errreurs passer en dev-beta le core et il y a un / en trop pour zm-core)
 
@@ -83,8 +83,8 @@ Repository for angular at project root:
 
     mkdir node_modules
     cd node_modules
-    git clone https://github.com/CASES-LU/ng-backoffice.git ng_backoffice
-    git clone https://github.com/CASES-LU/ng-anr.git ng_anr
+    git clone https://github.com/monarc-project/ng-backoffice.git ng_backoffice
+    git clone https://github.com/monarc-project/ng-anr.git ng_anr
 
  There is 2 parts:
  * one only for front office (ng_client)

@@ -1449,12 +1449,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/CASES-LU/zm-backoffice.git",
+                "url": "https://github.com/monarc-project/zm-backoffice.git",
                 "reference": "22b1eb56680bf2409cca6dd05e3a500ad2f0be58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CASES-LU/zm-backoffice/zipball/22b1eb56680bf2409cca6dd05e3a500ad2f0be58",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/22b1eb56680bf2409cca6dd05e3a500ad2f0be58",
                 "reference": "22b1eb56680bf2409cca6dd05e3a500ad2f0be58",
                 "shasum": ""
             },
@@ -1491,8 +1491,8 @@
             ],
             "description": "Backoffice for Monarc project",
             "support": {
-                "source": "https://github.com/CASES-LU/zm-backoffice/tree/master",
-                "issues": "https://github.com/CASES-LU/zm-backoffice/issues"
+                "source": "https://github.com/monarc-project/zm-backoffice/tree/master",
+                "issues": "https://github.com/monarc-project/zm-backoffice/issues"
             },
             "time": "2017-03-10 12:07:29"
         },
@@ -1501,12 +1501,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/CASES-LU/zm-core.git",
+                "url": "https://github.com/monarc-project/zm-core.git",
                 "reference": "0630ff404820dcb75c448cb3ab1ad857ca4c5ea1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CASES-LU/zm-core/zipball/0630ff404820dcb75c448cb3ab1ad857ca4c5ea1",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/0630ff404820dcb75c448cb3ab1ad857ca4c5ea1",
                 "reference": "0630ff404820dcb75c448cb3ab1ad857ca4c5ea1",
                 "shasum": ""
             },
@@ -1550,8 +1550,8 @@
             ],
             "description": "Core for Monarc project",
             "support": {
-                "source": "https://github.com/CASES-LU/zm-core/tree/master",
-                "issues": "https://github.com/CASES-LU/zm-core/issues"
+                "source": "https://github.com/monarc-project/zm-core/tree/master",
+                "issues": "https://github.com/monarc-project/zm-core/issues"
             },
             "time": "2017-03-09 14:43:25"
         },
