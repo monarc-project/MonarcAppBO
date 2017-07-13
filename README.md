@@ -120,8 +120,7 @@ project and you should be ready to go! It should look something like below:
         <Directory /path/to/monarc/public>
             DirectoryIndex index.php
             AllowOverride All
-            Order allow,deny
-            Allow from all
+            Require All Granted
         </Directory>
     </VirtualHost>
 
