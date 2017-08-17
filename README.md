@@ -48,7 +48,7 @@ There are 2 databases:
 * monarc_master contain all user and authentication information
 
 Once the databases are created, extract and import the extracted file to the ***monarc_common*** database:
-    
+
     gunzip -k db-bootstrap/monarc-common.sql.gz
     mysql -u sqlmonarcuser -p monarc_common < bootstrap/monarc-common.sql
 
@@ -106,14 +106,14 @@ The simplest way to get started if you are using PHP 5.4 or above is to start th
 This will start the cli-server on port 8080, and bind it to all network
 interfaces.
 
-**Note: ** The built-in CLI server is *for development only*.
+Note: The built-in CLI server is *for development only*.
 
 ### Apache Setup
 
 To setup apache, setup a virtual host to point to the public/ directory of the
 project and you should be ready to go! It should look something like below:
 
-    <VirtualHost *:80>
+    <VirtualHost 0.0.0.0:80>
         ServerName monarc.localhost
         DocumentRoot /path/to/monarc/public
         SetEnv APPLICATION_ENV "development"
@@ -189,13 +189,12 @@ This shell script use others shell script. May be you node to change rights of t
 Create Initial User and Client
 ------------------------------
 
-Modify email and password (firstname or lastname) of first user in /module/MonarcBO/migrations/seeds/adminUserInit.php
-
-If you have a mail server, you can keep default password and click on "Password forgotten ?" after user creation.
-
 Create first user:
 
     php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/phinx.php
+
+The username is *admin@admin.test* and the password is *admin*.
+
 
 Data Model
 ----------
@@ -209,4 +208,3 @@ License
 This software is licensed under [GNU Affero General Public License version 3](http://www.gnu.org/licenses/agpl-3.0.html)
 
 Copyright (C) 2016-2017 SMILE gie securitymadein.lu
-
