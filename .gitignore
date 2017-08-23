@@ -7,7 +7,7 @@ nbproject
 .project
 .settings
 vendor/bin
-composer.json
+composer.lock
 migrations
 *.sublime-*
 vendor/
