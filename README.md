@@ -49,8 +49,8 @@ There are 2 databases:
 
 Once the databases are created, extract and import the extracted file to the ***monarc_common*** database:
 
-    gunzip -k db-bootstrap/monarc-common.sql.gz
-    mysql -u sqlmonarcuser -p monarc_common < bootstrap/monarc-common.sql
+    tar -xzvf db-bootstrap/monarc-common.tar.gz -C db-bootstrap/
+    mysql -u sqlmonarcuser -p monarc_common < db-bootstrap/monarc-common.sql
 
 Symbolics links
 ---------------
