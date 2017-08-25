@@ -43,7 +43,7 @@ migrate_module() {
 }
 
 if [[ ! -f "config/autoload/local.php" && $bypass -eq 0  ]]; then
-	echo "Configure Monarc (config/autoload/local.php)" 
+	echo "Configure Monarc (config/autoload/local.php)"
 	exit 1
 fi
 
@@ -136,10 +136,18 @@ if [[ $forceClearCache -eq 1 ]]; then
 	$phpcommand ./public/index.php orm:clear-cache:result
 
 	# Clear ZF2 cache
-	touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
+	if [ -e ./data/cache/upgrade ]
+	then
+		touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
+	fi
 fi
 
 if [[ $forceClearCache -eq 0 && $bypass -eq 0 ]]; then
 	# Clear ZF2 cache
-	touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
+	if [ -e ./data/cache/upgrade ]
+	then
+		touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
+	fi
 fi
+
+exit 0
