@@ -23,3 +23,5 @@ data/DoctrineORMModule/
 data/json/
 go-pear.phar
 scripts/public/
+vagrant/.vagrant/
+vagrant/*.log
