@@ -1,7 +1,7 @@
 {
   "name": "MONARC",
-  "version": "1.0.0",
-  "description": "MONARC Skeleton App for Backoffice",
+  "version": "2.1.0",
+  "description": "MONARC back office",
   "private": true,
   "repository": {
     "type": "git",
