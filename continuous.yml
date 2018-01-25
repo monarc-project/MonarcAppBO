@@ -1,6 +1,0 @@
-# continuous.yml
-deployment:
-  hooks:
-    AfterActivate:
-      - command: scripts/migrate.sh
-      - command: scripts/restart-server.sh
