@@ -20,7 +20,7 @@ Installation of VirtualBox and Vagrant
 Deployment of the back office
 ------------------------------
 
-MONARC will be automatically deployed in an Ubuntu Zesty Server.
+MONARC will be automatically deployed in an Ubuntu Artful Server.
 
 .. code-block:: bash
 
