@@ -43,10 +43,10 @@ apt-get update
 echo -e "\n--- Install base packages… ---\n"
 apt-get -y install vim zip unzip git gettext > /dev/null
 
-echo -e "\n--- Install MySQL specific packages and settings… ---\n"
+echo -e "\n--- Install MariaDB specific packages and settings… ---\n"
 echo "mysql-server mysql-server/root_password password $DBPASSWORD_ADMIN" | debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password $DBPASSWORD_ADMIN" | debconf-set-selections
-apt-get -y install mysql-server > /dev/null
+apt-get -y install mariadb-server mariadb-client > /dev/null
 systemctl restart mariadb.service > /dev/null
 sleep 5
 
@@ -70,7 +70,7 @@ sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
 #sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php/7.0/apache2/php.ini
 #sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.0/apache2/php.ini
 
-echo -e "\n--- Setting up our MySQL user for MONARC… ---\n"
+echo -e "\n--- Setting up our MariaDB user for MONARC… ---\n"
 mysql -u root -p$DBPASSWORD_ADMIN -e "CREATE USER '$DBUSER_MONARC'@'localhost' IDENTIFIED BY '$DBPASSWORD_MONARC';"
 mysql -u root -p$DBPASSWORD_ADMIN -e "GRANT ALL PRIVILEGES ON * . * TO '$DBUSER_MONARC'@'localhost';"
 mysql -u root -p$DBPASSWORD_ADMIN -e "FLUSH PRIVILEGES;"
@@ -187,10 +187,10 @@ return array(
         ),
     ]
     */
-    'activeLanguages' => array('fr','en','de',),
+    'activeLanguages' => array('fr','en','de','ne'),
 
     'monarc' => array(
-        'ttl' => 20, // timeout
+        'ttl' => 60, // timeout
         'salt' => '', // salt privé pour chiffrement pwd
     ),
 );
@@ -220,7 +220,7 @@ php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/
 
 
 echo -e "\n--- Restarting Apache… ---\n"
-service apache2 restart > /dev/null
+systemctl restart apache2.service > /dev/null
 
 
 echo -e "\n--- MONARC is ready! Point your Web browser to http://127.0.0.1:5000 ---\n"
