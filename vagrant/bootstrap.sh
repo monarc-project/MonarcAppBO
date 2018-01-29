@@ -143,7 +143,7 @@ cat > /etc/apache2/sites-enabled/000-default.conf <<EOF
 </VirtualHost>
 EOF
 echo -e "\n--- Restarting Apache… ---\n"
-systemctl restart apache2.service restart > /dev/null
+systemctl restart apache2.service > /dev/null
 
 
 echo -e "\n--- Configuration of MONARC data base connection ---\n"
