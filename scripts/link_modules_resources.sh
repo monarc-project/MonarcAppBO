@@ -12,6 +12,13 @@ if [ ! -d public/css ]; then
 else
 	find -L public/css -type l -exec rm {} \;
 fi
+
+if [ ! -d public/flags ]; then
+	mkdir public/flags
+else
+	find -L public/flags -type l -exec rm {} \;
+fi
+
 if [ ! -d public/views/dialogs ]; then
 	mkdir -p public/views/dialogs
 else
@@ -93,4 +100,3 @@ if [ -d node_modules/ng_client ]; then
 	grunt concat
 	popd
 fi
-

@@ -15,10 +15,12 @@ public/css/
 public/js/
 public/img/
 public/views/
+public/flags/
 module/
 node_modules/
 config/application.config.php
 bin/
+data/monarc/
 data/DoctrineORMModule/
 data/json/
 go-pear.phar
