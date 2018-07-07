@@ -1,8 +1,6 @@
 MONARC - Back Office
 ====================
 
-Back office of MONARC.
-
 The back office is especially needed if you want to manage several clients.
 For more information you can have a look at
 [the differences](https://www.monarc.lu/product/#features-summary) with MONARC
