@@ -1,9 +1,13 @@
-Skeleton Monarc Project
-=======================
+MONARC - Back Office
+====================
 
-Introduction
-------------
-Skeleton Monarc Project.
+Back office of MONARC.
+
+The back office is especially needed if you want to manage several clients.
+For more information you can have a look at
+[the differences](https://www.monarc.lu/product/#features-summary) with MONARC
+itself or you can check the 
+[MONARC architecture](https://www.monarc.lu/technical-guide/#monarc-and-the-back-office).
 
 
 Installation
@@ -11,28 +15,31 @@ Installation
 
 PHP & MySQL
 -----------
-Install PHP (version 7.0 recommended) with Apache (or Nginx) with extensions:
+
+Install PHP (version 7.0 recommended) with Apache with extensions:
 xml, mbstring, mysql, zip, unzip, mcrypt, intl, imagick (extension php)
 
 For Apache add mods : rewrite, ssl (a2enmod)
 
-Install MySQL (version 5.7 recommended) or MariaDb equivalent
+Install MariaDb.
 
 
 Using Composer (recommended)
 ----------------------------
+
 If not already done, install composer relevant to your distribution. Then,
 clone the repository and manually invoke `composer`:
 
     cd my/project/dir
-    git clone ssh://github.com/monarc-project/MonarcAppBO.git ./monarc
-    cd monarc
-    composer install -o (modifier le package.json deux errreurs passer en dev-beta le core et il y a un / en trop pour zm-core)
+    git clone https://github.com/monarc-project/MonarcAppBO.git
+    cd MonarcAppBO/
+    composer self-update
+    composer install -o
 
-(The `self-update` directive is to ensure you have an up-to-date `composer.phar`
-available.)
+The `self-update` ensures you have an up-to-date `composer.phar` available.
 
 ![Arbo](public/img/arbo1.png "Arbo")
+
 
 Databases
 ---------
@@ -45,56 +52,58 @@ Change Sql Mode in my.cnf:
 
     sql-mode = MYSQL40
 
-There are 2 databases:
-* monarc_common contain models and data create by smile.
-* monarc_master contain all user and authentication information
+* monarc_common contains models and data create by CASES.
+* monarc_master contains all user and authentication information.
 
 Once the databases are created, extract and import the extracted file to the ***monarc_common*** database:
 
     tar -xzvf db-bootstrap/monarc-common.tar.gz -C db-bootstrap/
     mysql -u sqlmonarcuser -p monarc_common < db-bootstrap/monarc-common.sql
 
-Symbolics links
----------------
 
-The project is splited on 2 parts :
+Back-end
+--------
+
+The project is splited on 2 parts:
+
 * an Api in charge of retrieve data
 * an interface to display data
 
-The Api is not direct modules of the project but libraries.
-You must create modules with symbolics link to libraries
-
-Create 2 symbolics links at project root:
+The API is not a module of the project but libraries.
+You must create modules with symbolic links to the libraries:
 
     mkdir module
     cd module
-    ln -s ./../vendor/monarc/core MonarcCore;
-    ln -s ./../vendor/monarc/backoffice MonarcBO;
+    ln -s ./../vendor/monarc/core MonarcCore
+    ln -s ./../vendor/monarc/backoffice MonarcBO
 
-There is 2 parts:
+
+There are 2 parts:
+
 * one only for front office
 * one common for front office and back office (private project)
 
-It is develop with zend framework 2
 
 ![Arbo](public/img/arbo2.png "Arbo")
 
-Interfaces
-----------
-Repository for angular at project root:
+
+Front-end
+---------
+
+Repositories for AngularJS:
 
     mkdir node_modules
     cd node_modules
     git clone https://github.com/monarc-project/ng-backoffice.git ng_backoffice
     git clone https://github.com/monarc-project/ng-anr.git ng_anr
 
- There is 2 parts:
+ There are 2 parts:
  * one only for front office (ng_client)
  * one common for front office and back office (private project) (ng_anr)
 
- It is develop with angular framework version 1
 
 ![Arbo](public/img/arbo3.png "Arbo")
+
 
 Web Server Setup
 ----------------
@@ -156,6 +165,7 @@ Create file `config/autoload/local.php`:
     );
 
 
+
 Configuration
 -------------
 
@@ -186,7 +196,6 @@ Play script (mandatory from the root of the project)(pull and migrations):
 
     sudo /bin/bash ./scripts/update-all.sh
 
-This shell script use others shell script. May be you node to change rights of these others files. If you receive an error like "msgfmt command not found", install the necessary package. (gettext in ubuntu)
 
 Create Initial User and Client
 ------------------------------
@@ -222,7 +231,3 @@ This software is licensed under
 
 For more information, [the list of authors and contributors](AUTHORS) is available.
 
-Disclaimer: This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Affero General Public License for more details.
