@@ -14,7 +14,7 @@ Installation of VirtualBox and Vagrant
 
 .. code-block:: bash
 
-    $ sudo apt-get install virtualbox vagrant
+    $ sudo apt install virtualbox vagrant
 
 
 Deployment of the back office
@@ -30,7 +30,7 @@ MONARC will be automatically deployed in an Ubuntu Artful Server.
     $ vagrant up
 
 Once the VM will be configured by Vagrant, go to the address
-http://127.0.0.1:5001.
+http://127.0.0.1:5000.
 
 The username is *admin@admin.test* and the password is *admin*.
 
