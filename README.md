@@ -4,8 +4,8 @@ MONARC - Back Office
 The back office is especially needed if you want to manage several clients.
 For more information you can have a look at
 [the differences](https://www.monarc.lu/product/#features-summary) with MONARC
-itself or you can check the 
-[MONARC architecture](https://www.monarc.lu/technical-guide/#monarc-and-the-back-office).
+itself or you can check the
+[MONARC architecture](https://www.monarc.lu/documentation/technical-guide/#monarc-and-the-back-office).
 
 
 Installation
@@ -28,11 +28,11 @@ Using Composer (recommended)
 If not already done, install composer relevant to your distribution. Then,
 clone the repository and manually invoke `composer`:
 
-    cd my/project/dir
-    git clone https://github.com/monarc-project/MonarcAppBO.git
-    cd MonarcAppBO/
-    composer self-update
-    composer install -o
+    $ cd my/project/dir
+    $ git clone https://github.com/monarc-project/MonarcAppBO.git
+    $ cd MonarcAppBO/
+    $ composer self-update
+    $ composer install -o
 
 The `self-update` ensures you have an up-to-date `composer.phar` available.
 
@@ -46,17 +46,13 @@ Create 2 databases:
     CREATE DATABASE monarc_master DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
     CREATE DATABASE monarc_common DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
-Change Sql Mode in my.cnf:
-
-    sql-mode = MYSQL40
-
 * monarc_common contains models and data create by CASES.
 * monarc_master contains all user and authentication information.
 
 Once the databases are created, extract and import the extracted file to the ***monarc_common*** database:
 
-    tar -xzvf db-bootstrap/monarc-common.tar.gz -C db-bootstrap/
-    mysql -u sqlmonarcuser -p monarc_common < db-bootstrap/monarc-common.sql
+    $ tar -xzvf db-bootstrap/monarc-common.tar.gz -C db-bootstrap/
+    $ mysql -u sqlmonarcuser -p monarc_common < db-bootstrap/monarc-common.sql
 
 
 Back-end
@@ -70,10 +66,10 @@ The project is splited on 2 parts:
 The API is not a module of the project but libraries.
 You must create modules with symbolic links to the libraries:
 
-    mkdir module
-    cd module
-    ln -s ./../vendor/monarc/core MonarcCore
-    ln -s ./../vendor/monarc/backoffice MonarcBO
+    $ mkdir module
+    $ cd module
+    $ ln -s ./../vendor/monarc/core MonarcCore
+    $ ln -s ./../vendor/monarc/backoffice MonarcBO
 
 
 There are 2 parts:
@@ -90,10 +86,10 @@ Front-end
 
 Repositories for AngularJS:
 
-    mkdir node_modules
-    cd node_modules
-    git clone https://github.com/monarc-project/ng-backoffice.git ng_backoffice
-    git clone https://github.com/monarc-project/ng-anr.git ng_anr
+    $ mkdir node_modules
+    $ cd node_modules
+    $ git clone https://github.com/monarc-project/ng-backoffice.git ng_backoffice
+    $ git clone https://github.com/monarc-project/ng-anr.git ng_anr
 
  There are 2 parts:
  * one only for front office (ng_client)
@@ -106,20 +102,9 @@ Repositories for AngularJS:
 Web Server Setup
 ----------------
 
-### PHP CLI Server
-
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
-
-    php -S 0.0.0.0:8080 -t public/ public/index.php
-
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
-
-Note: The built-in CLI server is *for development only*.
-
 ### Apache Setup
 
-To setup apache, setup a virtual host to point to the public/ directory of the
+To setup Apache, setup a virtual host to point to the public/ directory of the
 project and you should be ready to go! It should look something like below:
 
     <VirtualHost 0.0.0.0:80>
@@ -169,30 +154,26 @@ Configuration
 
 Create file configuration
 
-    sudo cp /config/autoload/local.php.dist /config/autoload/local.php
+    $ sudo cp /config/autoload/local.php.dist /config/autoload/local.php
 
-Update connexion information to local.php and global.php
+Update connection information to local.php and global.php
 
 Configuration files are stored in cache.
 If yours changes have not been considered, empty cache by deleting file in /data/cache
-You might need to create the folders if non-existant. Also, the /data/cache folder needs to be owned by the internet user (www-data in ubuntu).
+You might need to create the folders. Also, the /data/cache folder needs to be
+owned by the internet user (www-data in ubuntu).
 
 Install Grunt
 -------------
 
-    sudo apt-get install nodejs
-    sudo apt-get install npm
-    sudo npm install -g grunt-cli
-
-Only for linux system:
-
-    sudo ln -s /usr/bin/nodejs /usr/bin/node (seulement linux)
+    $ sudo apt-get -y install npm
+    $ npm install -g grunt-cli
 
 Update project
 --------------
 Play script (mandatory from the root of the project)(pull and migrations):
 
-    sudo /bin/bash ./scripts/update-all.sh
+    $ ./scripts/update-all.sh
 
 
 Create Initial User and Client
@@ -200,7 +181,7 @@ Create Initial User and Client
 
 Create first user:
 
-    php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/phinx.php
+    $ php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/phinx.php
 
 The username is *admin@admin.test* and the password is *admin*.
 
