@@ -14,7 +14,7 @@ Installation
 PHP & MySQL
 -----------
 
-Install PHP (version 7.0 recommended) with Apache with extensions:
+Install PHP (version 7.2 recommended) with Apache with extensions:
 xml, mbstring, mysql, zip, unzip, mcrypt, intl, imagick (extension php)
 
 For Apache add mods : rewrite, ssl (a2enmod)
