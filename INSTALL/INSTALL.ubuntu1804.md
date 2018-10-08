@@ -1,4 +1,4 @@
-Installation on Ubuntu 16.04
+Installation on Ubuntu 18.04
 ============================
 
 # 1. Install LAMP & dependencies
