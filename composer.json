@@ -18,7 +18,9 @@
         "robmorgan/phinx": "0.5.*",
         "monarc/core": "dev-master",
         "monarc/backoffice": "dev-master",
-        "phing/phing": "~2.0"
+        "phing/phing": "~2.0",
+        "ramsey/uuid": "^3.8",
+        "ramsey/uuid-doctrine": "^1.5"
     },
     "config": {
         "bin-dir": "bin/"
