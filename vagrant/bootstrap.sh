@@ -212,7 +212,7 @@ return array(
         ),
     ]
     */
-    'activeLanguages' => array('fr','en','de','ne'),
+    'activeLanguages' => array('fr','en','de','nl'),
 
     'monarc' => array(
         'ttl' => 60, // timeout
