@@ -13,6 +13,7 @@ public/js/
 public/img/
 public/views/
 public/flags/
+scripts/public
 module/
 node_modules/
 bin/
@@ -20,6 +21,5 @@ data/*
 !data/cache/.gitkeep
 !data/DoctrineORMModule/Proxy/.gitkeep
 !data/LazyServices/Proxy/.gitkeep
-scripts/public/
 vagrant/.vagrant/
 vagrant/*.log

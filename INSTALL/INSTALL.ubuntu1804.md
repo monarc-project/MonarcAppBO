@@ -81,15 +81,15 @@ You must create modules with symbolic links to libraries.
 
 Create two symbolic links:
 
-    $ mkdir module
-    $ cd module/
-    $ ln -s ./../vendor/monarc/core MonarcCore
-    $ ln -s ./../vendor/monarc/backoffice MonarcBO
+    $ cd module/Monarc
+    $ ln -s ./../../vendor/monarc/core Core
+    $ ln -s ./../../vendor/monarc/frontoffice FrontOffice
+    $ cd ../..
 
 There are 2 parts:
 
-* MonarcBO is only for back office;
-* MonarcCore is common to the front office and to the back office.
+* Monarc\BackOffice is only for back office;
+* Monarc\Core is common to the front office and to the back office.
 
 
 ### Frontend
@@ -172,7 +172,7 @@ Update MONARC:
 
 # Create initial user
 
-    $ php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/phinx.php
+    $ php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/Monarc/BackOffice/migrations/phinx.php
 
 
 The username is *admin@admin.test* and the password is *admin*.

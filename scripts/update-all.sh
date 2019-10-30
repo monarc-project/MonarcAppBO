@@ -88,23 +88,23 @@ else
 fi
 
 currentPath=`pwd`
-pathCore="module/MonarcCore"
+pathCore="module/Monarc/Core"
 if [ -d $pathCore ]; then
 	pull_if_exists $pathCore
 else
 	pathCore="vendor/monarc/core"
 fi
-pathBO="module/MonarcBO"
+pathBO="module/Monarc/BackOffice"
 if [ -d $pathBO ]; then
 	pull_if_exists $pathBO
 else
 	pathBO="vendor/monarc/backoffice"
 fi
 
+
 if [[ -d node_modules && -d node_modules/ng_anr ]]; then
 	if [[ -d node_modules/ng_anr/.git ]]; then
 		pull_if_exists node_modules/ng_backoffice
-		pull_if_exists node_modules/ng_client
 		pull_if_exists node_modules/ng_anr
 	else
 		npm update
@@ -118,29 +118,22 @@ if [[ $bypass -eq 0 ]]; then
 	migrate_module $phpcommand $pathBO
 fi
 
-if [ -d node_modules/ng_backoffice ]; then
-	cd node_modules/ng_backoffice
-	npm install
-	cd ../..
-fi
-
-if [ -d node_modules/ng_client ]; then
-	cd node_modules/ng_client
-	npm install
-	cd ../..
-fi
+cd node_modules/ng_backoffice
+npm install
+cd ../..
 
 ./scripts/link_modules_resources.sh
 ./scripts/compile_translations.sh
 
+
 if [[ $forceClearCache -eq 1 ]]; then
 	# Clear doctrine cache
-	# Move to MonarcCore Module.php
+	# Move to Monarc/Core Module.php
 	$phpcommand ./public/index.php orm:clear-cache:metadata
 	$phpcommand ./public/index.php orm:clear-cache:query
 	$phpcommand ./public/index.php orm:clear-cache:result
 
-	# Clear ZF2 cache
+	# Clear cache
 	if [ -e ./data/cache/upgrade ]
 	then
 		touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
@@ -148,7 +141,7 @@ if [[ $forceClearCache -eq 1 ]]; then
 fi
 
 if [[ $forceClearCache -eq 0 && $bypass -eq 0 ]]; then
-	# Clear ZF2 cache
+	# Clear cache
 	if [ -e ./data/cache/upgrade ]
 	then
 		touch ./data/cache/upgrade && chmod 777 ./data/cache/upgrade
