@@ -1448,16 +1448,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "4702d6717b3ba5a2a952d42a6d4f048de1e40828"
+                "reference": "17936bebf9b2bf6d791d8431909ff75c35e8bd76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/4702d6717b3ba5a2a952d42a6d4f048de1e40828",
-                "reference": "4702d6717b3ba5a2a952d42a6d4f048de1e40828",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/17936bebf9b2bf6d791d8431909ff75c35e8bd76",
+                "reference": "17936bebf9b2bf6d791d8431909ff75c35e8bd76",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-orm-module": "^2.1",
+                "ext-json": "*",
+                "ext-pdo": "*",
                 "monarc/core": "dev-feature/upgrade-to-zf3",
                 "php": "^7.2",
                 "robmorgan/phinx": "^0.11.1",
@@ -1510,7 +1512,7 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2019-10-31T09:17:32+00:00"
+            "time": "2019-10-31T12:52:50+00:00"
         },
         {
             "name": "monarc/core",
@@ -1518,12 +1520,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "a2142789f4a25115042687a3d2256cf0aaeebce9"
+                "reference": "fcb57f25a88c2b66b2611c6b11d4176a05a4ca3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/a2142789f4a25115042687a3d2256cf0aaeebce9",
-                "reference": "a2142789f4a25115042687a3d2256cf0aaeebce9",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/fcb57f25a88c2b66b2611c6b11d4176a05a4ca3a",
+                "reference": "fcb57f25a88c2b66b2611c6b11d4176a05a4ca3a",
                 "shasum": ""
             },
             "require": {
@@ -1590,7 +1592,7 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2019-10-30T11:38:40+00:00"
+            "time": "2019-10-31T12:38:42+00:00"
         },
         {
             "name": "ocramius/package-versions",
