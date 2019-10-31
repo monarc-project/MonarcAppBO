@@ -22,6 +22,18 @@ if (!empty($appConfDir)) {
 
 return array(
     'modules' => array(
+        'Zend\Di',
+        'Zend\Cache',
+        'Zend\Form',
+        'Zend\InputFilter',
+        'Zend\Filter',
+        'Zend\Paginator',
+        'Zend\Hydrator',
+        'Zend\Router',
+        'Zend\Log',
+        'Zend\Mail',
+        'Zend\Validator',
+        'Zend\I18n',
         'DoctrineModule',
         'DoctrineORMModule',
         'Monarc\Core',

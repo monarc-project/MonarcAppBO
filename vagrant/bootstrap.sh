@@ -33,7 +33,7 @@ dpkg-reconfigure locales
 echo -e "\n--- Installing now… ---\n"
 
 echo -e "\n--- Updating packages list ---\n"
-apt-get update
+apt-get update && apt-get -y upgrade
 
 echo -e "\n--- Install base packages… ---\n"
 apt-get -y install vim zip unzip git gettext > /dev/null
@@ -67,7 +67,7 @@ expect -f - <<-EOF
   send -- "y\r"
   expect eof
 EOF
-sudo apt-get purge -y expect > /dev/null 2>&1
+sudo apt-get purge -y expect php-xdebug > /dev/null 2>&1
 
 echo -e "\n--- Configuring… ---\n"
 sed -i "s/skip-external-locking/#skip-external-locking/g" $MARIA_DB_CFG
@@ -90,6 +90,7 @@ done
 
 echo -e "\n--- Configuring Xdebug for development ---\n"
 cat > $X_DEBUG_CFG <<EOF
+zend_extension=xdebug.so
 xdebug.remote_enable=1
 xdebug.remote_connect_back=1
 xdebug.idekey=IDEKEY
@@ -241,7 +242,7 @@ echo -e "\n--- Update the project… ---\n"
 
 
 echo -e "\n--- Create initial user and client ---\n"
-php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/MonarcBO/migrations/phinx.php > /dev/null
+php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/Monarc/BackOffice/migrations/phinx.php > /dev/null
 
 
 echo -e "\n--- Restarting Apache… ---\n"
