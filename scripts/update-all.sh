@@ -89,18 +89,7 @@ fi
 
 currentPath=`pwd`
 pathCore="module/Monarc/Core"
-if [ -d $pathCore ]; then
-	pull_if_exists $pathCore
-else
-	pathCore="vendor/monarc/core"
-fi
 pathBO="module/Monarc/BackOffice"
-if [ -d $pathBO ]; then
-	pull_if_exists $pathBO
-else
-	pathBO="vendor/monarc/backoffice"
-fi
-
 
 if [[ -d node_modules && -d node_modules/ng_anr ]]; then
 	if [[ -d node_modules/ng_anr/.git ]]; then
