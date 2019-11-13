@@ -121,6 +121,7 @@ composer install -o
 
 
 # Make modules symlinks.
+mkdir -p module/Monarc
 cd module/Monarc
 ln -s ./../../vendor/monarc/core Core
 ln -s ./../../vendor/monarc/backoffice BackOffice
