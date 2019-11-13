@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
 bypass=0
 forceClearCache=0
 while getopts "hbc" option
@@ -31,14 +35,8 @@ pull_if_exists() {
 }
 
 migrate_module() {
-	if [[ -d $2 ]]; then
-		$1 ./vendor/robmorgan/phinx/bin/phinx migrate -c ./$2/migrations/phinx.php
-		if [[ -d "${2}/hooks" && -f "${2}/.git/hooks/pre-commit.sh" ]]; then
-			cd $2/.git/hooks
-			ln -s ../../hooks/pre-commit.sh pre-commit 2>/dev/null
-			chmod u+x pre-commit
-			cd $2
-		fi
+	if [[ -d $1 ]]; then
+		php ./vendor/robmorgan/phinx/bin/phinx migrate -c ./$1/migrations/phinx.php
 	fi
 }
 
@@ -47,47 +45,15 @@ if [[ ! -f "config/autoload/local.php" && $bypass -eq 0  ]]; then
 	exit 1
 fi
 
-phpcommand=`command -v php`
-if [[ -z "$phpcommand" ]]; then
-	echo "PHP must be installed"
-	exit 1
-fi
-
-gitcommand=`command -v git`
-if [[ -z "$gitcommand" ]]; then
-	echo "Git must be installed"
-	exit 1
-fi
-
-$gitcommand pull
+git pull
 
 if [ $? != 0 ]; then
 	echo "A problem occurred while retrieving remote files from repository."
 	exit 1
 fi
 
-composercommand=`command -v composer`
-if [[ -z "$composercommand" ]]; then
-	if [[ ! -f "composer.phar" ]]; then
-		# https://getcomposer.org/download/
-		# https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
-		EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
-		$phpcommand -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-		ACTUAL_SIGNATURE=$($phpcommand -r "echo hash_file('SHA384', 'composer-setup.php');")
-		if [[ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]]; then
-			echo "Error download composer (different hash)"
-			rm composer-setup.php
-			exit 1
-		fi
-		rm composer-setup.php
-		$phpcommand composer-setup.php --quiet
-	fi
-	$phpcommand composer.phar update -o
-else
-	$composercommand update -o
-fi
+composer install -o
 
-currentPath=`pwd`
 pathCore="module/Monarc/Core"
 pathBO="module/Monarc/BackOffice"
 
@@ -103,8 +69,8 @@ else
 fi
 
 if [[ $bypass -eq 0 ]]; then
-	migrate_module $phpcommand $pathCore
-	migrate_module $phpcommand $pathBO
+	migrate_module $pathCore
+	migrate_module $pathBO
 fi
 
 cd node_modules/ng_backoffice
@@ -118,9 +84,9 @@ cd ../..
 if [[ $forceClearCache -eq 1 ]]; then
 	# Clear doctrine cache
 	# Move to Monarc/Core Module.php
-	$phpcommand ./public/index.php orm:clear-cache:metadata
-	$phpcommand ./public/index.php orm:clear-cache:query
-	$phpcommand ./public/index.php orm:clear-cache:result
+	php ./public/index.php orm:clear-cache:metadata
+	php ./public/index.php orm:clear-cache:query
+	php ./public/index.php orm:clear-cache:result
 
 	# Clear cache
 	if [ -e ./data/cache/upgrade ]
