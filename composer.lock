@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "747f01afb0164b16b154b41c15841dd0",
+    "content-hash": "853666bcdd598d26a960b9dcfcdee892",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -443,16 +443,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "c15dcd24b756f9e52ea7c3ae8227354f3628f11a"
+                "reference": "89a5c76c39c292f7798f964ab3c836c3f8192a55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/c15dcd24b756f9e52ea7c3ae8227354f3628f11a",
-                "reference": "c15dcd24b756f9e52ea7c3ae8227354f3628f11a",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/89a5c76c39c292f7798f964ab3c836c3f8192a55",
+                "reference": "89a5c76c39c292f7798f964ab3c836c3f8192a55",
                 "shasum": ""
             },
             "require": {
@@ -522,20 +522,20 @@
                 "riak",
                 "xcache"
             ],
-            "time": "2019-11-11T10:31:52+00:00"
+            "time": "2019-11-15T14:31:57+00:00"
         },
         {
             "name": "doctrine/collections",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "037ccc5b1c249275f8f6bb48e35f140fd52fd577"
+                "reference": "6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/037ccc5b1c249275f8f6bb48e35f140fd52fd577",
-                "reference": "037ccc5b1c249275f8f6bb48e35f140fd52fd577",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7",
+                "reference": "6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7",
                 "shasum": ""
             },
             "require": {
@@ -592,7 +592,7 @@
                 "iterators",
                 "php"
             ],
-            "time": "2019-11-04T15:26:07+00:00"
+            "time": "2019-11-13T13:07:11+00:00"
         },
         {
             "name": "doctrine/common",
@@ -1226,33 +1226,35 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.6.4",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "b52ef5a1002f99ab506a5a2d6dba5a2c236c5f43"
+                "reference": "4d763ca4c925f647b248b9fa01b5f47aa3685d62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/b52ef5a1002f99ab506a5a2d6dba5a2c236c5f43",
-                "reference": "b52ef5a1002f99ab506a5a2d6dba5a2c236c5f43",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/4d763ca4c925f647b248b9fa01b5f47aa3685d62",
+                "reference": "4d763ca4c925f647b248b9fa01b5f47aa3685d62",
                 "shasum": ""
             },
             "require": {
-                "doctrine/annotations": "~1.5",
-                "doctrine/cache": "~1.6",
-                "doctrine/collections": "^1.4",
-                "doctrine/common": "^2.7.1",
-                "doctrine/dbal": "^2.6",
-                "doctrine/instantiator": "~1.1",
+                "doctrine/annotations": "^1.8",
+                "doctrine/cache": "^1.9.1",
+                "doctrine/collections": "^1.5",
+                "doctrine/common": "^2.11",
+                "doctrine/dbal": "^2.9.3",
+                "doctrine/event-manager": "^1.1",
+                "doctrine/instantiator": "^1.3",
+                "doctrine/persistence": "^1.2",
                 "ext-pdo": "*",
                 "php": "^7.1",
-                "symfony/console": "~3.0|~4.0"
+                "symfony/console": "^3.0|^4.0|^5.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^5.0",
                 "phpunit/phpunit": "^7.5",
-                "symfony/yaml": "~3.4|~4.0"
+                "symfony/yaml": "^3.4|^4.0|^5.0"
             },
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
@@ -1263,7 +1265,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6.x-dev"
+                    "dev-master": "2.7.x-dev"
                 }
             },
             "autoload": {
@@ -1298,12 +1300,12 @@
                 }
             ],
             "description": "Object-Relational-Mapper for PHP",
-            "homepage": "http://www.doctrine-project.org",
+            "homepage": "https://www.doctrine-project.org/projects/orm.html",
             "keywords": [
                 "database",
                 "orm"
             ],
-            "time": "2019-09-20T14:30:26+00:00"
+            "time": "2019-11-19T08:38:05+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -1464,23 +1466,23 @@
         },
         {
             "name": "monarc/backoffice",
-            "version": "dev-feature/upgrade-to-zf3",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "333d1a4202cda054df8023665f80cd70b3eff2fb"
+                "reference": "670ce13ed501b5c1b2bbe44d3cecea0ecb6ed1fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/333d1a4202cda054df8023665f80cd70b3eff2fb",
-                "reference": "333d1a4202cda054df8023665f80cd70b3eff2fb",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/670ce13ed501b5c1b2bbe44d3cecea0ecb6ed1fa",
+                "reference": "670ce13ed501b5c1b2bbe44d3cecea0ecb6ed1fa",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-orm-module": "^2.1",
                 "ext-json": "*",
                 "ext-pdo": "*",
-                "monarc/core": "dev-feature/upgrade-to-zf3",
+                "monarc/core": "^2.9",
                 "php": "^7.1",
                 "robmorgan/phinx": "^0.11.1",
                 "zendframework/zend-di": "^3.1",
@@ -1532,20 +1534,20 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2019-11-13T09:54:27+00:00"
+            "time": "2019-11-19T08:50:44+00:00"
         },
         {
             "name": "monarc/core",
-            "version": "dev-feature/upgrade-to-zf3",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "da93cead1f8fb02b0edef7c0b7cda7d5888224e7"
+                "reference": "c704f57c9c9ebb0b9f28ac3862fb705d8036b49e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/da93cead1f8fb02b0edef7c0b7cda7d5888224e7",
-                "reference": "da93cead1f8fb02b0edef7c0b7cda7d5888224e7",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/c704f57c9c9ebb0b9f28ac3862fb705d8036b49e",
+                "reference": "c704f57c9c9ebb0b9f28ac3862fb705d8036b49e",
                 "shasum": ""
             },
             "require": {
@@ -1612,20 +1614,20 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2019-11-12T09:43:37+00:00"
+            "time": "2019-11-19T07:46:02+00:00"
         },
         {
             "name": "ocramius/package-versions",
-            "version": "1.4.0",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb"
+                "reference": "44af6f3a2e2e04f2af46bcb302ad9600cba41c7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
-                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/44af6f3a2e2e04f2af46bcb302ad9600cba41c7d",
+                "reference": "44af6f3a2e2e04f2af46bcb302ad9600cba41c7d",
                 "shasum": ""
             },
             "require": {
@@ -1637,7 +1639,7 @@
                 "doctrine/coding-standard": "^5.0.1",
                 "ext-zip": "*",
                 "infection/infection": "^0.7.1",
-                "phpunit/phpunit": "^7.0.0"
+                "phpunit/phpunit": "^7.5.17"
             },
             "type": "composer-plugin",
             "extra": {
@@ -1662,7 +1664,7 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2019-02-21T12:16:21+00:00"
+            "time": "2019-11-15T16:17:10+00:00"
         },
         {
             "name": "ocramius/proxy-manager",
@@ -3444,19 +3446,20 @@
         },
         {
             "name": "zendframework/zend-i18n",
-            "version": "2.9.2",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-i18n.git",
-                "reference": "e17a54b3aee333ab156958f570cde630acee8b07"
+                "reference": "561a815ce32c86b0f1de11135477e637926d56b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/e17a54b3aee333ab156958f570cde630acee8b07",
-                "reference": "e17a54b3aee333ab156958f570cde630acee8b07",
+                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/561a815ce32c86b0f1de11135477e637926d56b6",
+                "reference": "561a815ce32c86b0f1de11135477e637926d56b6",
                 "shasum": ""
             },
             "require": {
+                "ext-intl": "*",
                 "php": "^5.6 || ^7.0",
                 "zendframework/zend-stdlib": "^2.7 || ^3.0"
             },
@@ -3472,7 +3475,6 @@
                 "zendframework/zend-view": "^2.6.3"
             },
             "suggest": {
-                "ext-intl": "Required for most features of Zend\\I18n; included in default builds of PHP",
                 "zendframework/zend-cache": "Zend\\Cache component",
                 "zendframework/zend-config": "Zend\\Config component",
                 "zendframework/zend-eventmanager": "You should install this package to use the events in the translator",
@@ -3485,8 +3487,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.9.x-dev",
-                    "dev-develop": "2.10.x-dev"
+                    "dev-master": "2.10.x-dev",
+                    "dev-develop": "2.11.x-dev"
                 },
                 "zf": {
                     "component": "Zend\\I18n",
@@ -3508,7 +3510,7 @@
                 "i18n",
                 "zf"
             ],
-            "time": "2019-09-30T12:04:37+00:00"
+            "time": "2019-11-18T20:31:29+00:00"
         },
         {
             "name": "zendframework/zend-inputfilter",
@@ -4478,12 +4480,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "e3e6456e753326a096303e96b0f759fe789e63e8"
+                "reference": "261562a9c048aa10932e5e1d596da6c761cf95bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e3e6456e753326a096303e96b0f759fe789e63e8",
-                "reference": "e3e6456e753326a096303e96b0f759fe789e63e8",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/261562a9c048aa10932e5e1d596da6c761cf95bb",
+                "reference": "261562a9c048aa10932e5e1d596da6c761cf95bb",
                 "shasum": ""
             },
             "conflict": {
@@ -4620,7 +4622,7 @@
                 "symfony/security-guard": ">=2.8,<2.8.41|>=3,<3.3.17|>=3.4,<3.4.11|>=4,<4.0.11",
                 "symfony/security-http": ">=2.3,<2.3.41|>=2.4,<2.7.51|>=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.2.12|>=4.3,<4.3.8",
                 "symfony/serializer": ">=2,<2.0.11",
-                "symfony/symfony": ">=2,<2.7.51|>=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.1.12|>=4.2,<4.2.7",
+                "symfony/symfony": ">=2,<2.8.52|>=3,<3.4.35|>=4,<4.2.12|>=4.3,<4.3.8",
                 "symfony/translation": ">=2,<2.0.17",
                 "symfony/validator": ">=2,<2.0.24|>=2.1,<2.1.12|>=2.2,<2.2.5|>=2.3,<2.3.3",
                 "symfony/var-exporter": ">=4.2,<4.2.12|>=4.3,<4.3.8",
@@ -4688,7 +4690,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2019-11-13T10:25:51+00:00"
+            "time": "2019-11-15T09:15:43+00:00"
         },
         {
             "name": "zendframework/zend-component-installer",
@@ -4746,8 +4748,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "monarc/core": 20,
-        "monarc/backoffice": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
