@@ -14,7 +14,7 @@ return array(
     // DOCTRINE CONF
     'service_manager' => array(
         'factories' => array(
-            'doctrine.cache.mycache' => 'MonarcCore\Service\DoctrineCacheServiceFactory',
+            'doctrine.cache.mycache' => 'Monarc\Core\Service\DoctrineCacheServiceFactory',
         ),
     ),
     'doctrine' => array(

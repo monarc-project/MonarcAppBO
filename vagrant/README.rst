@@ -26,7 +26,6 @@ MONARC will be automatically deployed in an Ubuntu Artful Server.
 
     $ git clone https://github.com/monarc-project/MonarcAppBO
     $ cd MonarcAppBO/vagrant
-    $ export GITHUB_AUTH_TOKEN=<your-github-auth-token>
     $ vagrant up
 
 Once the VM will be configured by Vagrant, go to the address
