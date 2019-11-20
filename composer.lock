@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "853666bcdd598d26a960b9dcfcdee892",
+    "content-hash": "492342bbdc42919df8740e27063587e8",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -371,6 +371,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -1470,12 +1471,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "670ce13ed501b5c1b2bbe44d3cecea0ecb6ed1fa"
+                "reference": "171367e735756ef02f93f0b65c3cc9158ce8b133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/670ce13ed501b5c1b2bbe44d3cecea0ecb6ed1fa",
-                "reference": "670ce13ed501b5c1b2bbe44d3cecea0ecb6ed1fa",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/171367e735756ef02f93f0b65c3cc9158ce8b133",
+                "reference": "171367e735756ef02f93f0b65c3cc9158ce8b133",
                 "shasum": ""
             },
             "require": {
@@ -1534,7 +1535,7 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2019-11-19T08:50:44+00:00"
+            "time": "2019-11-20T08:04:00+00:00"
         },
         {
             "name": "monarc/core",
@@ -1542,12 +1543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "c704f57c9c9ebb0b9f28ac3862fb705d8036b49e"
+                "reference": "60ddfb24bdd29f362a6d71dca279cbc8b7ed83fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/c704f57c9c9ebb0b9f28ac3862fb705d8036b49e",
-                "reference": "c704f57c9c9ebb0b9f28ac3862fb705d8036b49e",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/60ddfb24bdd29f362a6d71dca279cbc8b7ed83fe",
+                "reference": "60ddfb24bdd29f362a6d71dca279cbc8b7ed83fe",
                 "shasum": ""
             },
             "require": {
@@ -1611,10 +1612,14 @@
                 {
                     "name": "Cédric Bonhomme",
                     "email": "cedric.bonhomme@cases.lu"
+                },
+                {
+                    "name": "Ruslan Baidan",
+                    "email": "ruslan.baidan@cases.lu"
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2019-11-19T07:46:02+00:00"
+            "time": "2019-11-20T11:05:31+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -4480,12 +4485,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "261562a9c048aa10932e5e1d596da6c761cf95bb"
+                "reference": "40fb2c205dd261ab6bb42ec29545934f0db7026f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/261562a9c048aa10932e5e1d596da6c761cf95bb",
-                "reference": "261562a9c048aa10932e5e1d596da6c761cf95bb",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/40fb2c205dd261ab6bb42ec29545934f0db7026f",
+                "reference": "40fb2c205dd261ab6bb42ec29545934f0db7026f",
                 "shasum": ""
             },
             "conflict": {
@@ -4553,7 +4558,7 @@
                 "league/commonmark": "<0.18.3",
                 "magento/magento1ce": "<1.9.4.3",
                 "magento/magento1ee": ">=1,<1.14.4.3",
-                "magento/product-community-edition": ">=2,<2.2.10|>=2.3,<2.3.3",
+                "magento/product-community-edition": ">=2,<2.2.10|>=2.3,<2.3.2",
                 "monolog/monolog": ">=1.8,<1.12",
                 "namshi/jose": "<2.2",
                 "onelogin/php-saml": "<2.10.4",
@@ -4690,7 +4695,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2019-11-15T09:15:43+00:00"
+            "time": "2019-11-19T14:18:57+00:00"
         },
         {
             "name": "zendframework/zend-component-installer",
