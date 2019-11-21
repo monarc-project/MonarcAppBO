@@ -16,7 +16,7 @@
         "php": "^7.1",
         "ext-json": "*",
         "ext-pdo": "*",
-        "monarc/backoffice": "^2.9",
+        "monarc/backoffice": "dev-master",
         "zendframework/zend-mvc": "^3.1",
         "zendframework/zend-di": "^3.1",
         "zendframework/zend-permissions-rbac": "^3.0",
@@ -30,5 +30,7 @@
     },
     "config": {
         "bin-dir": "bin/"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
