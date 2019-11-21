@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "492342bbdc42919df8740e27063587e8",
+    "content-hash": "bdfce1dae7295f07e9c82b5bc23b787c",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -1467,16 +1467,16 @@
         },
         {
             "name": "monarc/backoffice",
-            "version": "2.9.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "171367e735756ef02f93f0b65c3cc9158ce8b133"
+                "reference": "90f9507b8f92994b9da602a46e46c0be4777e967"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/171367e735756ef02f93f0b65c3cc9158ce8b133",
-                "reference": "171367e735756ef02f93f0b65c3cc9158ce8b133",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/90f9507b8f92994b9da602a46e46c0be4777e967",
+                "reference": "90f9507b8f92994b9da602a46e46c0be4777e967",
                 "shasum": ""
             },
             "require": {
@@ -1535,7 +1535,7 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2019-11-20T08:04:00+00:00"
+            "time": "2019-11-21T08:25:23+00:00"
         },
         {
             "name": "monarc/core",
@@ -1543,12 +1543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "60ddfb24bdd29f362a6d71dca279cbc8b7ed83fe"
+                "reference": "f5a6a1b26c47e5983239d59053896de6a8cdfd9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/60ddfb24bdd29f362a6d71dca279cbc8b7ed83fe",
-                "reference": "60ddfb24bdd29f362a6d71dca279cbc8b7ed83fe",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/f5a6a1b26c47e5983239d59053896de6a8cdfd9c",
+                "reference": "f5a6a1b26c47e5983239d59053896de6a8cdfd9c",
                 "shasum": ""
             },
             "require": {
@@ -1619,7 +1619,7 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2019-11-20T11:05:31+00:00"
+            "time": "2019-11-20T15:39:03+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -2194,32 +2194,32 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.3.8",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "8267214841c44d315a55242ea867684eb43c42ce"
+                "reference": "f08e1c48e1f05d07c32f2d8599ed539e62105beb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/8267214841c44d315a55242ea867684eb43c42ce",
-                "reference": "8267214841c44d315a55242ea867684eb43c42ce",
+                "url": "https://api.github.com/repos/symfony/config/zipball/f08e1c48e1f05d07c32f2d8599ed539e62105beb",
+                "reference": "f08e1c48e1f05d07c32f2d8599ed539e62105beb",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
-                "symfony/filesystem": "~3.4|~4.0",
+                "symfony/filesystem": "^3.4|^4.0|^5.0",
                 "symfony/polyfill-ctype": "~1.8"
             },
             "conflict": {
                 "symfony/finder": "<3.4"
             },
             "require-dev": {
-                "symfony/dependency-injection": "~3.4|~4.0",
-                "symfony/event-dispatcher": "~3.4|~4.0",
-                "symfony/finder": "~3.4|~4.0",
-                "symfony/messenger": "~4.1",
-                "symfony/yaml": "~3.4|~4.0"
+                "symfony/event-dispatcher": "^3.4|^4.0|^5.0",
+                "symfony/finder": "^3.4|^4.0|^5.0",
+                "symfony/messenger": "^4.1|^5.0",
+                "symfony/service-contracts": "^1.1|^2",
+                "symfony/yaml": "^3.4|^4.0|^5.0"
             },
             "suggest": {
                 "symfony/yaml": "To use the yaml reference dumper"
@@ -2227,7 +2227,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -2254,31 +2254,32 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-08T08:31:27+00:00"
+            "time": "2019-11-16T15:22:42+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v4.3.8",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "831424efae0a1fe6642784bd52aae14ece6538e6"
+                "reference": "35d9077f495c6d184d9930f7a7ecbd1ad13c7ab8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/831424efae0a1fe6642784bd52aae14ece6538e6",
-                "reference": "831424efae0a1fe6642784bd52aae14ece6538e6",
+                "url": "https://api.github.com/repos/symfony/console/zipball/35d9077f495c6d184d9930f7a7ecbd1ad13c7ab8",
+                "reference": "35d9077f495c6d184d9930f7a7ecbd1ad13c7ab8",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php73": "^1.8",
-                "symfony/service-contracts": "^1.1"
+                "symfony/service-contracts": "^1.1|^2"
             },
             "conflict": {
                 "symfony/dependency-injection": "<3.4",
-                "symfony/event-dispatcher": "<4.3",
+                "symfony/event-dispatcher": "<4.3|>=5",
+                "symfony/lock": "<4.4",
                 "symfony/process": "<3.3"
             },
             "provide": {
@@ -2286,12 +2287,12 @@
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~3.4|~4.0",
-                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/config": "^3.4|^4.0|^5.0",
+                "symfony/dependency-injection": "^3.4|^4.0|^5.0",
                 "symfony/event-dispatcher": "^4.3",
-                "symfony/lock": "~3.4|~4.0",
-                "symfony/process": "~3.4|~4.0",
-                "symfony/var-dumper": "^4.3"
+                "symfony/lock": "^4.4|^5.0",
+                "symfony/process": "^3.4|^4.0|^5.0",
+                "symfony/var-dumper": "^4.3|^5.0"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
@@ -2302,7 +2303,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -2329,20 +2330,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-13T07:29:07+00:00"
+            "time": "2019-11-13T07:39:40+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.3.8",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "9abbb7ef96a51f4d7e69627bc6f63307994e4263"
+                "reference": "d12b01cba60be77b583c9af660007211e3909854"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/9abbb7ef96a51f4d7e69627bc6f63307994e4263",
-                "reference": "9abbb7ef96a51f4d7e69627bc6f63307994e4263",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/d12b01cba60be77b583c9af660007211e3909854",
+                "reference": "d12b01cba60be77b583c9af660007211e3909854",
                 "shasum": ""
             },
             "require": {
@@ -2352,7 +2353,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -2379,7 +2380,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-20T14:07:54+00:00"
+            "time": "2019-11-12T14:51:11+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -2558,20 +2559,20 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v1.1.8",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf"
+                "reference": "9d99e1556417bf227a62e14856d630672bf10eaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
-                "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/9d99e1556417bf227a62e14856d630672bf10eaf",
+                "reference": "9d99e1556417bf227a62e14856d630672bf10eaf",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3",
+                "php": "^7.2.9",
                 "psr/container": "^1.0"
             },
             "suggest": {
@@ -2580,7 +2581,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -2612,20 +2613,20 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-10-14T12:27:06+00:00"
+            "time": "2019-11-09T09:18:34+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.3.8",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "324cf4b19c345465fad14f3602050519e09e361d"
+                "reference": "76de473358fe802578a415d5bb43c296cf09d211"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/324cf4b19c345465fad14f3602050519e09e361d",
-                "reference": "324cf4b19c345465fad14f3602050519e09e361d",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/76de473358fe802578a415d5bb43c296cf09d211",
+                "reference": "76de473358fe802578a415d5bb43c296cf09d211",
                 "shasum": ""
             },
             "require": {
@@ -2636,7 +2637,7 @@
                 "symfony/console": "<3.4"
             },
             "require-dev": {
-                "symfony/console": "~3.4|~4.0"
+                "symfony/console": "^3.4|^4.0|^5.0"
             },
             "suggest": {
                 "symfony/console": "For validating YAML files using the lint command"
@@ -2644,7 +2645,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -2671,7 +2672,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-30T12:58:49+00:00"
+            "time": "2019-11-12T14:51:11+00:00"
         },
         {
             "name": "true/punycode",
@@ -4751,11 +4752,12 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
+        "monarc/backoffice": 20,
         "roave/security-advisories": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.1",
