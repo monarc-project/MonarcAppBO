@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "105a325ebf7cc41cdd56c82f2d3b3738",
+    "content-hash": "959ce665a4bccf9c488d6f8e7e45ea83",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -1466,16 +1466,16 @@
         },
         {
             "name": "monarc/backoffice",
-            "version": "2.9.3",
+            "version": "2.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "969e5a5fc2e76040ffbf588b30ce9c9aa62e3ed9"
+                "reference": "0d3246a5a488166827ae75f1a25d4f2837353f43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/969e5a5fc2e76040ffbf588b30ce9c9aa62e3ed9",
-                "reference": "969e5a5fc2e76040ffbf588b30ce9c9aa62e3ed9",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/0d3246a5a488166827ae75f1a25d4f2837353f43",
+                "reference": "0d3246a5a488166827ae75f1a25d4f2837353f43",
                 "shasum": ""
             },
             "require": {
@@ -1534,7 +1534,7 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2019-12-06T12:19:07+00:00"
+            "time": "2019-12-10T14:14:28+00:00"
         },
         {
             "name": "monarc/core",
