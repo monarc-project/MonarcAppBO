@@ -1546,12 +1546,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "863e6fb4d9247d4f15cc24f420c6f3eb38de8f5f"
+                "reference": "57cf12ccdd555d536d9f352bc5467d0261af4ab5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/863e6fb4d9247d4f15cc24f420c6f3eb38de8f5f",
-                "reference": "863e6fb4d9247d4f15cc24f420c6f3eb38de8f5f",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/57cf12ccdd555d536d9f352bc5467d0261af4ab5",
+                "reference": "57cf12ccdd555d536d9f352bc5467d0261af4ab5",
                 "shasum": ""
             },
             "require": {
@@ -1624,7 +1624,7 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2020-01-29T08:46:49+00:00"
+            "time": "2020-01-29T14:00:42+00:00"
         },
         {
             "name": "ocramius/package-versions",
