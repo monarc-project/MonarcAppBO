@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0bede95905e9ed2c9b0b8fa8061eae1f",
+    "content-hash": "fed751981ade2ae5c931310944f10e38",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -2026,16 +2026,16 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.9.2",
+            "version": "2.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "4d8c0c25e40836bd617335e744009c2c950c4ad5"
+                "reference": "52b5cdbef8902280996e687e7352a648a8e22f31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/4d8c0c25e40836bd617335e744009c2c950c4ad5",
-                "reference": "4d8c0c25e40836bd617335e744009c2c950c4ad5",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/52b5cdbef8902280996e687e7352a648a8e22f31",
+                "reference": "52b5cdbef8902280996e687e7352a648a8e22f31",
                 "shasum": ""
             },
             "require": {
@@ -2091,7 +2091,7 @@
                 "filter",
                 "laminas"
             ],
-            "time": "2019-12-31T16:54:29+00:00"
+            "time": "2020-01-07T20:43:53+00:00"
         },
         {
             "name": "laminas/laminas-form",
@@ -3455,19 +3455,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "4e51a03ea2fdbf0e7704f8307eef4607ce9606d5"
+                "reference": "84aee153803385f77e4bd9cd1e8f32946a29bc85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/4e51a03ea2fdbf0e7704f8307eef4607ce9606d5",
-                "reference": "4e51a03ea2fdbf0e7704f8307eef4607ce9606d5",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/84aee153803385f77e4bd9cd1e8f32946a29bc85",
+                "reference": "84aee153803385f77e4bd9cd1e8f32946a29bc85",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-orm-module": "^2.1",
                 "ext-json": "*",
                 "ext-pdo": "*",
-                "laminas/laminas-dependency-plugin": "^1.0",
                 "laminas/laminas-di": "^3.1",
                 "laminas/laminas-mvc": "^3.1",
                 "laminas/laminas-permissions-rbac": "^3.0",
@@ -3520,20 +3519,20 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2020-02-21T13:59:25+00:00"
+            "time": "2020-02-21T15:15:29+00:00"
         },
         {
             "name": "monarc/core",
-            "version": "2.9.15",
+            "version": "v2.9.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "ddc1a1b7dcec4d7ae5bbcacbb1ea6655bee3bff6"
+                "reference": "5e58434f35ca34caa7604c4156f5ffd58e473643"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/ddc1a1b7dcec4d7ae5bbcacbb1ea6655bee3bff6",
-                "reference": "ddc1a1b7dcec4d7ae5bbcacbb1ea6655bee3bff6",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/5e58434f35ca34caa7604c4156f5ffd58e473643",
+                "reference": "5e58434f35ca34caa7604c4156f5ffd58e473643",
                 "shasum": ""
             },
             "require": {
@@ -3542,7 +3541,6 @@
                 "ext-json": "*",
                 "ext-openssl": "*",
                 "laminas/laminas-console": "^2.8",
-                "laminas/laminas-dependency-plugin": "^1.0",
                 "laminas/laminas-di": "^3.1",
                 "laminas/laminas-i18n": "^2.9",
                 "laminas/laminas-log": "^2.11",
@@ -3555,7 +3553,6 @@
                 "robmorgan/phinx": "^0.11.1"
             },
             "require-dev": {
-                "laminas/laminas-component-installer": "^2.1",
                 "roave/security-advisories": "dev-master"
             },
             "type": "library",
@@ -3607,7 +3604,7 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2020-02-21T13:45:08+00:00"
+            "time": "2020-02-21T15:09:05+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -4702,62 +4699,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "laminas/laminas-component-installer",
-            "version": "2.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-component-installer.git",
-                "reference": "a12c65077c6b046d8f4338f9a2479e783e97aaab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-component-installer/zipball/a12c65077c6b046d8f4338f9a2479e783e97aaab",
-                "reference": "a12c65077c6b046d8f4338f9a2479e783e97aaab",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.1"
-            },
-            "replace": {
-                "zendframework/zend-component-installer": "self.version"
-            },
-            "require-dev": {
-                "composer/composer": "^1.5.2",
-                "laminas/laminas-coding-standard": "~1.0.0",
-                "malukenho/docheader": "^0.1.6",
-                "mikey179/vfsstream": "^1.6.7",
-                "phpunit/phpunit": "^7.5.15 || ^8.3.4"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1.x-dev",
-                    "dev-develop": "2.2.x-dev"
-                },
-                "class": "Laminas\\ComponentInstaller\\ComponentInstaller"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laminas\\ComponentInstaller\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Composer plugin for injecting modules and configuration providers into application configuration",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "component installer",
-                "composer",
-                "laminas",
-                "plugin"
-            ],
-            "time": "2019-12-31T16:28:51+00:00"
-        },
         {
             "name": "roave/security-advisories",
             "version": "dev-master",
