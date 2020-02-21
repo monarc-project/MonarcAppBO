@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "476888af049c5d648547e7c80cbefaf5",
+    "content-hash": "0bede95905e9ed2c9b0b8fa8061eae1f",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -3451,28 +3451,29 @@
         },
         {
             "name": "monarc/backoffice",
-            "version": "2.9.4",
+            "version": "v2.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "0d3246a5a488166827ae75f1a25d4f2837353f43"
+                "reference": "4e51a03ea2fdbf0e7704f8307eef4607ce9606d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/0d3246a5a488166827ae75f1a25d4f2837353f43",
-                "reference": "0d3246a5a488166827ae75f1a25d4f2837353f43",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/4e51a03ea2fdbf0e7704f8307eef4607ce9606d5",
+                "reference": "4e51a03ea2fdbf0e7704f8307eef4607ce9606d5",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-orm-module": "^2.1",
                 "ext-json": "*",
                 "ext-pdo": "*",
-                "monarc/core": "^2.9",
+                "laminas/laminas-dependency-plugin": "^1.0",
+                "laminas/laminas-di": "^3.1",
+                "laminas/laminas-mvc": "^3.1",
+                "laminas/laminas-permissions-rbac": "^3.0",
+                "monarc/core": "^2.9.15",
                 "php": "^7.1",
-                "robmorgan/phinx": "^0.11.1",
-                "zendframework/zend-di": "^3.1",
-                "zendframework/zend-mvc": "^3.1",
-                "zendframework/zend-permissions-rbac": "^3.0"
+                "robmorgan/phinx": "^0.11.1"
             },
             "require-dev": {
                 "roave/security-advisories": "dev-master"
@@ -3519,20 +3520,20 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2019-12-10T14:14:28+00:00"
+            "time": "2020-02-21T13:59:25+00:00"
         },
         {
             "name": "monarc/core",
-            "version": "2.9.14",
+            "version": "2.9.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "5f09e4949d00f16fcc4e69932bdf518aa55d496a"
+                "reference": "ddc1a1b7dcec4d7ae5bbcacbb1ea6655bee3bff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/5f09e4949d00f16fcc4e69932bdf518aa55d496a",
-                "reference": "5f09e4949d00f16fcc4e69932bdf518aa55d496a",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/ddc1a1b7dcec4d7ae5bbcacbb1ea6655bee3bff6",
+                "reference": "ddc1a1b7dcec4d7ae5bbcacbb1ea6655bee3bff6",
                 "shasum": ""
             },
             "require": {
@@ -3540,21 +3541,22 @@
                 "ext-intl": "*",
                 "ext-json": "*",
                 "ext-openssl": "*",
+                "laminas/laminas-console": "^2.8",
+                "laminas/laminas-dependency-plugin": "^1.0",
+                "laminas/laminas-di": "^3.1",
+                "laminas/laminas-i18n": "^2.9",
+                "laminas/laminas-log": "^2.11",
+                "laminas/laminas-mail": "^2.10",
+                "laminas/laminas-mvc": "^3.1",
                 "ocramius/package-versions": "<1.5",
                 "ocramius/proxy-manager": "<2.3",
                 "php": "^7.1",
                 "ramsey/uuid-doctrine": "^1.5",
-                "robmorgan/phinx": "^0.11.1",
-                "zendframework/zend-console": "^2.8",
-                "zendframework/zend-di": "^3.1",
-                "zendframework/zend-i18n": "^2.9",
-                "zendframework/zend-log": "^2.11",
-                "zendframework/zend-mail": "^2.10",
-                "zendframework/zend-mvc": "^3.1"
+                "robmorgan/phinx": "^0.11.1"
             },
             "require-dev": {
-                "roave/security-advisories": "dev-master",
-                "zendframework/zend-component-installer": "^2.1"
+                "laminas/laminas-component-installer": "^2.1",
+                "roave/security-advisories": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -3576,7 +3578,7 @@
                     "email": "guillaume@netlor.fr"
                 },
                 {
-                    "name": "Jerôme De Almeida",
+                    "name": "Jérôme De Almeida",
                     "email": "jerome.dealmeida@vesperiagroup.com"
                 },
                 {
@@ -3605,7 +3607,7 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2020-02-12T19:55:15+00:00"
+            "time": "2020-02-21T13:45:08+00:00"
         },
         {
             "name": "ocramius/package-versions",
