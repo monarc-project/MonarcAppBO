@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "cakephp/cache",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cache.git",
@@ -52,7 +52,7 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -98,7 +98,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -148,16 +148,16 @@
         },
         {
             "name": "cakephp/database",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "f52cd444d4f5ef411a3a13f82510badda1d5280e"
+                "reference": "100542d4364a6de674c37bb605ac2fce5a8cc0cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/f52cd444d4f5ef411a3a13f82510badda1d5280e",
-                "reference": "f52cd444d4f5ef411a3a13f82510badda1d5280e",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/100542d4364a6de674c37bb605ac2fce5a8cc0cd",
+                "reference": "100542d4364a6de674c37bb605ac2fce5a8cc0cd",
                 "shasum": ""
             },
             "require": {
@@ -192,11 +192,11 @@
                 "database abstraction",
                 "pdo"
             ],
-            "time": "2020-01-10T15:24:40+00:00"
+            "time": "2020-02-04T11:23:19+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -246,7 +246,7 @@
         },
         {
             "name": "cakephp/log",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/log.git",
@@ -291,16 +291,16 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "71fe6e8b39f3ef0dedd036cbf112a6e84b01759b"
+                "reference": "9f121defbff4b5f3691b33de8cb203b8923fc2a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/71fe6e8b39f3ef0dedd036cbf112a6e84b01759b",
-                "reference": "71fe6e8b39f3ef0dedd036cbf112a6e84b01759b",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/9f121defbff4b5f3691b33de8cb203b8923fc2a4",
+                "reference": "9f121defbff4b5f3691b33de8cb203b8923fc2a4",
                 "shasum": ""
             },
             "require": {
@@ -340,7 +340,7 @@
                 "string",
                 "utility"
             ],
-            "time": "2020-01-10T15:24:40+00:00"
+            "time": "2020-02-18T01:57:35+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -2026,16 +2026,16 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.9.3",
+            "version": "2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "52b5cdbef8902280996e687e7352a648a8e22f31"
+                "reference": "4d8c0c25e40836bd617335e744009c2c950c4ad5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/52b5cdbef8902280996e687e7352a648a8e22f31",
-                "reference": "52b5cdbef8902280996e687e7352a648a8e22f31",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/4d8c0c25e40836bd617335e744009c2c950c4ad5",
+                "reference": "4d8c0c25e40836bd617335e744009c2c950c4ad5",
                 "shasum": ""
             },
             "require": {
@@ -2091,7 +2091,7 @@
                 "filter",
                 "laminas"
             ],
-            "time": "2020-01-07T20:43:53+00:00"
+            "time": "2019-12-31T16:54:29+00:00"
         },
         {
             "name": "laminas/laminas-form",
@@ -3455,18 +3455,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "84aee153803385f77e4bd9cd1e8f32946a29bc85"
+                "reference": "7431f953c71c598e3839137ec4cc04249adac81a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/84aee153803385f77e4bd9cd1e8f32946a29bc85",
-                "reference": "84aee153803385f77e4bd9cd1e8f32946a29bc85",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/7431f953c71c598e3839137ec4cc04249adac81a",
+                "reference": "7431f953c71c598e3839137ec4cc04249adac81a",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-orm-module": "^2.1",
                 "ext-json": "*",
                 "ext-pdo": "*",
+                "laminas/laminas-dependency-plugin": "^1.0",
                 "laminas/laminas-di": "^3.1",
                 "laminas/laminas-mvc": "^3.1",
                 "laminas/laminas-permissions-rbac": "^3.0",
@@ -3519,7 +3520,7 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2020-02-21T15:15:29+00:00"
+            "time": "2020-02-22T10:30:28+00:00"
         },
         {
             "name": "monarc/core",
@@ -3527,12 +3528,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "5e58434f35ca34caa7604c4156f5ffd58e473643"
+                "reference": "2cd9e690823aa1687e57809f3a808edc8ecc5bc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/5e58434f35ca34caa7604c4156f5ffd58e473643",
-                "reference": "5e58434f35ca34caa7604c4156f5ffd58e473643",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/2cd9e690823aa1687e57809f3a808edc8ecc5bc9",
+                "reference": "2cd9e690823aa1687e57809f3a808edc8ecc5bc9",
                 "shasum": ""
             },
             "require": {
@@ -3541,6 +3542,7 @@
                 "ext-json": "*",
                 "ext-openssl": "*",
                 "laminas/laminas-console": "^2.8",
+                "laminas/laminas-dependency-plugin": "^1.0",
                 "laminas/laminas-di": "^3.1",
                 "laminas/laminas-i18n": "^2.9",
                 "laminas/laminas-log": "^2.11",
@@ -3604,7 +3606,7 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2020-02-21T15:09:05+00:00"
+            "time": "2020-02-22T10:29:48+00:00"
         },
         {
             "name": "ocramius/package-versions",
