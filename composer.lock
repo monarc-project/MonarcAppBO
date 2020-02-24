@@ -2026,16 +2026,16 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.9.2",
+            "version": "2.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "4d8c0c25e40836bd617335e744009c2c950c4ad5"
+                "reference": "52b5cdbef8902280996e687e7352a648a8e22f31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/4d8c0c25e40836bd617335e744009c2c950c4ad5",
-                "reference": "4d8c0c25e40836bd617335e744009c2c950c4ad5",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/52b5cdbef8902280996e687e7352a648a8e22f31",
+                "reference": "52b5cdbef8902280996e687e7352a648a8e22f31",
                 "shasum": ""
             },
             "require": {
@@ -2091,7 +2091,7 @@
                 "filter",
                 "laminas"
             ],
-            "time": "2019-12-31T16:54:29+00:00"
+            "time": "2020-01-07T20:43:53+00:00"
         },
         {
             "name": "laminas/laminas-form",
@@ -3528,12 +3528,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "2cd9e690823aa1687e57809f3a808edc8ecc5bc9"
+                "reference": "40f459661d141c95646b8544e7a8468e5e642d01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/2cd9e690823aa1687e57809f3a808edc8ecc5bc9",
-                "reference": "2cd9e690823aa1687e57809f3a808edc8ecc5bc9",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/40f459661d141c95646b8544e7a8468e5e642d01",
+                "reference": "40f459661d141c95646b8544e7a8468e5e642d01",
                 "shasum": ""
             },
             "require": {
@@ -3544,7 +3544,9 @@
                 "laminas/laminas-console": "^2.8",
                 "laminas/laminas-dependency-plugin": "^1.0",
                 "laminas/laminas-di": "^3.1",
+                "laminas/laminas-filter": "^2.9",
                 "laminas/laminas-i18n": "^2.9",
+                "laminas/laminas-inputfilter": "^2.10",
                 "laminas/laminas-log": "^2.11",
                 "laminas/laminas-mail": "^2.10",
                 "laminas/laminas-mvc": "^3.1",
@@ -3606,7 +3608,7 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2020-02-22T10:29:48+00:00"
+            "time": "2020-02-22T12:17:15+00:00"
         },
         {
             "name": "ocramius/package-versions",
