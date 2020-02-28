@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fed751981ade2ae5c931310944f10e38",
+    "content-hash": "0ffd544f1658a14536f3ea4a9c8cd66d",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -3451,16 +3451,16 @@
         },
         {
             "name": "monarc/backoffice",
-            "version": "v2.9.5",
+            "version": "dev-bugfix/246",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "7431f953c71c598e3839137ec4cc04249adac81a"
+                "reference": "7bfd000d61cd9447bfdd32d6caff0af0c43f37d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/7431f953c71c598e3839137ec4cc04249adac81a",
-                "reference": "7431f953c71c598e3839137ec4cc04249adac81a",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/7bfd000d61cd9447bfdd32d6caff0af0c43f37d2",
+                "reference": "7bfd000d61cd9447bfdd32d6caff0af0c43f37d2",
                 "shasum": ""
             },
             "require": {
@@ -3520,20 +3520,20 @@
                 }
             ],
             "description": "Backoffice for monarc/monarc-backoffice application",
-            "time": "2020-02-22T10:30:28+00:00"
+            "time": "2020-02-28T09:24:20+00:00"
         },
         {
             "name": "monarc/core",
-            "version": "v2.9.15",
+            "version": "dev-bugfix/246",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "0dd391fc28c1fd6545119fa9f790d9f7d28937cb"
+                "reference": "1a176d130c7ebc2bbebadf0df54b09814a48cf16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/0dd391fc28c1fd6545119fa9f790d9f7d28937cb",
-                "reference": "0dd391fc28c1fd6545119fa9f790d9f7d28937cb",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/1a176d130c7ebc2bbebadf0df54b09814a48cf16",
+                "reference": "1a176d130c7ebc2bbebadf0df54b09814a48cf16",
                 "shasum": ""
             },
             "require": {
@@ -3608,7 +3608,7 @@
                 }
             ],
             "description": "Core for monarc/monarc application",
-            "time": "2020-02-24T15:41:30+00:00"
+            "time": "2020-02-27T15:44:35+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -4709,12 +4709,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "1df6b9d09d2b074fd3f0f10a7696d9f797d4772c"
+                "reference": "587080721eaf5b79972d2df5acc7aab75218e686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/1df6b9d09d2b074fd3f0f10a7696d9f797d4772c",
-                "reference": "1df6b9d09d2b074fd3f0f10a7696d9f797d4772c",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/587080721eaf5b79972d2df5acc7aab75218e686",
+                "reference": "587080721eaf5b79972d2df5acc7aab75218e686",
                 "shasum": ""
             },
             "conflict": {
@@ -4729,6 +4729,7 @@
                 "bagisto/bagisto": "<0.1.5",
                 "bolt/bolt": "<3.6.10",
                 "brightlocal/phpwhois": "<=4.2.5",
+                "buddypress/buddypress": "<5.1.2",
                 "bugsnag/bugsnag-laravel": ">=2,<2.0.2",
                 "cakephp/cakephp": ">=1.3,<1.3.18|>=2,<2.4.99|>=2.5,<2.5.99|>=2.6,<2.6.12|>=2.7,<2.7.6|>=3,<3.5.18|>=3.6,<3.6.15|>=3.7,<3.7.7",
                 "cart2quote/module-quotation": ">=4.1.6,<=4.4.5|>=5,<5.4.4",
@@ -4757,7 +4758,7 @@
                 "drupal/core": ">=7,<7.69|>=8,<8.7.11|>=8.8,<8.8.1",
                 "drupal/drupal": ">=7,<7.69|>=8,<8.7.11|>=8.8,<8.8.1",
                 "endroid/qr-code-bundle": "<3.4.2",
-                "enshrined/svg-sanitize": "<0.12",
+                "enshrined/svg-sanitize": "<0.13.1",
                 "erusev/parsedown": "<1.7.2",
                 "ezsystems/ezfind-ls": ">=5.3,<5.3.6.1|>=5.4,<5.4.11.1|>=2017.12,<2017.12.0.1",
                 "ezsystems/ezplatform": ">=1.7,<1.7.9.1|>=1.13,<1.13.5.1|>=2.5,<2.5.4",
@@ -4960,12 +4961,21 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2020-02-19T06:23:50+00:00"
+            "time": "2020-02-28T00:01:17+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "2.9.15",
+            "alias_normalized": "2.9.15.0",
+            "version": "dev-bugfix/246",
+            "package": "monarc/core"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "monarc/backoffice": 20,
+        "monarc/core": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
