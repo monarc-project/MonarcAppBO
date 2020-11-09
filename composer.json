@@ -43,14 +43,14 @@
         "php": "^7.1",
         "ext-json": "*",
         "ext-pdo": "*",
-        "monarc/backoffice": "^2.9.5",
-        "monarc/core": "^2.9.15",
+        "monarc/backoffice": "dev-feature/stats",
+        "monarc/core": "dev-feature/stats as 2.9.20",
         "laminas/laminas-mvc": "^3.1",
         "laminas/laminas-di": "^3.1",
         "laminas/laminas-permissions-rbac": "^3.0",
         "laminas/laminas-log": "^2.11",
         "laminas/laminas-i18n": "^2.9",
-        "laminas/laminas-dependency-plugin": "^1.0"
+        "laminas/laminas-dependency-plugin": "2.0.0beta1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"
