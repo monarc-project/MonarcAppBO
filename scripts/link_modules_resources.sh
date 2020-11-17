@@ -48,7 +48,7 @@ cd ../flags/ && find ../../node_modules/ng_backoffice/node_modules/ng-country-fl
 
 cd ../js/
 mkdir -p anr
-cd anr && find ../../../node_modules/ng_anr/src -type f -maxdepth 1 -name "*" -exec ln -s {} \; 2>/dev/null
+cd anr && find ../../../node_modules/ng_anr/src -type f -name "*" -exec ln -s {} \; 2>/dev/null
 cd ..
 
 cd ../views/
