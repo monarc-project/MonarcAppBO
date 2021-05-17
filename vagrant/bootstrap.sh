@@ -1,6 +1,10 @@
 #! /usr/bin/env bash
 
-PATH_TO_MONARC='/home/ubuntu/monarc'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+PATH_TO_MONARC='/home/vagrant/monarc'
 
 APPENV='local'
 ENVIRONMENT='development'
@@ -18,6 +22,7 @@ post_max_size=50M
 max_execution_time=100
 max_input_time=223
 memory_limit=512M
+
 PHP_INI=/etc/php/7.4/apache2/php.ini
 XDEBUG_CFG=/etc/php/7.4/apache2/conf.d/20-xdebug.ini
 MARIA_DB_CFG=/etc/mysql/mariadb.conf.d/50-server.cnf
@@ -132,8 +137,6 @@ cd $PATH_TO_MONARC
 mkdir -p $PATH_TO_MONARC/data/cache
 mkdir -p $PATH_TO_MONARC/data/LazyServices/Proxy
 mkdir -p $PATH_TO_MONARC/data/DoctrineORMModule/Proxy
-chown -R www-data data
-chmod -R 777 data
 
 
 # Front-end
@@ -156,9 +159,6 @@ fi
 cd ..
 
 
-chown -R www-data $PATH_TO_MONARC
-chgrp -R www-data $PATH_TO_MONARC
-chmod -R 700 $PATH_TO_MONARC
 
 
 echo -e "\n--- Add a VirtualHost for MONARC ---\n"
@@ -229,13 +229,19 @@ mysql -u $DBUSER_MONARC -p$DBPASSWORD_MONARC monarc_common < db-bootstrap/monarc
 mysql -u $DBUSER_MONARC -p$DBPASSWORD_MONARC monarc_common < db-bootstrap/monarc_data.sql > /dev/null
 
 
-echo -e "\n--- Installation of Grunt… ---\n"
-curl -sL https://deb.nodesource.com/setup_13.x | sudo bash -
+echo -e "\n--- Installation of Node, NPM… ---\n"
+curl -sL https://deb.nodesource.com/setup_15.x | sudo bash -
 sudo apt-get install -y nodejs
-sudo npm install -g grunt-cli
+
+
+echo -e "\n--- Adjusting user mod… ---\n"
+sudo usermod -aG www-data vagrant
+sudo usermod -aG vagrant www-data
 
 
 echo -e "\n--- Update the project… ---\n"
+sudo chown -R $USER:$(id -gn $USER) /home/vagrant/.config
+sudo npm install -g grunt-cli
 ./scripts/update-all.sh > /dev/null
 
 
