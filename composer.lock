@@ -4182,12 +4182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "b7f99ce9ece84cd6633f532a4aec681cb991d09a"
+                "reference": "2f4a1e6f081a28b862c34c4971e7977a428c93ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/b7f99ce9ece84cd6633f532a4aec681cb991d09a",
-                "reference": "b7f99ce9ece84cd6633f532a4aec681cb991d09a",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/2f4a1e6f081a28b862c34c4971e7977a428c93ca",
+                "reference": "2f4a1e6f081a28b862c34c4971e7977a428c93ca",
                 "shasum": ""
             },
             "require": {
@@ -4212,6 +4212,9 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL-3.0-or-later"
+            ],
             "authors": [
                 {
                     "name": "Cyril Rouyer",
@@ -4251,7 +4254,7 @@
                 "issues": "https://github.com/monarc-project/zm-backoffice/issues",
                 "source": "https://github.com/monarc-project/zm-backoffice/tree/v2.10.3"
             },
-            "time": "2021-05-07T09:22:57+00:00"
+            "time": "2021-05-18T12:24:28+00:00"
         },
         {
             "name": "monarc/core",
