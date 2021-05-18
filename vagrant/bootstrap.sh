@@ -111,7 +111,7 @@ sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
 
 
 echo -e "\n--- Installing composer… ---\n"
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer > /dev/null
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer > /dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "\nERROR: unable to install composer\n"
     exit 1;
@@ -123,7 +123,7 @@ cd $PATH_TO_MONARC
 git config core.fileMode false
 
 echo -e "\n--- Retrieving MONARC libraries… ---\n"
-composer install -o
+composer ins
 
 
 # Make modules symlinks.
