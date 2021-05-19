@@ -666,16 +666,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "a9c1b59eba5a08ca2770a76eddb88922f504e8e0"
+                "reference": "163074496dc7c3c7b8ccbf3d4376c0187424ed81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/a9c1b59eba5a08ca2770a76eddb88922f504e8e0",
-                "reference": "a9c1b59eba5a08ca2770a76eddb88922f504e8e0",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/163074496dc7c3c7b8ccbf3d4376c0187424ed81",
+                "reference": "163074496dc7c3c7b8ccbf3d4376c0187424ed81",
                 "shasum": ""
             },
             "require": {
@@ -745,7 +745,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/cache/issues",
-                "source": "https://github.com/doctrine/cache/tree/1.11.0"
+                "source": "https://github.com/doctrine/cache/tree/1.11.1"
             },
             "funding": [
                 {
@@ -761,7 +761,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-13T14:46:17+00:00"
+            "time": "2021-05-18T16:45:32+00:00"
         },
         {
             "name": "doctrine/collections",
@@ -4182,12 +4182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "2f4a1e6f081a28b862c34c4971e7977a428c93ca"
+                "reference": "19e167ce6633c325f32bbb7da9e853920e46c067"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/2f4a1e6f081a28b862c34c4971e7977a428c93ca",
-                "reference": "2f4a1e6f081a28b862c34c4971e7977a428c93ca",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/19e167ce6633c325f32bbb7da9e853920e46c067",
+                "reference": "19e167ce6633c325f32bbb7da9e853920e46c067",
                 "shasum": ""
             },
             "require": {
@@ -4254,7 +4254,7 @@
                 "issues": "https://github.com/monarc-project/zm-backoffice/issues",
                 "source": "https://github.com/monarc-project/zm-backoffice/tree/v2.10.3"
             },
-            "time": "2021-05-18T12:24:28+00:00"
+            "time": "2021-05-18T13:49:06+00:00"
         },
         {
             "name": "monarc/core",
@@ -6141,12 +6141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "802f84bd40ad4487f84d52fccb6f9c8bd0da9b97"
+                "reference": "42840dcc436945146d79a985240a99ddd3bc5dc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/802f84bd40ad4487f84d52fccb6f9c8bd0da9b97",
-                "reference": "802f84bd40ad4487f84d52fccb6f9c8bd0da9b97",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/42840dcc436945146d79a985240a99ddd3bc5dc7",
+                "reference": "42840dcc436945146d79a985240a99ddd3bc5dc7",
                 "shasum": ""
             },
             "conflict": {
@@ -6375,7 +6375,7 @@
                 "symfony/http-foundation": ">=2,<2.8.52|>=3,<3.4.35|>=4,<4.2.12|>=4.3,<4.3.8|>=4.4,<4.4.7|>=5,<5.0.7",
                 "symfony/http-kernel": ">=2,<2.8.52|>=3,<3.4.35|>=4,<4.2.12|>=4.3,<4.4.13|>=5,<5.1.5",
                 "symfony/intl": ">=2.7,<2.7.38|>=2.8,<2.8.31|>=3,<3.2.14|>=3.3,<3.3.13",
-                "symfony/maker-bundle": ">=1.27,<1.31.1",
+                "symfony/maker-bundle": ">=1.27,<1.29.2|>=1.30,<1.31.1",
                 "symfony/mime": ">=4.3,<4.3.8",
                 "symfony/phpunit-bridge": ">=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.1.12|>=4.2,<4.2.7",
                 "symfony/polyfill": ">=1,<1.10",
@@ -6489,7 +6489,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-17T21:03:21+00:00"
+            "time": "2021-05-18T18:23:15+00:00"
         }
     ],
     "aliases": [],
