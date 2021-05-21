@@ -50,10 +50,9 @@ sudo apt-get -y install mariadb-server mariadb-client > /dev/null
 sudo systemctl restart mariadb.service > /dev/null
 sleep 5
 sudo apt-get -y install expect > /dev/null
-## do we need to spawn mysql_secure_install with sudo in future?
 expect -f - <<-EOF
   set timeout 10
-  spawn mysql_secure_installation
+  spawn sudo mysql_secure_installation
   expect "Enter current password for root (enter for none):"
   send -- "\r"
   expect "Set root password?"
@@ -73,7 +72,6 @@ expect -f - <<-EOF
   expect eof
 EOF
 sudo apt-get purge -y expect php-xdebug > /dev/null 2>&1
-
 echo -e "\n--- Configuring… ---\n"
 sudo sed -i "s/skip-external-locking/#skip-external-locking/g" $MARIA_DB_CFG
 sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" $MARIA_DB_CFG
@@ -162,7 +160,7 @@ cd ..
 
 
 echo -e "\n--- Add a VirtualHost for MONARC ---\n"
-cat > /etc/apache2/sites-enabled/000-default.conf <<EOF
+sudo bash -c "cat << EOF > /etc/apache2/sites-enabled/000-default.conf
 <VirtualHost *:80>
     ServerName localhost
     DocumentRoot $PATH_TO_MONARC/public
@@ -181,7 +179,7 @@ cat > /etc/apache2/sites-enabled/000-default.conf <<EOF
     SetEnv DB_USER $DBUSER
     SetEnv DB_PASS $DBPASSWD
 </VirtualHost>
-EOF
+EOF"
 echo -e "\n--- Restarting Apache… ---\n"
 sudo systemctl restart apache2.service > /dev/null
 
@@ -240,9 +238,9 @@ sudo usermod -aG vagrant www-data
 
 
 echo -e "\n--- Update the project… ---\n"
-sudo chown -R $USER:$(id -gn $USER) /home/vagrant/.config
 sudo npm install -g grunt-cli
-./scripts/update-all.sh > /dev/null
+sudo npm install -g node-gyp
+./scripts/update-all.sh -d
 
 
 echo -e "\n--- Create initial user and client ---\n"
@@ -251,7 +249,6 @@ php ./vendor/robmorgan/phinx/bin/phinx seed:run -c ./module/Monarc/BackOffice/mi
 
 echo -e "\n--- Restarting Apache… ---\n"
 sudo systemctl restart apache2.service > /dev/null
-
 
 
 echo -e "\n--- MONARC is ready! Point your Web browser to http://127.0.0.1:5000 ---\n"
