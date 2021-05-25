@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe0bd2f2917e8f1299598ef6a5ae3082",
+    "content-hash": "294b3d582dc944b78c66110f80f6b81d",
     "packages": [
         {
             "name": "brick/math",
@@ -485,16 +485,16 @@
         },
         {
             "name": "composer/package-versions-deprecated",
-            "version": "1.11.99.1",
+            "version": "1.11.99.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/package-versions-deprecated.git",
-                "reference": "7413f0b55a051e89485c5cb9f765fe24bb02a7b6"
+                "reference": "c6522afe5540d5fc46675043d3ed5a45a740b27c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/7413f0b55a051e89485c5cb9f765fe24bb02a7b6",
-                "reference": "7413f0b55a051e89485c5cb9f765fe24bb02a7b6",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/c6522afe5540d5fc46675043d3ed5a45a740b27c",
+                "reference": "c6522afe5540d5fc46675043d3ed5a45a740b27c",
                 "shasum": ""
             },
             "require": {
@@ -538,7 +538,7 @@
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
             "support": {
                 "issues": "https://github.com/composer/package-versions-deprecated/issues",
-                "source": "https://github.com/composer/package-versions-deprecated/tree/1.11.99.1"
+                "source": "https://github.com/composer/package-versions-deprecated/tree/1.11.99.2"
             },
             "funding": [
                 {
@@ -554,7 +554,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-11T10:22:58+00:00"
+            "time": "2021-05-24T07:46:03+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -666,16 +666,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "1.11.2",
+            "version": "1.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "9c53086695937c50c47936ed86d96150ffbcf60d"
+                "reference": "3bb5588cec00a0268829cc4a518490df6741af9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/9c53086695937c50c47936ed86d96150ffbcf60d",
-                "reference": "9c53086695937c50c47936ed86d96150ffbcf60d",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/3bb5588cec00a0268829cc4a518490df6741af9d",
+                "reference": "3bb5588cec00a0268829cc4a518490df6741af9d",
                 "shasum": ""
             },
             "require": {
@@ -745,7 +745,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/cache/issues",
-                "source": "https://github.com/doctrine/cache/tree/1.11.2"
+                "source": "https://github.com/doctrine/cache/tree/1.11.3"
             },
             "funding": [
                 {
@@ -761,7 +761,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-20T14:57:29+00:00"
+            "time": "2021-05-25T09:01:55+00:00"
         },
         {
             "name": "doctrine/collections",
@@ -2538,16 +2538,16 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.11.0",
+            "version": "2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "dd295a15f5c13d0c13d69ca0107190b1f2083d91"
+                "reference": "671724e163aa75c210e94d12b77a0f3f8240d4b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/dd295a15f5c13d0c13d69ca0107190b1f2083d91",
-                "reference": "dd295a15f5c13d0c13d69ca0107190b1f2083d91",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/671724e163aa75c210e94d12b77a0f3f8240d4b2",
+                "reference": "671724e163aa75c210e94d12b77a0f3f8240d4b2",
                 "shasum": ""
             },
             "require": {
@@ -2616,7 +2616,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-03-16T14:37:02+00:00"
+            "time": "2021-05-24T18:29:02+00:00"
         },
         {
             "name": "laminas/laminas-form",
@@ -4264,12 +4264,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "c591026d36b85feb3d068cc718b0b4a8b437392b"
+                "reference": "ceb65121f1f0f8839c9d695c7e3e3f6408b492fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/c591026d36b85feb3d068cc718b0b4a8b437392b",
-                "reference": "c591026d36b85feb3d068cc718b0b4a8b437392b",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/ceb65121f1f0f8839c9d695c7e3e3f6408b492fc",
+                "reference": "ceb65121f1f0f8839c9d695c7e3e3f6408b492fc",
                 "shasum": ""
             },
             "require": {
@@ -4287,7 +4287,7 @@
                 "laminas/laminas-mail": "^2.10",
                 "laminas/laminas-mvc": "^3.1",
                 "ocramius/proxy-manager": "^2.2",
-                "php": "^7.1",
+                "php": "^7.4",
                 "ramsey/uuid-doctrine": "^1.5",
                 "robmorgan/phinx": "^0.11.1"
             },
@@ -4347,7 +4347,7 @@
                 "issues": "https://github.com/monarc-project/zm-core/issues",
                 "source": "https://github.com/monarc-project/zm-core/tree/v2.10.3"
             },
-            "time": "2021-05-21T12:34:59+00:00"
+            "time": "2021-05-25T19:08:38+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4407,41 +4407,42 @@
         },
         {
             "name": "ocramius/proxy-manager",
-            "version": "2.11.1",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/ProxyManager.git",
-                "reference": "96bb91b7b52324080accf1d0137f491ff378ecf1"
+                "reference": "6046a5730a8d329d7f3d9c5239bc1c806512a854"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/96bb91b7b52324080accf1d0137f491ff378ecf1",
-                "reference": "96bb91b7b52324080accf1d0137f491ff378ecf1",
+                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/6046a5730a8d329d7f3d9c5239bc1c806512a854",
+                "reference": "6046a5730a8d329d7f3d9c5239bc1c806512a854",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0.0",
-                "laminas/laminas-code": "^4.0.0",
+                "laminas/laminas-code": "^4.3.0",
                 "php": "~7.4.1 || ~8.0.0",
-                "webimpress/safe-writer": "^2.0.1"
+                "webimpress/safe-writer": "^2.2.0"
             },
             "conflict": {
+                "composer/composer": "<2.0.14",
                 "doctrine/annotations": "<1.6.1",
                 "laminas/laminas-stdlib": "<3.2.1",
                 "thecodingmachine/safe": "<1.3.3",
                 "zendframework/zend-stdlib": "<3.2.1"
             },
             "require-dev": {
-                "codelicia/xulieta": "^0.1.5",
-                "doctrine/coding-standard": "^8.1.0",
+                "codelicia/xulieta": "^0.1.6",
+                "doctrine/coding-standard": "^8.2.1",
                 "ext-phar": "*",
-                "infection/infection": "^0.20.2",
-                "nikic/php-parser": "^4.6.0",
+                "infection/infection": "^0.21.5",
+                "nikic/php-parser": "^4.10.5",
                 "phpbench/phpbench": "^0.17.1 || 1.0.0-alpha2",
-                "phpunit/phpunit": "^9.4.1",
+                "phpunit/phpunit": "^9.5.4",
                 "slevomat/coding-standard": "^6.3.10",
-                "squizlabs/php_codesniffer": "^3.5.5",
-                "vimeo/psalm": "^4.3.2"
+                "squizlabs/php_codesniffer": "^3.6.0",
+                "vimeo/psalm": "^4.4.1"
             },
             "suggest": {
                 "laminas/laminas-json": "To have the JsonRpc adapter (Remote Object feature)",
@@ -4482,7 +4483,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Ocramius/ProxyManager/issues",
-                "source": "https://github.com/Ocramius/ProxyManager/tree/2.11.1"
+                "source": "https://github.com/Ocramius/ProxyManager/tree/2.12.0"
             },
             "funding": [
                 {
@@ -4494,7 +4495,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-10T16:12:59+00:00"
+            "time": "2021-05-25T11:42:44+00:00"
         },
         {
             "name": "psr/cache",
@@ -6143,12 +6144,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "6e52ab3a11a0d4fb0d9b2fb199a5887b8e01b1ae"
+                "reference": "9d9641b43426b6614603313428170f3b2e7d61fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6e52ab3a11a0d4fb0d9b2fb199a5887b8e01b1ae",
-                "reference": "6e52ab3a11a0d4fb0d9b2fb199a5887b8e01b1ae",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9d9641b43426b6614603313428170f3b2e7d61fa",
+                "reference": "9d9641b43426b6614603313428170f3b2e7d61fa",
                 "shasum": ""
             },
             "conflict": {
@@ -6185,6 +6186,7 @@
                 "datadog/dd-trace": ">=0.30,<0.30.2",
                 "david-garcia/phpwhois": "<=4.3.1",
                 "derhansen/sf_event_mgt": "<4.3.1|>=5,<5.1.1",
+                "directmailteam/direct-mail": "<5.2.4",
                 "doctrine/annotations": ">=1,<1.2.7",
                 "doctrine/cache": ">=1,<1.3.2|>=1.4,<1.4.2",
                 "doctrine/common": ">=2,<2.4.3|>=2.5,<2.5.1",
@@ -6332,7 +6334,7 @@
                 "shopware/core": "<=6.3.5.2",
                 "shopware/platform": "<=6.3.5.2",
                 "shopware/production": "<=6.3.5.2",
-                "shopware/shopware": "<5.6.9",
+                "shopware/shopware": "<=5.6.9",
                 "silverstripe/admin": ">=1.0.3,<1.0.4|>=1.1,<1.1.1",
                 "silverstripe/assets": ">=1,<1.4.7|>=1.5,<1.5.2",
                 "silverstripe/cms": "<4.3.6|>=4.4,<4.4.4",
@@ -6431,6 +6433,7 @@
                 "yiisoft/yii2-gii": "<2.0.4",
                 "yiisoft/yii2-jui": "<2.0.4",
                 "yiisoft/yii2-redis": "<2.0.8",
+                "yoast-seo-for-typo3/yoast_seo": "<7.2.1",
                 "yourls/yourls": "<1.7.4",
                 "zendesk/zendesk_api_client_php": "<2.2.11",
                 "zendframework/zend-cache": ">=2.4,<2.4.8|>=2.5,<2.5.3",
@@ -6492,7 +6495,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-20T18:43:44+00:00"
+            "time": "2021-05-24T17:46:12+00:00"
         }
     ],
     "aliases": [],
@@ -6503,7 +6506,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2",
+        "php": "^7.4",
         "ext-json": "*",
         "ext-pdo": "*"
     },
