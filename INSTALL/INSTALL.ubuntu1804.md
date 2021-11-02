@@ -83,7 +83,7 @@ Create two symbolic links:
 
     $ cd module/Monarc
     $ ln -s ./../../vendor/monarc/core Core
-    $ ln -s ./../../vendor/monarc/frontoffice FrontOffice
+    $ ln -s ./../../vendor/monarc/backoffice BackOffice
     $ cd ../..
 
 There are 2 parts:
