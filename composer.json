@@ -56,7 +56,10 @@
         "roave/security-advisories": "dev-master"
     },
     "config": {
-        "bin-dir": "bin/"
+        "bin-dir": "bin/",
+        "allow-plugins": {
+            "laminas/laminas-dependency-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
