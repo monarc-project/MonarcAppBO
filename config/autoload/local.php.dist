@@ -51,6 +51,8 @@ return array(
     */
     'activeLanguages' => array('fr','en','de','nl'),
 
+    'instanceName' => 'Development', // for example a short URL or client name from ansible
+
     'monarc' => array(
         'ttl' => 20, // timeout
         'salt' => '', // salt privé pour chiffrement pwd
