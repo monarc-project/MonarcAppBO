@@ -7,7 +7,6 @@ nbproject
 .settings
 migrations
 *.sublime-*
-composer.lock
 vendor/
 public/css/
 public/js/
