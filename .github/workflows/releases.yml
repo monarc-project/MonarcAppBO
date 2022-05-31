@@ -51,17 +51,16 @@ jobs:
     - name: Install dependencies
       run: |
         npm install
-        head node_modules/ng_client/src/ClientApp.js
 
     - name: Install ng-anr dependencies
       run: |
         npm install
       working-directory: node_modules/ng_anr/
 
-    - name: Install ng-client dependencies
+    - name: Install ng-backoffice dependencies
       run: |
         npm install
-      working-directory: node_modules/ng_client/
+      working-directory: node_modules/ng_backoffice/
 
     # final "cleanup"
     - name: post job
