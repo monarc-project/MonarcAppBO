@@ -71,7 +71,7 @@ jobs:
     # prepare release
     - name: Get repository name
       id: repository
-      run: echo "::set-output name=pathref::$(echo '${{ github.repository }}' | cut -d'/' -f2)-$(echo '${{ github.ref_name }}' | sed 's/[^[:alnum:]\.]/_/g')"
+      run: echo "::set-output name=pathref::$(echo '${{ github.repository }}' | cut -d'/' -f2)-$(echo '${{ github.ref_name }}' | sed 's/[^[:alnum:]\.-]/_/g')"
 
     - name: create artifact archive
       run: |
