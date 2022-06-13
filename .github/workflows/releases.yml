@@ -2,7 +2,7 @@ name: MonarcAppBO releases
 
 on:
   push:
-    branches: [ 'ci-releases' ]
+    branches: [ 'master' ]
     tags: [ 'v*.*', 'v*.*.*', 'v*.*.*-*' ]
   pull_request:
     branches: [ 'master' ]
