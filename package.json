@@ -10,11 +10,11 @@
   "author": "CASES",
   "license": "GNU Affero General Public License version 3",
   "dependencies": {
-    "ng_anr": "git+https://github.com/monarc-project/ng-anr.gitv2.12.0",
-    "ng_backoffice": "git+https://github.com/monarc-project/ng-backoffice.gitv2.12.0"
+    "ng_anr": "git+https://github.com/monarc-project/ng-anr.git#v2.12.0",
+    "ng_backoffice": "git+https://github.com/monarc-project/ng-backoffice.git#v2.12.0"
   },
   "devDependencies": {
     "grunt": "~1.5.3",
-    "grunt-cli": "~1.4.2"
+    "grunt-cli": "~1.4.3"
   }
 }
