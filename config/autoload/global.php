@@ -11,7 +11,7 @@
  * file.
  */
 
-use Doctrine\DBAL\Driver\PDOMySql\Driver;
+use Doctrine\DBAL\Driver\PDO\MySQL\Driver;
 use Monarc\Core\Service\DoctrineCacheServiceFactory;
 use Monarc\Core\Service\DoctrineLoggerFactory;
 
