@@ -50,13 +50,17 @@
         "laminas/laminas-permissions-rbac": "^3.0",
         "laminas/laminas-log": "^2.11",
         "laminas/laminas-i18n": "^2.9",
-        "laminas/laminas-dependency-plugin": "^2.0"
+        "laminas/laminas-dependency-plugin": "^2.0",
+        "endroid/qr-code": "^4.4"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"
     },
     "config": {
-        "bin-dir": "bin/"
+        "bin-dir": "bin/",
+        "allow-plugins": {
+            "laminas/laminas-dependency-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
