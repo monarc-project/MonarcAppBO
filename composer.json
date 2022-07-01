@@ -43,8 +43,8 @@
         "php": "^7.4",
         "ext-json": "*",
         "ext-pdo": "*",
-        "monarc/backoffice": "^2.9.7",
-        "monarc/core": "^2.9.15",
+        "monarc/backoffice": "dev-feature/remove-db-abstract",
+        "monarc/core": "dev-feature/remove-db-abstract",
         "laminas/laminas-mvc": "^3.1",
         "laminas/laminas-di": "^3.1",
         "laminas/laminas-permissions-rbac": "^3.0",
@@ -57,7 +57,10 @@
         "roave/security-advisories": "dev-master"
     },
     "config": {
-        "bin-dir": "bin/"
+        "bin-dir": "bin/",
+        "allow-plugins": {
+            "laminas/laminas-dependency-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
