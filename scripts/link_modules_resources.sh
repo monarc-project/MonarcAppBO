@@ -44,7 +44,8 @@ cd dialogs/ && find ../../../node_modules/ng_backoffice/views/dialogs -maxdepth 
 cd ../../js/ && find ../../node_modules/ng_backoffice/src -maxdepth 1 -name "*" -exec ln -s {} \; 2>/dev/null
 cd ../css/ && find ../../node_modules/ng_backoffice/css -name "*" -exec ln -s {} \; 2>/dev/null
 cd ../img/ && find ../../node_modules/ng_backoffice/img -name "*" -exec ln -s {} \; 2>/dev/null
-cd ../flags/ && find ../../node_modules/ng_backoffice/node_modules/ng-country-flags/dist/flags -mindepth 1 -type d -exec ln -s {} \; 2>/dev/null
+cd ../flags/ && find ../../node_modules/ng_backoffice/node_modules/flag-icons/flags -mindepth 1 -type d -exec ln -s {} \; 2>/dev/null
+
 
 cd ../js/
 mkdir -p anr
