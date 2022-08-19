@@ -34,6 +34,7 @@ return array(
         'Laminas\Mail',
         'Laminas\Validator',
         'Laminas\I18n',
+        'Laminas\Mvc\Middleware',
         'DoctrineModule',
         'DoctrineORMModule',
         'Monarc\Core',
