@@ -48,19 +48,24 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
-      run: |
-        npm install
+    - name: Install ng-anr
+      uses: actions/checkout@v3
+      with:
+        repository: monarc-project/ng-anr
+        ref: ${{ steps.latestrelease.outputs.releasetag }}
+        path: './node_modules/ng_anr'
 
-    - name: Install ng-anr dependencies
-      run: |
-        npm install
-      working-directory: node_modules/ng_anr/
+    - name: Install ng-backoffice
+      uses: actions/checkout@v3
+      with:
+        repository: monarc-project/ng-backoffice
+        ref: ${{ steps.latestrelease.outputs.releasetag }}
+        path: './node_modules/ng_backoffice'
 
     - name: Install ng-backoffice dependencies
       run: |
-        npm install
-      working-directory: node_modules/ng_backoffice/
+        cd node_modules/ng_backoffice
+        npm ci
 
     # final "cleanup"
     - name: post job
