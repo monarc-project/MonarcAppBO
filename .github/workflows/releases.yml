@@ -48,18 +48,34 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - uses: oprypin/find-latest-tag@v1
+      with:
+        repository: monarc-project/ng-anr
+        releases-only: true
+      id: ng_anr_lasttag
+
+    - run: echo "ng-anr is at version ${{ steps.ng_anr_lasttag.outputs.tag }}"
+
     - name: Install ng-anr
       uses: actions/checkout@v3
       with:
         repository: monarc-project/ng-anr
-        ref: ${{ steps.latestrelease.outputs.releasetag }}
+        ref: ${{ steps.ng_anr_lasttag.outputs.tag }}
         path: './node_modules/ng_anr'
+
+    - uses: oprypin/find-latest-tag@v1
+      with:
+        repository: monarc-project/ng-backoffice
+        releases-only: true
+      id: ng_backoffice_lasttag
+
+    - run: echo "ng-anr is at version ${{ steps.ng_backoffice_lasttag.outputs.tag }}"
 
     - name: Install ng-backoffice
       uses: actions/checkout@v3
       with:
         repository: monarc-project/ng-backoffice
-        ref: ${{ steps.latestrelease.outputs.releasetag }}
+        ref: ${{ steps.ng_backoffice_lasttag.outputs.tag }}
         path: './node_modules/ng_backoffice'
 
     - name: Install ng-backoffice dependencies
