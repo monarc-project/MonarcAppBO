@@ -1,6 +1,6 @@
 {
   "name": "MONARC Back Office",
-  "version": "2.12.0",
+  "version": "2.12.3",
   "description": "MONARC Back Office",
   "private": true,
   "repository": {
@@ -10,8 +10,8 @@
   "author": "CASES",
   "license": "GNU Affero General Public License version 3",
   "dependencies": {
-    "ng_anr": "git+https://github.com/monarc-project/ng-anr.git#v2.12.0",
-    "ng_backoffice": "git+https://github.com/monarc-project/ng-backoffice.git#v2.12.0"
+    "ng_anr": "git+https://github.com/monarc-project/ng-anr.git",
+    "ng_backoffice": "git+https://github.com/monarc-project/ng-backoffice.git"
   },
   "devDependencies": {
     "grunt": "~1.5.3",
