@@ -69,7 +69,7 @@ jobs:
         releases-only: true
       id: ng_backoffice_lasttag
 
-    - run: echo "ng-anr is at version ${{ steps.ng_backoffice_lasttag.outputs.tag }}"
+    - run: echo "ng-backoffice is at version ${{ steps.ng_backoffice_lasttag.outputs.tag }}"
 
     - name: Install ng-backoffice
       uses: actions/checkout@v3
