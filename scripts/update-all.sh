@@ -26,6 +26,17 @@ do
 	esac
 done
 
+checkout_to_latest_tag() {
+    if [ -d $1 ]; then
+        pushd $1
+        git fetch --tags
+        tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+        git checkout $tag -b $tag
+        git pull origin $tag
+        popd
+    fi
+}
+
 pull_if_exists() {
 	if [ -d $1 ]; then
 		pushd $1
@@ -62,24 +73,22 @@ composer install -o --no-dev
 pathCore="module/Monarc/Core"
 pathBO="module/Monarc/BackOffice"
 
-if [[ -d node_modules && -d node_modules/ng_anr ]]; then
-	if [[ -d node_modules/ng_anr/.git ]]; then
-		pull_if_exists node_modules/ng_backoffice
-		pull_if_exists node_modules/ng_anr
-	else
-		npm update
-	fi
-else
-	npm install
-fi
-
 if [[ $bypass -eq 0 ]]; then
 	migrate_module $pathCore
 	migrate_module $pathBO
 fi
 
+if [[ -d node_modules && -d node_modules/ng_anr ]]; then
+	if [[ -d node_modules/ng_anr/.git ]]; then
+		checkout_to_latest_tag node_modules/ng_backoffice
+		checkout_to_latest_tag node_modules/ng_anr
+	else
+		npm update
+	fi
+fi
+
 cd node_modules/ng_backoffice
-npm install
+npm ci
 cd ../..
 
 ./scripts/link_modules_resources.sh
