@@ -51,7 +51,8 @@
         "laminas/laminas-log": "^2.11",
         "laminas/laminas-i18n": "^2.9",
         "laminas/laminas-dependency-plugin": "^2.0",
-        "laminas/laminas-mvc-middleware": "^2.2"
+        "laminas/laminas-mvc-middleware": "^2.2",
+        "endroid/qr-code": "^4.4"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"
