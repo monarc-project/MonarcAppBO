@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9268d39eaad6ac9868cadd74e49ad9f9",
+    "content-hash": "4856c965ece7e85fb81c4a4a8908ef5e",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4164,12 +4164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "ecca2915b7dbe57fb22ce49a950d7abf72618951"
+                "reference": "2056f7ffcd7798bb185b7e81b06098a5e01d9141"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/ecca2915b7dbe57fb22ce49a950d7abf72618951",
-                "reference": "ecca2915b7dbe57fb22ce49a950d7abf72618951",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/2056f7ffcd7798bb185b7e81b06098a5e01d9141",
+                "reference": "2056f7ffcd7798bb185b7e81b06098a5e01d9141",
                 "shasum": ""
             },
             "require": {
@@ -4181,7 +4181,7 @@
                 "laminas/laminas-mvc": "^3.1",
                 "laminas/laminas-permissions-rbac": "^3.0",
                 "monarc/core": "dev-feature/php8",
-                "php": "^7.4|^8",
+                "php": "^7.4 || ^8.0",
                 "robmorgan/phinx": "^0.11.1"
             },
             "require-dev": {
@@ -4236,7 +4236,7 @@
                 "issues": "https://github.com/monarc-project/zm-backoffice/issues",
                 "source": "https://github.com/monarc-project/zm-backoffice/tree/feature/php8"
             },
-            "time": "2022-11-22T12:56:53+00:00"
+            "time": "2023-01-05T09:48:29+00:00"
         },
         {
             "name": "monarc/core",
@@ -4244,12 +4244,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-core.git",
-                "reference": "755a2c2250ce6cf660c606ff2a82cbaa39ddd320"
+                "reference": "f37d7f137025afa29933e7e1151b2f199b2e0245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/755a2c2250ce6cf660c606ff2a82cbaa39ddd320",
-                "reference": "755a2c2250ce6cf660c606ff2a82cbaa39ddd320",
+                "url": "https://api.github.com/repos/monarc-project/zm-core/zipball/f37d7f137025afa29933e7e1151b2f199b2e0245",
+                "reference": "f37d7f137025afa29933e7e1151b2f199b2e0245",
                 "shasum": ""
             },
             "require": {
@@ -4266,7 +4266,7 @@
                 "laminas/laminas-mail": "^2.10",
                 "laminas/laminas-mvc": "^3.1",
                 "ocramius/proxy-manager": "^2.2",
-                "php": "^7.4|^8",
+                "php": "^7.4 || ^8.0",
                 "ramsey/uuid-doctrine": "^1.5",
                 "robmorgan/phinx": "^0.11.1",
                 "robthree/twofactorauth": "^1.8"
@@ -4327,7 +4327,7 @@
                 "issues": "https://github.com/monarc-project/zm-core/issues",
                 "source": "https://github.com/monarc-project/zm-core/tree/feature/php8"
             },
-            "time": "2022-11-22T13:35:14+00:00"
+            "time": "2023-01-05T09:37:56+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -6625,12 +6625,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "e8f95474ff76aecbfaedb2e4db50eb259ff72e58"
+                "reference": "ef9dca6c49faa06e7203bbed30411e26e474a8fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e8f95474ff76aecbfaedb2e4db50eb259ff72e58",
-                "reference": "e8f95474ff76aecbfaedb2e4db50eb259ff72e58",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ef9dca6c49faa06e7203bbed30411e26e474a8fb",
+                "reference": "ef9dca6c49faa06e7203bbed30411e26e474a8fb",
                 "shasum": ""
             },
             "conflict": {
@@ -6769,7 +6769,7 @@
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
                 "friendsoftypo3/mediace": ">=7.6.2,<7.6.5",
                 "froala/wysiwyg-editor": "<3.2.7",
-                "froxlor/froxlor": "<0.10.39",
+                "froxlor/froxlor": "<0.10.39|>=2-beta.0,<2-beta.1",
                 "fuel/core": "<1.8.1",
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
@@ -7054,7 +7054,7 @@
                 "tinymce/tinymce": "<5.10.7|>=6,<6.3.1",
                 "titon/framework": ">=0,<9.9.99",
                 "tobiasbg/tablepress": "<= 2.0-RC1",
-                "topthink/framework": "<=6.0.13",
+                "topthink/framework": "<6.0.14",
                 "topthink/think": "<=6.0.9",
                 "topthink/thinkphp": "<=3.2.3",
                 "tribalsystems/zenario": "<=9.3.57595",
@@ -7164,7 +7164,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-30T18:04:41+00:00"
+            "time": "2023-01-04T14:04:25+00:00"
         }
     ],
     "aliases": [],
@@ -7177,7 +7177,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4|^8",
+        "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "ext-pdo": "*"
     },
