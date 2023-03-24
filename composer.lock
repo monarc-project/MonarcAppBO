@@ -167,21 +167,24 @@
         },
         {
             "name": "cakephp/core",
-            "version": "4.4.11",
+            "version": "4.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "3730ce60f0153b609c9d756fe1b60978bc9c9fee"
+                "reference": "d6490294420e2602e4e65fb8a17f76547c10139e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/3730ce60f0153b609c9d756fe1b60978bc9c9fee",
-                "reference": "3730ce60f0153b609c9d756fe1b60978bc9c9fee",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/d6490294420e2602e4e65fb8a17f76547c10139e",
+                "reference": "d6490294420e2602e4e65fb8a17f76547c10139e",
                 "shasum": ""
             },
             "require": {
                 "cakephp/utility": "^4.0",
                 "php": ">=7.4.0"
+            },
+            "provide": {
+                "psr/container-implementation": "^1.0 || ^2.0"
             },
             "suggest": {
                 "cakephp/cache": "To use Configure::store() and restore().",
@@ -220,20 +223,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/core"
             },
-            "time": "2023-02-09T19:55:09+00:00"
+            "time": "2023-03-08T05:26:37+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "4.4.11",
+            "version": "4.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "904c09ac6ac41bddd65ef62f11676870aa8837a0"
+                "reference": "855e9972882632bab7b77014dbf670e0356f52d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/904c09ac6ac41bddd65ef62f11676870aa8837a0",
-                "reference": "904c09ac6ac41bddd65ef62f11676870aa8837a0",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/855e9972882632bab7b77014dbf670e0356f52d3",
+                "reference": "855e9972882632bab7b77014dbf670e0356f52d3",
                 "shasum": ""
             },
             "require": {
@@ -276,11 +279,11 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/database"
             },
-            "time": "2023-01-31T17:52:27+00:00"
+            "time": "2023-02-24T22:07:16+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.4.11",
+            "version": "4.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -338,16 +341,16 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "4.4.11",
+            "version": "4.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "3694d44728fb00ab474d9e031d51ed47f3d0e31c"
+                "reference": "a6a17c556d02c57259e21127a4f3d3ec5cd8481f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/3694d44728fb00ab474d9e031d51ed47f3d0e31c",
-                "reference": "3694d44728fb00ab474d9e031d51ed47f3d0e31c",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/a6a17c556d02c57259e21127a4f3d3ec5cd8481f",
+                "reference": "a6a17c556d02c57259e21127a4f3d3ec5cd8481f",
                 "shasum": ""
             },
             "require": {
@@ -393,7 +396,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/utility"
             },
-            "time": "2023-01-07T14:14:31+00:00"
+            "time": "2023-02-24T22:07:16+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -2175,28 +2178,28 @@
         },
         {
             "name": "laminas/laminas-dependency-plugin",
-            "version": "2.5.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-dependency-plugin.git",
-                "reference": "8f2d10199381cdc7d0843bfadad55f8485df9e38"
+                "reference": "73cfb63ddca9d6bfedad5e0a038f6d55063975a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-dependency-plugin/zipball/8f2d10199381cdc7d0843bfadad55f8485df9e38",
-                "reference": "8f2d10199381cdc7d0843bfadad55f8485df9e38",
+                "url": "https://api.github.com/repos/laminas/laminas-dependency-plugin/zipball/73cfb63ddca9d6bfedad5e0a038f6d55063975a3",
+                "reference": "73cfb63ddca9d6bfedad5e0a038f6d55063975a3",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": ">=1.1.0 <2.3.0",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
+                "composer-plugin-api": "^1.1 || ^2.0",
+                "php": "^7.3 || ~8.0.0 || ~8.1.0"
             },
             "require-dev": {
-                "composer/composer": ">=1.9.0 <2.3.0",
-                "laminas/laminas-coding-standard": "~2.4.0",
-                "mikey179/vfsstream": "^1.6.11",
+                "composer/composer": "^1.9 || ^2.0",
+                "laminas/laminas-coding-standard": "^2.2.1",
+                "mikey179/vfsstream": "^1.6.10@alpha",
                 "phpunit/phpunit": "^9.5.5",
-                "psalm/plugin-phpunit": "^0.17.0",
+                "psalm/plugin-phpunit": "^0.15.1",
                 "roave/security-advisories": "dev-master",
                 "vimeo/psalm": "^4.5"
             },
@@ -2216,7 +2219,7 @@
             "description": "Replace zendframework and zfcampus packages with their Laminas Project equivalents.",
             "support": {
                 "issues": "https://github.com/laminas/laminas-dependency-plugin/issues",
-                "source": "https://github.com/laminas/laminas-dependency-plugin/tree/2.5.0"
+                "source": "https://github.com/laminas/laminas-dependency-plugin/tree/2.2.0"
             },
             "funding": [
                 {
@@ -2224,7 +2227,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-16T14:45:47+00:00"
+            "time": "2021-09-08T17:51:35+00:00"
         },
         {
             "name": "laminas/laminas-di",
@@ -6243,12 +6246,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "9f1b313531b07c47f47c1db6e4037d8fa1c066ad"
+                "reference": "ca6f1d633e0a8d82bd27376fe7e27a92500417f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9f1b313531b07c47f47c1db6e4037d8fa1c066ad",
-                "reference": "9f1b313531b07c47f47c1db6e4037d8fa1c066ad",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ca6f1d633e0a8d82bd27376fe7e27a92500417f1",
+                "reference": "ca6f1d633e0a8d82bd27376fe7e27a92500417f1",
                 "shasum": ""
             },
             "conflict": {
@@ -6282,7 +6285,7 @@
                 "barrelstrength/sprout-forms": "<3.9",
                 "barryvdh/laravel-translation-manager": "<0.6.2",
                 "barzahlen/barzahlen-php": "<2.0.1",
-                "baserproject/basercms": "<4.7.2",
+                "baserproject/basercms": "<4.7.5",
                 "bassjobsen/bootstrap-3-typeahead": ">4.0.2",
                 "billz/raspap-webgui": "<=2.6.6",
                 "bk2k/bootstrap-package": ">=7.1,<7.1.2|>=8,<8.0.8|>=9,<9.0.4|>=9.1,<9.1.3|>=10,<10.0.10|>=11,<11.0.3",
@@ -6507,7 +6510,7 @@
                 "modx/revolution": "<= 2.8.3-pl|<2.8",
                 "mojo42/jirafeau": "<4.4",
                 "monolog/monolog": ">=1.8,<1.12",
-                "moodle/moodle": "<4.0.6|= 3.11|>=4.1-beta,<4.1.1",
+                "moodle/moodle": "<4.0.7|>=4.1-beta,<4.1.2|= 3.11",
                 "mustache/mustache": ">=2,<2.14.1",
                 "namshi/jose": "<2.2",
                 "neoan3-apps/template": "<1.1.1",
@@ -6829,7 +6832,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-23T13:07:43+00:00"
+            "time": "2023-03-24T00:14:17+00:00"
         }
     ],
     "aliases": [],
