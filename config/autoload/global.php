@@ -125,8 +125,9 @@ return array(
         ),
     ),
 
-    'spool_path_create' => $datapath.'/json/create/',//default location path where the json file enabling the creation of the environment of the client should be generated
-    'spool_path_delete' => $datapath.'/json/delete/', //default location path where the json file enabling the deletion of the environment of the client should be generated
+    'spool_path_create' => $datapath . '/json/create/',//default location path where the json file enabling the creation of the environment of the client should be generated
+    'spool_path_delete' => $datapath . '/json/delete/', //default location path where the json file enabling the deletion of the environment of the client should be generated
+    'spool_path_update' => $datapath . '/json/update/',
 
     // END DOCTRINE CONF
 );
