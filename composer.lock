@@ -4019,12 +4019,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "7bfa16d438d6c939fabcbf1ee6facca6dc2dc8dd"
+                "reference": "75656ded6574a0345c006c63ceeb21ff55e362a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/7bfa16d438d6c939fabcbf1ee6facca6dc2dc8dd",
-                "reference": "7bfa16d438d6c939fabcbf1ee6facca6dc2dc8dd",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/75656ded6574a0345c006c63ceeb21ff55e362a2",
+                "reference": "75656ded6574a0345c006c63ceeb21ff55e362a2",
                 "shasum": ""
             },
             "require": {
@@ -4095,7 +4095,7 @@
                 "issues": "https://github.com/monarc-project/zm-backoffice/issues",
                 "source": "https://github.com/monarc-project/zm-backoffice/tree/v2.12.6"
             },
-            "time": "2023-06-22T11:57:18+00:00"
+            "time": "2023-06-22T12:17:16+00:00"
         },
         {
             "name": "monarc/core",
