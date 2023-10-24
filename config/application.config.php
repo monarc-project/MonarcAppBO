@@ -25,6 +25,7 @@ if (!empty($appConfDir)) {
         }
     }
 }
+defined('DATA_PATH') or define('DATA_PATH', $dataPath);
 
 return array(
     'modules' => array(
