@@ -40,11 +40,11 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.0",
         "ext-json": "*",
         "ext-pdo": "*",
-        "monarc/backoffice": "^2.12.6",
-        "monarc/core": "^v2.12.6",
+        "monarc/backoffice": "^2.13",
+        "monarc/core": "^2.13",
         "laminas/laminas-mvc": "^3.1",
         "laminas/laminas-di": "^3.1",
         "laminas/laminas-permissions-rbac": "^3.0",
@@ -52,7 +52,8 @@
         "laminas/laminas-i18n": "^2.9",
         "laminas/laminas-dependency-plugin": "^2.0",
         "laminas/laminas-mvc-middleware": "^2.2",
-        "endroid/qr-code": "^4.4"
+        "endroid/qr-code": "^4.4",
+        "laminas/laminas-i18n-resources": "^2.9"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"
