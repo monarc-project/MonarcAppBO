@@ -11,27 +11,29 @@
  * credentials from accidentally being committed into version control.
  */
 
-return array(
-    'doctrine' => array(
-        'connection' => array(
-            'orm_default' => array(
-                'params' => array(
+$package_json = json_decode(file_get_contents('./package.json'), true);
+
+return [
+    'doctrine' => [
+        'connection' => [
+            'orm_default' => [
+                'params' => [
                     'host' => 'localhost',
                     'user' => 'root',
                     'password' => 'password',
                     'dbname' => 'monarc_common',
-                ),
-            ),
-            'orm_cli' => array(
-                'params' => array(
+                ],
+            ],
+            'orm_cli' => [
+                'params' => [
                     'host' => 'localhost',
                     'user' => 'root',
                     'password' => 'password',
                     'dbname' => 'monarc_master',
-                ),
-            ),
-        ),
-    ),
+                ],
+            ],
+        ],
+    ],
 
     /* Link with (ModuleCore)
     config['languages'] = [
@@ -49,10 +51,13 @@ return array(
         ),
     ]
     */
-    'activeLanguages' => array('fr','en','de','nl'),
 
-    'monarc' => array(
+    'appVersion' => $package_json['version'],
+
+    'activeLanguages' => ['fr','en','de','nl'],
+
+    'monarc' => [
         'ttl' => 20, // timeout
         'salt' => '', // salt privé pour chiffrement pwd
-    ),
-);
+    ],
+];

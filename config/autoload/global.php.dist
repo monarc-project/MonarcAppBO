@@ -28,7 +28,7 @@ return array(
     'doctrine' => array(
         'connection' => array(
             'orm_default' => array(
-                'driverClass' => 'Doctrine\DBAL\Driver\PDO\MySQL\Driver',
+                'driverClass' => Doctrine\DBAL\Driver\PDO\MySQL\Driver::class,
                 'params' => array(
                     'host' => 'localhost',
                     'port' => 3306,
@@ -42,7 +42,7 @@ return array(
                 ),
             ),
             'orm_cli' => array(
-                'driverClass' => 'Doctrine\DBAL\Driver\PDO\MySQL\Driver',
+                'driverClass' => Doctrine\DBAL\Driver\PDO\MySQL\Driver::class,
                 'params' => array(
                     'host' => 'localhost',
                     'port' => 3306,
