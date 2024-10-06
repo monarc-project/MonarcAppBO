@@ -55,7 +55,7 @@ return [
                     'port' => 3306,
                     'user' => 'root',
                     'password' => '',
-                    'dbname' => 'monarc_cli',
+                    'dbname' => 'monarc_master',
                     'charset' => 'utf8',
                     'driverOptions' => [
                         PDO::ATTR_STRINGIFY_FETCHES => false,
