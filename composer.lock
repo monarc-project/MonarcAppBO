@@ -4567,16 +4567,16 @@
         },
         {
             "name": "monarc/backoffice",
-            "version": "v2.13.1",
+            "version": "v2.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monarc-project/zm-backoffice.git",
-                "reference": "e72c2b91af1709a2eff6c07baafe5fd8c9776c23"
+                "reference": "05c090ea509b1ddac68dadd6147048973f94b980"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/e72c2b91af1709a2eff6c07baafe5fd8c9776c23",
-                "reference": "e72c2b91af1709a2eff6c07baafe5fd8c9776c23",
+                "url": "https://api.github.com/repos/monarc-project/zm-backoffice/zipball/05c090ea509b1ddac68dadd6147048973f94b980",
+                "reference": "05c090ea509b1ddac68dadd6147048973f94b980",
                 "shasum": ""
             },
             "require": {
@@ -4648,9 +4648,9 @@
             "description": "Backoffice for monarc/monarc-backoffice application",
             "support": {
                 "issues": "https://github.com/monarc-project/zm-backoffice/issues",
-                "source": "https://github.com/monarc-project/zm-backoffice/tree/v2.13.1"
+                "source": "https://github.com/monarc-project/zm-backoffice/tree/v2.13.2"
             },
-            "time": "2024-11-20T19:40:35+00:00"
+            "time": "2025-03-10T10:39:16+00:00"
         },
         {
             "name": "monarc/core",
