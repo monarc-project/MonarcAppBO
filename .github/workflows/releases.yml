@@ -1,0 +1,107 @@
+name: MonarcAppBO releases
+
+on:
+  push:
+    branches: [ 'master' ]
+    tags: [ 'v*.*', 'v*.*.*', 'v*.*.*-*' ]
+  pull_request:
+    branches: [ 'master' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ "16.x" ]
+        php-version: [ "8.1" ]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: install deps
+      run: sudo apt-get update && sudo apt install -y gettext
+
+    # PHP
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+        tools: composer:v2.3
+        extensions: bcmath
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install PHP dependencies
+      run: composer ins --prefer-dist --no-progress --no-suggest --no-dev --ignore-platform-req=php
+
+    - name: Symlink Monarc modules
+      run: |
+        mkdir -p module/Monarc
+        ln -s ../../vendor/monarc/core module/Monarc/Core
+        ln -s ../../vendor/monarc/backoffice module/Monarc/BackOffice
+
+    # javascript
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - uses: oprypin/find-latest-tag@v1
+      with:
+        repository: monarc-project/ng-anr
+        releases-only: true
+      id: ng_anr_lasttag
+
+    - run: echo "ng-anr is at version ${{ steps.ng_anr_lasttag.outputs.tag }}"
+
+    - name: Install ng-anr
+      uses: actions/checkout@v3
+      with:
+        repository: monarc-project/ng-anr
+        ref: ${{ steps.ng_anr_lasttag.outputs.tag }}
+        path: './node_modules/ng_anr'
+
+    - uses: oprypin/find-latest-tag@v1
+      with:
+        repository: monarc-project/ng-backoffice
+        releases-only: true
+      id: ng_backoffice_lasttag
+
+    - run: echo "ng-backoffice is at version ${{ steps.ng_backoffice_lasttag.outputs.tag }}"
+
+    - name: Install ng-backoffice
+      uses: actions/checkout@v3
+      with:
+        repository: monarc-project/ng-backoffice
+        ref: ${{ steps.ng_backoffice_lasttag.outputs.tag }}
+        path: './node_modules/ng_backoffice'
+
+    - name: Install ng-backoffice dependencies
+      run: |
+        cd node_modules/ng_backoffice
+        npm ci
+
+    # final "cleanup"
+    - name: post job
+      run: |
+        bash -ex ./scripts/link_modules_resources.sh
+        bash -ex ./scripts/compile_translations.sh
+
+    # prepare release
+    - name: Get repository name
+      id: repository
+      run: echo "::set-output name=pathref::$(echo '${{ github.repository }}' | cut -d'/' -f2)-$(echo '${{ github.ref_name }}' | sed 's/[^[:alnum:]\.-]/_/g')"
+
+    - name: create artifact archive
+      run: |
+        tar --exclude .git --exclude .github -zcf '../${{ steps.repository.outputs.pathref }}.tar.gz' .
+
+    - name: release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ../${{ steps.repository.outputs.pathref }}.tar.gz
+        fail_on_unmatched_files: true
+      if: startsWith(github.ref, 'refs/tags/')

@@ -10,6 +10,14 @@
  * control, so do not include passwords or other sensitive information in this
  * file.
  */
+
+$dataPath = 'data';
+if (defined('DATA_PATH')) {
+    $dataPath = DATA_PATH;
+} elseif (!empty(getenv('APP_CONF_DIR'))) {
+    $dataPath = getenv('APP_CONF_DIR') . '/data';
+}
+
 return array(
     // DOCTRINE CONF
     'service_manager' => array(
@@ -20,7 +28,7 @@ return array(
     'doctrine' => array(
         'connection' => array(
             'orm_default' => array(
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'driverClass' => Doctrine\DBAL\Driver\PDO\MySQL\Driver::class,
                 'params' => array(
                     'host' => 'localhost',
                     'port' => 3306,
@@ -34,7 +42,7 @@ return array(
                 ),
             ),
             'orm_cli' => array(
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'driverClass' => Doctrine\DBAL\Driver\PDO\MySQL\Driver::class,
                 'params' => array(
                     'host' => 'localhost',
                     'port' => 3306,
@@ -81,7 +89,7 @@ return array(
                 'result_cache'          => 'mycache',
                 'driver'                => 'orm_default', // This driver will be defined later
                 'generate_proxies'      => true,
-                'proxy_dir'             => 'data/DoctrineORMModule/Proxy',
+                'proxy_dir'             => $dataPath .'data/DoctrineORMModule/Proxy',
                 'proxy_namespace'       => 'DoctrineORMModule\Proxy',
                 'filters'               => array(),
                 'datetime_functions'    => array(),
@@ -95,7 +103,7 @@ return array(
                 'result_cache'          => 'mycache',
                 'driver'                => 'orm_cli', // This driver will be defined later
                 'generate_proxies'      => true,
-                'proxy_dir'             => 'data/DoctrineORMModule/Proxy',
+                'proxy_dir'             => $dataPath . 'data/DoctrineORMModule/Proxy',
                 'proxy_namespace'       => 'DoctrineORMModule\Proxy',
                 'filters'               => array(),
                 'datetime_functions'    => array(),
