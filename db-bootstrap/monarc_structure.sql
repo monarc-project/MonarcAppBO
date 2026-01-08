@@ -501,7 +501,7 @@ CREATE TABLE `measures_amvs` (
   KEY `amv_id` (`amv_id`),
   CONSTRAINT `measures_amvs_ibfk_2` FOREIGN KEY (`measure_id`) REFERENCES `measures` (`uuid`) ON DELETE CASCADE,
   CONSTRAINT `measures_amvs_ibfk_3` FOREIGN KEY (`amv_id`) REFERENCES `amvs` (`uuid`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=42798 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43780 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1233,4 +1233,4 @@ CREATE TABLE `vulnerabilities_models` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-01-07  9:54:38
+-- Dump completed on 2026-01-08 13:42:10
