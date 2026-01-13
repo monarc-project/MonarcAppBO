@@ -11,7 +11,8 @@ echo -e "${GREEN}Starting MONARC BackOffice setup...${NC}"
 
 # Wait for database to be ready
 echo -e "${YELLOW}Waiting for MariaDB to be ready...${NC}"
-while ! mysqladmin ping -h"${DBHOST}" -u"${DBUSER_MONARC}" -p"${DBPASSWORD_MONARC}" --silent 2>/dev/null; do
+export MYSQL_PWD="${DBPASSWORD_MONARC}"
+while ! mysqladmin ping -h"${DBHOST}" -u"${DBUSER_MONARC}" --silent 2>/dev/null; do
     echo "Waiting for MariaDB..."
     sleep 2
 done
@@ -54,16 +55,16 @@ if [ ! -f "/var/www/html/monarc/.docker-initialized" ]; then
     
     # Check if database exists and create if needed
     echo -e "${YELLOW}Setting up databases...${NC}"
-    DB_EXISTS=$(mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" -p"${DBPASSWORD_MONARC}" -e "SHOW DATABASES LIKE '${DBNAME_MASTER}';" | grep -c "${DBNAME_MASTER}" || true)
+    DB_EXISTS=$(mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" -e "SHOW DATABASES LIKE '${DBNAME_MASTER}';" | grep -c "${DBNAME_MASTER}" || true)
     
     if [ "$DB_EXISTS" -eq 0 ]; then
         echo -e "${YELLOW}Creating databases...${NC}"
-        mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" -p"${DBPASSWORD_MONARC}" -e "CREATE DATABASE ${DBNAME_MASTER} DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;"
-        mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" -p"${DBPASSWORD_MONARC}" -e "CREATE DATABASE ${DBNAME_COMMON} DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;"
+        mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" -e "CREATE DATABASE ${DBNAME_MASTER} DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;"
+        mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" -e "CREATE DATABASE ${DBNAME_COMMON} DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;"
         
         echo -e "${YELLOW}Populating databases...${NC}"
-        mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" -p"${DBPASSWORD_MONARC}" ${DBNAME_COMMON} < db-bootstrap/monarc_structure.sql
-        mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" -p"${DBPASSWORD_MONARC}" ${DBNAME_COMMON} < db-bootstrap/monarc_data.sql
+        mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" ${DBNAME_COMMON} < db-bootstrap/monarc_structure.sql
+        mysql -h"${DBHOST}" -u"${DBUSER_MONARC}" ${DBNAME_COMMON} < db-bootstrap/monarc_data.sql
     fi
     
     # Generate local config if it doesn't exist

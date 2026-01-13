@@ -74,7 +74,11 @@ case "$1" in
     
     db)
         echo -e "${GREEN}Opening MySQL client...${NC}"
-        docker exec -it monarc-bo-db mysql -usqlmonarcuser -psqlmonarcuser monarc_common
+        # Load environment variables
+        if [ -f .env ]; then
+            export $(grep -v '^#' .env | xargs)
+        fi
+        docker exec -it monarc-bo-db mysql -u"${DBUSER_MONARC:-sqlmonarcuser}" -p"${DBPASSWORD_MONARC:-sqlmonarcuser}" "${DBNAME_COMMON:-monarc_common}"
         ;;
     
     reset)
