@@ -27,6 +27,8 @@ if [ ! -f "/var/www/html/monarc/.docker-initialized" ]; then
     # Install composer dependencies
     if [ ! -d "vendor" ]; then
         echo -e "${YELLOW}Installing Composer dependencies...${NC}"
+        # Using --ignore-platform-req=php to allow flexibility in development environment
+        # This is acceptable for development but should not be used in production
         composer install --ignore-platform-req=php
     fi
     

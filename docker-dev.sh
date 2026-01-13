@@ -78,7 +78,9 @@ case "$1" in
         if [ -f .env ]; then
             export $(grep -v '^#' .env | xargs)
         fi
-        docker exec -it monarc-bo-db mysql -u"${DBUSER_MONARC:-sqlmonarcuser}" -p"${DBPASSWORD_MONARC:-sqlmonarcuser}" "${DBNAME_COMMON:-monarc_common}"
+        # Use MYSQL_PWD to avoid password exposure in process list
+        export MYSQL_PWD="${DBPASSWORD_MONARC:-sqlmonarcuser}"
+        docker exec -it monarc-bo-db mysql -u"${DBUSER_MONARC:-sqlmonarcuser}" "${DBNAME_COMMON:-monarc_common}"
         ;;
     
     reset)
