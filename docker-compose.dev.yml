@@ -1,0 +1,63 @@
+services:
+  # MariaDB database for MONARC BackOffice
+  db:
+    image: mariadb:10.11
+    container_name: monarc-bo-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DBPASSWORD_ADMIN}
+      MYSQL_DATABASE: ${DBNAME_COMMON}
+      MYSQL_USER: ${DBUSER_MONARC}
+      MYSQL_PASSWORD: ${DBPASSWORD_MONARC}
+    command: 
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+      - --bind-address=0.0.0.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - monarc-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DBPASSWORD_ADMIN}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Main MONARC BackOffice application
+  monarc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: monarc-bo-app
+    environment:
+      DBHOST: db
+      DBNAME_COMMON: ${DBNAME_COMMON}
+      DBNAME_MASTER: ${DBNAME_MASTER}
+      DBUSER_MONARC: ${DBUSER_MONARC}
+      DBPASSWORD_MONARC: ${DBPASSWORD_MONARC}
+      APP_ENV: development
+      APP_DIR: /var/www/html/monarc
+    ports:
+      - "5002:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - monarc-network
+    volumes:
+      # Mount the application code for live development
+      - ./:/var/www/html/monarc
+      # Preserve vendor directory in named volume for better performance
+      - vendor_data:/var/www/html/monarc/vendor
+      - node_modules_data:/var/www/html/monarc/node_modules
+    working_dir: /var/www/html/monarc
+
+networks:
+  monarc-network:
+    driver: bridge
+
+volumes:
+  db_data:
+  vendor_data:
+  node_modules_data:
