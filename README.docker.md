@@ -11,7 +11,7 @@ This guide explains how to set up a local development environment for MONARC Bac
 
 ## Quick Start
 
-### Option 1: Using the Helper Script (Recommended)
+### Option 1: Using the Makefile (Recommended)
 
 1. **Clone the repository** (if you haven't already):
    ```bash
@@ -21,7 +21,7 @@ This guide explains how to set up a local development environment for MONARC Bac
 
 2. **Start the development environment**:
    ```bash
-   ./docker-dev.sh start
+   make start
    ```
    
    This will automatically:
@@ -74,20 +74,21 @@ The development environment includes the following services:
 
 ## Development Workflow
 
-### Helper Script Commands
+### Makefile Commands
 
-The `docker-dev.sh` script provides convenient commands for managing the development environment:
+The Makefile provides convenient commands for managing the development environment.
+Use `ENV=<name>` to select `docker-compose.<name>.yml` (default: `dev`).
 
 ```bash
-./docker-dev.sh start         # Start all services
-./docker-dev.sh stop          # Stop all services
-./docker-dev.sh restart       # Restart all services
-./docker-dev.sh logs          # View logs from all services
-./docker-dev.sh logs-app      # View logs from MONARC application
-./docker-dev.sh shell         # Open a shell in the MONARC container
-./docker-dev.sh db            # Open MySQL client
-./docker-dev.sh status        # Show status of all services
-./docker-dev.sh reset         # Reset everything (removes all data)
+make start         # Start all services
+make stop          # Stop all services
+make restart       # Restart all services
+make logs          # View logs from all services
+make logs-app      # View logs from MONARC application
+make shell         # Open a shell in the MONARC container
+make db            # Open MySQL client
+make status        # Show status of all services
+make reset         # Reset everything (removes all data)
 ```
 
 ### Live Code Editing
@@ -104,9 +105,9 @@ The application source code is mounted as a volume, so changes you make on your 
 
 ### Accessing the Container
 
-Using helper script:
+Using Makefile:
 ```bash
-./docker-dev.sh shell
+make shell
 ```
 
 Or directly with docker:
@@ -116,9 +117,9 @@ docker exec -it monarc-bo-app bash
 
 ### Database Access
 
-Using helper script:
+Using Makefile:
 ```bash
-./docker-dev.sh db  # Connect to MariaDB
+make db  # Connect to MariaDB
 ```
 
 Or directly with docker:
@@ -129,10 +130,10 @@ docker exec -it monarc-bo-db mysql -usqlmonarcuser -psqlmonarcuser monarc_common
 
 ### Viewing Logs
 
-Using helper script:
+Using Makefile:
 ```bash
-./docker-dev.sh logs          # All services
-./docker-dev.sh logs-app      # MONARC application only
+make logs          # All services
+make logs-app      # MONARC application only
 ```
 
 Or directly with docker compose:
@@ -146,9 +147,9 @@ docker compose -f docker-compose.dev.yml logs -f monarc
 
 ### Restarting Services
 
-Using helper script:
+Using Makefile:
 ```bash
-./docker-dev.sh restart  # Restart all services
+make restart  # Restart all services
 ```
 
 Or directly with docker compose:
@@ -162,10 +163,10 @@ docker compose -f docker-compose.dev.yml restart monarc
 
 ### Stopping the Environment
 
-Using helper script:
+Using Makefile:
 ```bash
-./docker-dev.sh stop   # Stop all services (keeps data)
-./docker-dev.sh reset  # Stop and remove everything including data
+make stop   # Stop all services (keeps data)
+make reset  # Stop and remove everything including data
 ```
 
 Or directly with docker compose:
@@ -224,7 +225,12 @@ cd /var/www/html/monarc
 
 ### Xdebug Configuration
 
-Xdebug is pre-configured in the development environment. To use it:
+Xdebug is enabled by default in the development image. To disable it, set
+`XDEBUG_ENABLED=0` in `.env` and rebuild the image (for example, `make start`).
+You can also tune the connection behavior via `.env`:
+`XDEBUG_START_WITH_REQUEST`, `XDEBUG_CLIENT_HOST`, and `XDEBUG_CLIENT_PORT`.
+
+When enabled, Xdebug is pre-configured. To use it:
 
 1. Configure your IDE to listen on port 9003
 2. Set the IDE key to `IDEKEY`
@@ -327,6 +333,13 @@ All environment variables are defined in the `.env` file:
 | `DBNAME_MASTER` | Master database name | `monarc_master` |
 | `DBUSER_MONARC` | Database user | `sqlmonarcuser` |
 | `DBPASSWORD_MONARC` | Database password | `sqlmonarcuser` |
+| `XDEBUG_ENABLED` | Enable Xdebug in the build (`1/0`, `true/false`, `yes/no`) | `1` |
+| `XDEBUG_MODE` | Xdebug modes (`debug`, `develop`, etc.) | `debug` |
+| `XDEBUG_START_WITH_REQUEST` | Start mode (`trigger` or `yes`) | `trigger` |
+| `XDEBUG_CLIENT_HOST` | Host IDE address | `host.docker.internal` |
+| `XDEBUG_CLIENT_PORT` | IDE port | `9003` |
+| `XDEBUG_IDEKEY` | IDE key | `IDEKEY` |
+| `XDEBUG_DISCOVER_CLIENT_HOST` | Auto-detect client host (`1/0`) | `0` |
 
 ## Security Notes
 

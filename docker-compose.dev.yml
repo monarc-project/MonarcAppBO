@@ -16,6 +16,7 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+      - ./docker/db-init:/docker-entrypoint-initdb.d:ro
     networks:
       - monarc-network
     healthcheck:
@@ -29,6 +30,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        XDEBUG_ENABLED: ${XDEBUG_ENABLED:-1}
+        XDEBUG_MODE: ${XDEBUG_MODE:-debug}
+        XDEBUG_START_WITH_REQUEST: ${XDEBUG_START_WITH_REQUEST:-trigger}
+        XDEBUG_CLIENT_HOST: ${XDEBUG_CLIENT_HOST:-host.docker.internal}
+        XDEBUG_CLIENT_PORT: ${XDEBUG_CLIENT_PORT:-9003}
+        XDEBUG_IDEKEY: ${XDEBUG_IDEKEY:-IDEKEY}
+        XDEBUG_DISCOVER_CLIENT_HOST: ${XDEBUG_DISCOVER_CLIENT_HOST:-0}
     container_name: monarc-bo-app
     environment:
       DBHOST: db
@@ -36,6 +45,7 @@ services:
       DBNAME_MASTER: ${DBNAME_MASTER}
       DBUSER_MONARC: ${DBUSER_MONARC}
       DBPASSWORD_MONARC: ${DBPASSWORD_MONARC}
+      DBPASSWORD_ADMIN: ${DBPASSWORD_ADMIN}
       APP_ENV: development
       APP_DIR: /var/www/html/monarc
     ports:
@@ -59,5 +69,10 @@ networks:
 
 volumes:
   db_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./docker/db_data
+      o: bind
   vendor_data:
   node_modules_data:

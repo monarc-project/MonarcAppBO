@@ -9,8 +9,10 @@ This document provides installation instructions for setting up MONARC BackOffic
 git clone https://github.com/monarc-project/MonarcAppBO
 cd MonarcAppBO
 
-# Start with the helper script (recommended)
-./docker-dev.sh start
+# Start with Makefile (recommended)
+make start
+# Optional: use ENV to select docker-compose.<ENV>.yml (default: dev)
+# make start ENV=prod
 
 # Or use docker-compose directly
 cp .env.dev .env
@@ -97,7 +99,7 @@ chmod -R 775 /var/www/html/monarc/data
 Check the logs:
 
 ```bash
-./docker-dev.sh logs
+make logs
 # or
 docker compose -f docker-compose.dev.yml logs
 ```
@@ -107,7 +109,7 @@ docker compose -f docker-compose.dev.yml logs
 To start completely fresh:
 
 ```bash
-./docker-dev.sh reset
+make reset
 # or
 docker compose -f docker-compose.dev.yml down -v
 ```
@@ -116,27 +118,27 @@ docker compose -f docker-compose.dev.yml down -v
 
 ### View Logs
 ```bash
-./docker-dev.sh logs
+make logs
 ```
 
 ### Access Container Shell
 ```bash
-./docker-dev.sh shell
+make shell
 ```
 
 ### Access Database
 ```bash
-./docker-dev.sh db
+make db
 ```
 
 ### Stop Services
 ```bash
-./docker-dev.sh stop
+make stop
 ```
 
 ### Restart Services
 ```bash
-./docker-dev.sh restart
+make restart
 ```
 
 ## Comparison with Other Installation Methods
