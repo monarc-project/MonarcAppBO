@@ -183,6 +183,14 @@ docker compose -f docker-compose.dev.yml down -v
 
 ## Common Tasks
 
+### Shared Docker Network
+
+To connect FrontOffice and BackOffice containers, use a shared external network:
+
+1. Create the network once: `docker network create monarc-network`
+2. Set `MONARC_NETWORK_NAME=monarc-network` in both projects' `.env` files.
+3. Ensure the BackOffice compose file also uses the same external network name.
+
 ### Resetting the Database
 
 To completely reset the databases:
