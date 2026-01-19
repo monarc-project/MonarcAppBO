@@ -60,7 +60,12 @@ services:
       - ./:/var/www/html/monarc
       # Preserve vendor directory in named volume for better performance
       - vendor_data:/var/www/html/monarc/vendor
+      # Override monarc vendor packages to keep local edits in sync
+      - ./vendor/monarc:/var/www/html/monarc/vendor/monarc:delegated
       - node_modules_data:/var/www/html/monarc/node_modules
+      # Override the volumes to keep local edits in sync
+      - ./node_modules/ng_backoffice:/var/www/html/monarc/node_modules/ng_backoffice:delegated
+      - ./node_modules/ng_anr:/var/www/html/monarc/node_modules/ng_anr:delegated
     working_dir: /var/www/html/monarc
 
 networks:
