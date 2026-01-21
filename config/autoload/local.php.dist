@@ -52,6 +52,8 @@ return [
     ]
     */
 
+    'twoFactorAuthEnforced' => false,
+
     'appVersion' => $package_json['version'],
 
     'activeLanguages' => ['fr','en','de','nl'],
