@@ -45,7 +45,7 @@
         "ext-pdo": "*",
         "ext-openssl": "*",
         "monarc/backoffice": "^2.13.1",
-        "monarc/core": "^2.13.1",
+        "monarc/core": "^2.13.4",
         "laminas/laminas-mvc": "^3.1",
         "laminas/laminas-di": "^3.1",
         "laminas/laminas-permissions-rbac": "^3.0",
@@ -61,6 +61,9 @@
     },
     "config": {
         "bin-dir": "bin/",
+        "platform": {
+            "php": "8.1.0"
+        },
         "allow-plugins": {
             "laminas/laminas-dependency-plugin": true
         }

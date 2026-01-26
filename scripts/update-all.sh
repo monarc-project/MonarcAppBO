@@ -68,7 +68,7 @@ if [[ $? -eq 1 ]]; then
     exit 1
 fi
 
-composer install -o --no-dev --ignore-platform-req=php
+composer install -o --no-dev
 
 pathCore="module/Monarc/Core"
 pathBO="module/Monarc/BackOffice"

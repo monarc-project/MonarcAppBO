@@ -20,3 +20,7 @@ bin/
 data/*
 vagrant/.vagrant/
 vagrant/*.log
+.env
+.docker-initialized
+docker/db_data
+.vscode/
