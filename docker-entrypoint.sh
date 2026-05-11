@@ -103,7 +103,28 @@ return [
         ],
     ],
 
-    'activeLanguages' => array('fr','en','de','nl','es','ro','it','ja','pl','pt','ru','zh'),
+    'defaultLanguageIndex' => 1,
+
+    'activeLanguages' => ['fr','en','de','nl','es','ro','it','ja','pl','pt','zh'],
+
+    'languages' => [
+        'fr' => [
+            'index' => 1,
+            'label' => 'Français',
+        ],
+        'en' => [
+            'index' => 2,
+            'label' => 'English',
+        ],
+        'de' => [
+            'index' => 3,
+            'label' => 'Deutsch',
+        ],
+        'nl' => [
+            'index' => 4,
+            'label' => 'Dutch',
+        ],
+    ],
 
     'appVersion' => \$package_json['version'],
 
