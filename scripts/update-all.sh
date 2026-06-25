@@ -6,13 +6,15 @@ NC='\033[0m' # No Color
 
 bypass=0
 forceClearCache=0
-while getopts "hbc" option
+frontendRef=""
+while getopts "hbcf:" option
 do
 	case $option in
 		h)
 			echo -e "Update or install all Monarc modules, frontend views and migrate database."
 			echo -e "\t-b\tbypass migrate database"
 			echo -e "\t-c\tforce clear cache"
+			echo -e "\t-f\tfrontend git branch/tag to use for ng_backoffice and ng_anr"
 			echo -e "\t-h\tdisplay this message"
 			exit 1
 			;;
@@ -23,17 +25,40 @@ do
 		c)
 			forceClearCache=1
 			;;
+		f)
+			frontendRef="$OPTARG"
+			;;
 	esac
 done
 
-checkout_to_latest_tag() {
-    if [ -d $1 ]; then
-        pushd $1
-        git fetch --tags
-        tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-        git checkout $tag -b $tag
-        git pull origin $tag
+checkout_repo_ref() {
+    if [ -d "$1" ]; then
+        pushd "$1"
+        if [[ -n "$2" ]]; then
+            git fetch origin "$2"
+            if git show-ref --verify --quiet "refs/heads/$2"; then
+                git checkout "$2"
+            else
+                git checkout -B "$2" --track "origin/$2"
+            fi
+            git pull origin "$2"
+        else
+            git fetch --tags
+            tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+            if git show-ref --verify --quiet "refs/heads/$tag"; then
+                git checkout "$tag"
+            else
+                git checkout -b "$tag" "$tag"
+            fi
+            git pull origin "$tag"
+        fi
         popd
+    fi
+}
+
+checkout_to_ref_if_set_or_latest_tag() {
+    if [ -d "$1" ]; then
+        checkout_repo_ref "$1" "$2"
     fi
 }
 
@@ -80,8 +105,8 @@ fi
 
 if [[ -d node_modules && -d node_modules/ng_anr ]]; then
 	if [[ -d node_modules/ng_anr/.git ]]; then
-		checkout_to_latest_tag node_modules/ng_backoffice
-		checkout_to_latest_tag node_modules/ng_anr
+		checkout_to_ref_if_set_or_latest_tag node_modules/ng_backoffice "$frontendRef"
+		checkout_to_ref_if_set_or_latest_tag node_modules/ng_anr "$frontendRef"
 	else
 		npm update
 	fi
