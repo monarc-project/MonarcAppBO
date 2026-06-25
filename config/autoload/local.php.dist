@@ -35,28 +35,32 @@ return [
         ],
     ],
 
-    /* Link with (ModuleCore)
-    config['languages'] = [
-        'fr' => array(
+    'defaultLanguageIndex' => 1,
+
+    'languages' => [
+        'fr' => [
             'index' => 1,
-            'label' => 'Français'
-        ),
-        'en' => array(
+            'label' => 'Français',
+        ],
+        'en' => [
             'index' => 2,
-            'label' => 'English'
-        ),
-        'de' => array(
+            'label' => 'English',
+        ],
+        'de' => [
             'index' => 3,
-            'label' => 'Deutsch'
-        ),
-    ]
-    */
+            'label' => 'Deutsch',
+        ],
+        'nl' => [
+            'index' => 4,
+            'label' => 'Dutch',
+        ],
+    ],
+
+    'activeLanguages' => ['fr','en','de','nl','es','ro','it','ja','pl','pt','zh'],
 
     'twoFactorAuthEnforced' => false,
 
     'appVersion' => $package_json['version'],
-
-    'activeLanguages' => ['fr','en','de','nl'],
 
     'monarc' => [
         'ttl' => 20, // timeout
