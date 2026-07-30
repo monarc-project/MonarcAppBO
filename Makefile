@@ -11,7 +11,7 @@ YELLOW := \033[1;33m
 RED := \033[0;31m
 NC := \033[0m
 
-.PHONY: help check-env start stop restart logs logs-app shell db reset status
+.PHONY: help check-env start stop restart logs logs-app shell db migrate reset status
 
 help:
 	@printf "%b\n" "$(GREEN)MONARC BackOffice Docker Development Environment Manager$(NC)"
@@ -25,6 +25,7 @@ help:
 	@printf "  %-12s %s\n" "logs-app" "View logs from MONARC application"
 	@printf "  %-12s %s\n" "shell" "Open a shell in the MONARC container"
 	@printf "  %-12s %s\n" "db" "Open MySQL client in the database"
+	@printf "  %-12s %s\n" "migrate" "Run Core and BackOffice DB migrations in the app container"
 	@printf "  %-12s %s\n" "reset" "Reset everything (removes all data)"
 	@printf "  %-12s %s\n" "status" "Show status of all services"
 
@@ -69,6 +70,11 @@ db:
 	fi; \
 	export MYSQL_PWD="$${DBPASSWORD_MONARC:-sqlmonarcuser}"; \
 	docker exec -it monarc-bo-db mysql -u"$${DBUSER_MONARC:-sqlmonarcuser}" "$${DBNAME_COMMON:-monarc_common}"
+
+migrate: check-env
+	@printf "%b\n" "$(GREEN)Running Core and BackOffice DB migrations...$(NC)"
+	@docker exec -i monarc-bo-app bash -lc "./scripts/upgrade-db.sh"
+	@printf "%b\n" "$(GREEN)Migrations completed.$(NC)"
 
 reset:
 	@printf "%b\n" "$(RED)WARNING: This will remove all data!$(NC)"; \
