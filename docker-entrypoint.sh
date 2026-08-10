@@ -105,26 +105,16 @@ return [
 
     'defaultLanguageIndex' => 1,
 
-    'activeLanguages' => ['fr','en','de','nl','es','ro','it','ja','pl','pt','zh'],
-
+     // Languages available for the analysis / DB data.
     'languages' => [
-        'fr' => [
-            'index' => 1,
-            'label' => 'Français',
-        ],
-        'en' => [
-            'index' => 2,
-            'label' => 'English',
-        ],
-        'de' => [
-            'index' => 3,
-            'label' => 'Deutsch',
-        ],
-        'nl' => [
-            'index' => 4,
-            'label' => 'Dutch',
-        ],
+        'fr' => ['index' => 1, 'label' => 'Français'],
+        'en' => ['index' => 2, 'label' => 'English'],
+        'de' => ['index' => 3, 'label' => 'Deutsch'],
+        'nl' => ['index' => 4, 'label' => 'Dutch'],
     ],
+
+    // Languages available for the user interface.
+    'activeLanguages' => ['fr', 'en', 'de', 'nl', 'es', 'ro', 'it', 'ja', 'pl', 'pt', 'zh'],
 
     'appVersion' => \$package_json['version'],
 
