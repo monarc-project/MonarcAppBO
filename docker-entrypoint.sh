@@ -130,7 +130,7 @@ return [
 
     'monarc' => [
         'ttl' => 60, // timeout
-        'salt' => '', // private salt for password encryption
+        'salt' => '${PASSWORD_SALT:-}', // private salt for password encryption
     ],
 ];
 EOF

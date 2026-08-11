@@ -341,6 +341,7 @@ All environment variables are defined in the `.env` file:
 | `DBNAME_MASTER` | Master database name | `monarc_master` |
 | `DBUSER_MONARC` | Database user | `sqlmonarcuser` |
 | `DBPASSWORD_MONARC` | Database password | `sqlmonarcuser` |
+| `PASSWORD_SALT` | Password-encryption salt; use a strong secret outside development | empty |
 | `XDEBUG_ENABLED` | Enable Xdebug in the build (`1/0`, `true/false`, `yes/no`) | `1` |
 | `XDEBUG_MODE` | Xdebug modes (`debug`, `develop`, etc.) | `debug` |
 | `XDEBUG_START_WITH_REQUEST` | Start mode (`trigger` or `yes`) | `trigger` |
