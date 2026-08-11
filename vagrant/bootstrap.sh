@@ -235,7 +235,6 @@ return array(
 
     'monarc' => [
         'ttl' => 60,
-        'salt' => '',
     ],
 );
 EOF
