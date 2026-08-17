@@ -5,6 +5,7 @@ services:
     container_name: monarc-bo-db
     environment:
       MYSQL_ROOT_PASSWORD: ${DBPASSWORD_ADMIN}
+      # The official MariaDB image only auto-creates the initial DB from MYSQL_DATABASE.
       MYSQL_DATABASE: ${DBNAME_COMMON}
       MYSQL_USER: ${DBUSER_MONARC}
       MYSQL_PASSWORD: ${DBPASSWORD_MONARC}
@@ -58,6 +59,27 @@ services:
     volumes:
       # Mount the application code for live development
       - ./:/var/www/html/monarc
+      # Mount sibling repositories so Composer path symlinks and node_modules links resolve in-container
+      - type: bind
+        source: ../zm-core
+        target: /var/www/html/zm-core
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../zm-backoffice
+        target: /var/www/html/zm-backoffice
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../ng-anr
+        target: /var/www/html/ng-anr
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../ng-backoffice
+        target: /var/www/html/ng-backoffice
+        bind:
+          create_host_path: false
       # Preserve vendor directory in named volume for better performance
       - vendor_data:/var/www/html/monarc/vendor
       - node_modules_data:/var/www/html/monarc/node_modules
