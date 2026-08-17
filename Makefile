@@ -11,7 +11,7 @@ YELLOW := \033[1;33m
 RED := \033[0;31m
 NC := \033[0m
 
-.PHONY: help check-env start stop restart logs logs-app shell db migrate reset status
+.PHONY: help check-env check-sibling-repos start local-repos remote-repos repo-status stop restart logs logs-app shell db migrate reset status
 
 help:
 	@printf "%b\n" "$(GREEN)MONARC BackOffice Docker Development Environment Manager$(NC)"
@@ -19,6 +19,9 @@ help:
 	@printf "%b\n" "Environment: ENV=<name> (default: dev, uses docker-compose.<name>.yml)"
 	@printf "\n%b\n" "Commands:"
 	@printf "  %-12s %s\n" "start" "Start all services (builds on first run)"
+	@printf "  %-12s %s\n" "local-repos" "Start and use the mounted sibling repositories"
+	@printf "  %-12s %s\n" "remote-repos" "Use release backend packages and cloned frontends"
+	@printf "  %-12s %s\n" "repo-status" "Show whether local or remote sources are active"
 	@printf "  %-12s %s\n" "stop" "Stop all services"
 	@printf "  %-12s %s\n" "restart" "Restart all services"
 	@printf "  %-12s %s\n" "logs" "View logs from all services"
@@ -36,12 +39,29 @@ check-env:
 		printf "%b\n" "$(GREEN).env file created. You can edit it to customize configuration.$(NC)"; \
 	fi
 
-start: check-env
+check-sibling-repos:
+	@for repo in zm-core zm-backoffice ng-anr ng-backoffice; do \
+		if [ ! -d "../$$repo" ]; then \
+			printf "%b\\n" "$(RED)Missing required sibling repository: ../$$repo$(NC)"; \
+			exit 1; \
+		fi; \
+	done
+
+start: check-env check-sibling-repos
 	@printf "%b\n" "$(GREEN)Starting MONARC BackOffice development environment...$(NC)"
 	@$(COMPOSE) up -d --build
 	@printf "%b\n" "$(GREEN)Services started!$(NC)"
 	@printf "%b\n" "MONARC BackOffice: http://localhost:5002"
 	@printf "\n%b\n" "$(YELLOW)To view logs: make logs ENV=$(ENV)$(NC)"
+
+local-repos: start
+	@./scripts/switch_repo_sources.sh local
+
+remote-repos: check-env
+	@./scripts/switch_repo_sources.sh remote
+
+repo-status: check-env
+	@./scripts/switch_repo_sources.sh status
 
 stop:
 	@printf "%b\n" "$(YELLOW)Stopping all services...$(NC)"

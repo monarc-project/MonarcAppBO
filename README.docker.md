@@ -8,6 +8,20 @@ This guide explains how to set up a local development environment for MONARC Bac
 - Docker Compose V2 (comes with Docker Desktop)
 - At least 4GB of RAM available for Docker
 - At least 10GB of free disk space
+- A sibling checkout of `zm-core`, `zm-backoffice`, `ng-anr`, and `ng-backoffice`
+
+The development Compose configuration bind-mounts those four repositories. Keep
+them beside `MonarcAppBO`; Docker is configured to fail rather than silently
+create empty directories when one is missing:
+
+```text
+parent-directory/
+├── MonarcAppBO/
+├── zm-core/
+├── zm-backoffice/
+├── ng-anr/
+└── ng-backoffice/
+```
 
 ## Quick Start
 
@@ -102,6 +116,32 @@ The application source code is mounted as a volume, so changes you make on your 
    cd /var/www/html/monarc
    ./scripts/update-all.sh -d
    ```
+
+### Developing sibling repositories
+
+The sibling repositories are mounted into the container but are not used until
+you switch the application to local sources. This preserves the normal
+release-package startup path while making changes in all four sibling
+repositories available for development.
+
+```bash
+make local-repos
+```
+
+This verifies the checkout layout, starts the environment, makes Composer use
+symlinked `zm-core` and `zm-backoffice` packages, and links the two AngularJS
+repositories into `node_modules`. It then rebuilds the linked frontend assets.
+
+Use these commands to inspect or revert the source mode:
+
+```bash
+make repo-status
+make remote-repos
+```
+
+`make remote-repos` restores the release Composer packages and GitHub frontend
+clones. Switching source mode updates Composer metadata and dependencies, so
+review the `MonarcAppBO` working tree before committing.
 
 ### Accessing the Container
 
