@@ -89,6 +89,7 @@ switch_js_to_local() {
     run_in_app "cd '${SHARED_NG_CONTAINER_PATH}' && npm install"
     run_in_app "cd '${APP_NG_CONTAINER_PATH}' && npm ci"
     run_in_app "./scripts/link_modules_resources.sh"
+    run_in_app "./scripts/compile_translations.sh"
 }
 
 switch_js_to_remote() {
@@ -97,6 +98,7 @@ switch_js_to_remote() {
     run_in_app "cd 'node_modules/${SHARED_NG_NAME}' && npm install"
     run_in_app "cd 'node_modules/${APP_NG_NAME}' && npm ci"
     run_in_app "./scripts/link_modules_resources.sh"
+    run_in_app "./scripts/compile_translations.sh"
 }
 
 print_status() {
