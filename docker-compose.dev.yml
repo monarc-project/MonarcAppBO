@@ -13,6 +13,7 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_general_ci
       - --bind-address=0.0.0.0
+      - --default-time-zone=+00:00
     ports:
       - "${BODB_HOST_PORT:-3306}:3306"
     volumes:
@@ -41,6 +42,7 @@ services:
         XDEBUG_DISCOVER_CLIENT_HOST: ${XDEBUG_DISCOVER_CLIENT_HOST:-0}
     container_name: monarc-bo-app
     environment:
+      TZ: UTC
       DBHOST: bodb
       DBNAME_COMMON: ${DBNAME_COMMON}
       DBNAME_MASTER: ${DBNAME_MASTER}
@@ -84,6 +86,46 @@ services:
       - vendor_data:/var/www/html/monarc/vendor
       - node_modules_data:/var/www/html/monarc/node_modules
     working_dir: /var/www/html/monarc
+    healthcheck:
+      # Keep this probe independent of the Scenario rollout flag: the BFF
+      # needs a live MONARC bridge host even while Scenario remains disabled.
+      test: ["CMD-SHELL", "curl -fsS --max-time 5 http://127.0.0.1/api/scenario/v1/health >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  # Same-origin Scenario BFF. It has no host port: Apache is the only entry
+  # point and proxies /scenario after the server-side feature check.
+  scenario-ui-bo:
+    build:
+      context: ../scenario-ui
+      dockerfile: docker/production/Dockerfile
+      args:
+        NEXT_PUBLIC_BASE_PATH: /scenario
+    environment:
+      SCENARIO_ENABLED: ${SCENARIO_ENABLED:-false}
+      SCENARIO_BASE_PATH: /scenario
+      SCENARIO_OFFICE: backoffice
+      # This is the local Apache HTTP topology only. Production defaults to
+      # secure, __Secure-prefixed cookies and rejects this profile.
+      SCENARIO_DEPLOYMENT_ENV: development
+      SCENARIO_COOKIE_MODE: local-http
+      SCENARIO_PUBLIC_ORIGIN: ${SCENARIO_PUBLIC_ORIGIN:-http://127.0.0.1:5002}
+      SCENARIO_API_ORIGIN: http://monarcboapp
+      SCENARIO_AUTH_MODE: legacy
+      SCENARIO_LEGACY_BRIDGE_EXCHANGE_URL: http://monarcboapp/api/scenario/v1/auth/bridge/consume
+      SCENARIO_LEGACY_BRIDGE_SERVICE_TOKEN: ${SCENARIO_LEGACY_BRIDGE_SERVICE_TOKEN:-}
+    depends_on:
+      monarcboapp:
+        condition: service_healthy
+    networks:
+      - monarc-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/scenario/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   monarc-network:
