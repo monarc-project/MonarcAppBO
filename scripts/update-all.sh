@@ -142,4 +142,8 @@ if [[ $forceClearCache -eq 0 && $bypass -eq 0 ]]; then
 	fi
 fi
 
+if [[ -f "config/autoload/local.php" ]]; then
+	php ./vendor/monarc/backoffice/bin/console monarc:doctrine:generate-proxies || exit 1
+fi
+
 exit 0

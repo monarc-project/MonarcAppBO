@@ -106,7 +106,10 @@ RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 RUN mkdir -p /var/www/html/monarc/data/cache \
     /var/www/html/monarc/data/LazyServices/Proxy \
     /var/www/html/monarc/data/DoctrineORMModule/Proxy \
-    /var/www/html/monarc/data/import/files
+    /var/www/html/monarc/data/import/files \
+    /var/cache/monarc/doctrine-proxies \
+    && chown www-data:www-data /var/cache/monarc/doctrine-proxies \
+    && chmod 0775 /var/cache/monarc/doctrine-proxies
 
 # Copy entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/

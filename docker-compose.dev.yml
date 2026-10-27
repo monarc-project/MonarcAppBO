@@ -51,6 +51,9 @@ services:
       DBPASSWORD_ADMIN: ${DBPASSWORD_ADMIN}
       APP_ENV: development
       APP_DIR: /var/www/html/monarc
+      # Keep generated Doctrine proxies off the macOS bind mount. Doctrine's
+      # atomic proxy replacement then stays atomic under concurrent requests.
+      DOCTRINE_PROXY_DIR: /var/cache/monarc/doctrine-proxies
     ports:
       - "5002:80"
     depends_on:

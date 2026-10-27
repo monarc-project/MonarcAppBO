@@ -21,6 +21,7 @@ if (defined('DATA_PATH')) {
 } elseif (!empty(getenv('APP_CONF_DIR'))) {
     $dataPath = getenv('APP_CONF_DIR') . '/data';
 }
+$proxyDir = getenv('DOCTRINE_PROXY_DIR') ?: $dataPath . '/DoctrineORMModule/Proxy';
 
 return [
     // DOCTRINE CONF
@@ -98,7 +99,7 @@ return [
                 'result_cache' => 'mycache',
                 'driver' => 'orm_default', // This driver will be defined later
                 'generate_proxies' => true,
-                'proxy_dir' => $dataPath . '/DoctrineORMModule/Proxy',
+                'proxy_dir' => $proxyDir,
                 'proxy_namespace' => 'DoctrineORMModule\Proxy',
                 'filters' => [],
                 'datetime_functions' => [],
@@ -113,7 +114,7 @@ return [
                 'result_cache' => 'mycache',
                 'driver' => 'orm_cli', // This driver will be defined later
                 'generate_proxies' => true,
-                'proxy_dir' => $dataPath . '/DoctrineORMModule/Proxy',
+                'proxy_dir' => $proxyDir,
                 'proxy_namespace' => 'DoctrineORMModule\Proxy',
                 'filters' => [],
                 'datetime_functions' => [],
