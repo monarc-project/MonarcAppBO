@@ -40,7 +40,7 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": ">=8.4.27 <8.5.0",
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-openssl": "*",
@@ -49,9 +49,7 @@
         "laminas/laminas-mvc": "^3.1",
         "laminas/laminas-di": "^3.1",
         "laminas/laminas-permissions-rbac": "^3.0",
-        "laminas/laminas-log": "^2.11",
         "laminas/laminas-i18n": "^2.9",
-        "laminas/laminas-dependency-plugin": "^2.0",
         "laminas/laminas-mvc-middleware": "^2.2",
         "endroid/qr-code": "^4.4",
         "laminas/laminas-i18n-resources": "^2.9"
@@ -62,10 +60,7 @@
     "config": {
         "bin-dir": "bin/",
         "platform": {
-            "php": "8.1.0"
-        },
-        "allow-plugins": {
-            "laminas/laminas-dependency-plugin": true
+            "php": "8.4.27"
         }
     },
     "minimum-stability": "dev",
