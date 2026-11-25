@@ -1,0 +1,14 @@
+{
+    "orm_default": {
+        "metadataCount": 79,
+        "physicalMappingSha256": "462584d0f66cce22aa6e728e75dca60a5bb215d6ec58f326b6cdcf550a31afeb"
+    },
+    "orm_cli": {
+        "metadataCount": 82,
+        "physicalMappingSha256": "271432796ec3defe28752277d4baea20076f249e5d85e8fd37c2c59a365edfdd"
+    },
+    "orm_cli_fo": {
+        "metadataCount": 79,
+        "physicalMappingSha256": "462584d0f66cce22aa6e728e75dca60a5bb215d6ec58f326b6cdcf550a31afeb"
+    }
+}

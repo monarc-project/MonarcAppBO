@@ -20,6 +20,7 @@ help:
 	@printf "\n%b\n" "Commands:"
 	@printf "  %-12s %s\n" "start" "Start all services (builds on first run)"
 	@printf "  %-12s %s\n" "local-repos" "Start and use the mounted sibling repositories"
+	@printf "  %-12s %s\n" "local-php-repos" "Use mounted PHP repositories without changing frontend dependencies"
 	@printf "  %-12s %s\n" "remote-repos" "Use release backend packages and cloned frontends"
 	@printf "  %-12s %s\n" "repo-status" "Show whether local or remote sources are active"
 	@printf "  %-12s %s\n" "stop" "Stop all services"
@@ -51,11 +52,14 @@ start: check-env check-sibling-repos
 	@printf "%b\n" "$(GREEN)Starting MONARC BackOffice development environment...$(NC)"
 	@$(COMPOSE) up -d --build
 	@printf "%b\n" "$(GREEN)Services started!$(NC)"
-	@printf "%b\n" "MONARC BackOffice: http://localhost:5002"
+	@binding=$$($(COMPOSE) port monarcboapp 80) && printf "%b\n" "MONARC BackOffice: http://localhost:$${binding##*:}"
 	@printf "\n%b\n" "$(YELLOW)To view logs: make logs ENV=$(ENV)$(NC)"
 
 local-repos: start
 	@./scripts/switch_repo_sources.sh local
+
+local-php-repos: start
+	@./scripts/switch_repo_sources.sh local-php
 
 remote-repos: check-env
 	@./scripts/switch_repo_sources.sh remote
@@ -77,23 +81,19 @@ logs:
 	@$(COMPOSE) logs -f
 
 logs-app:
-	@$(COMPOSE) logs -f monarc
+	@$(COMPOSE) logs -f monarcboapp
 
 shell:
 	@printf "%b\n" "$(GREEN)Opening shell in MONARC container...$(NC)"
-	@docker exec -it monarc-bo-app bash
+	@$(COMPOSE) exec monarcboapp bash
 
 db:
 	@printf "%b\n" "$(GREEN)Opening MySQL client...$(NC)"
-	@if [ -f .env ]; then \
-		export $$(grep -v '^#' .env | xargs); \
-	fi; \
-	export MYSQL_PWD="$${DBPASSWORD_MONARC:-sqlmonarcuser}"; \
-	docker exec -it monarc-bo-db mysql -u"$${DBUSER_MONARC:-sqlmonarcuser}" "$${DBNAME_COMMON:-monarc_common}"
+	@$(COMPOSE) exec bodb sh -c 'MYSQL_PWD="$$MYSQL_PASSWORD" exec mysql -u"$$MYSQL_USER" "$$MYSQL_DATABASE"'
 
 migrate: check-env
 	@printf "%b\n" "$(GREEN)Running Core and BackOffice DB migrations...$(NC)"
-	@docker exec -i monarc-bo-app bash -lc "./scripts/upgrade-db.sh"
+	@$(COMPOSE) exec -T monarcboapp bash -lc "./scripts/upgrade-db.sh"
 	@printf "%b\n" "$(GREEN)Migrations completed.$(NC)"
 
 reset:

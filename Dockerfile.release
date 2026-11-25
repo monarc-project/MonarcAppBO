@@ -1,0 +1,129 @@
+FROM node:16-bullseye-slim AS node
+
+FROM php:8.4-apache-bookworm
+
+ARG XDEBUG_ENABLED=0
+ARG XDEBUG_MODE=debug
+ARG XDEBUG_START_WITH_REQUEST=trigger
+ARG XDEBUG_CLIENT_HOST=host.docker.internal
+ARG XDEBUG_CLIENT_PORT=9003
+ARG XDEBUG_IDEKEY=IDEKEY
+ARG XDEBUG_DISCOVER_CLIENT_HOST=0
+
+ENV LANGUAGE=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        $PHPIZE_DEPS \
+        ca-certificates \
+        curl \
+        gettext \
+        git \
+        gsfonts \
+        libfreetype6-dev \
+        libgettextpo-dev \
+        libgif-dev \
+        libicu-dev \
+        libjpeg62-turbo-dev \
+        libmagickwand-dev \
+        libonig-dev \
+        libpango1.0-dev \
+        libpixman-1-dev \
+        libpng-dev \
+        librsvg2-dev \
+        libzip-dev \
+        libreoffice-writer \
+        locales \
+        mariadb-client \
+        pkg-config \
+        python3 \
+        unzip \
+        vim \
+        zip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" bcmath gd gettext intl mbstring pdo_mysql zip \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick \
+    && localedef -i en_US -f UTF-8 en_US.UTF-8 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY docker/php/monarc.ini $PHP_INI_DIR/conf.d/99-monarc.ini
+
+# Configure Xdebug for development
+RUN if [ "$XDEBUG_ENABLED" = "1" ] || [ "$XDEBUG_ENABLED" = "true" ] || [ "$XDEBUG_ENABLED" = "yes" ]; then \
+        pecl install xdebug && docker-php-ext-enable xdebug && \
+        { \
+            echo "xdebug.mode=${XDEBUG_MODE}"; \
+            echo "xdebug.start_with_request=${XDEBUG_START_WITH_REQUEST}"; \
+            echo "xdebug.client_host=${XDEBUG_CLIENT_HOST}"; \
+            echo "xdebug.client_port=${XDEBUG_CLIENT_PORT}"; \
+            echo "xdebug.discover_client_host=${XDEBUG_DISCOVER_CLIENT_HOST}"; \
+            echo "xdebug.idekey=${XDEBUG_IDEKEY}"; \
+        } > $PHP_INI_DIR/conf.d/99-xdebug.ini; \
+    fi
+
+# Enable Apache modules
+RUN a2enmod rewrite ssl headers
+
+# Set global ServerName to avoid AH00558 warning
+RUN echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf \
+    && a2enconf servername
+
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
+    && ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx \
+    && npm install -g grunt-cli
+
+# Set working directory
+WORKDIR /var/www/html/monarc
+
+# Configure Apache
+RUN echo '<VirtualHost *:80>\n\
+    ServerName localhost\n\
+    DocumentRoot /var/www/html/monarc/public\n\
+\n\
+    <Directory /var/www/html/monarc/public>\n\
+        DirectoryIndex index.php\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+\n\
+    <IfModule mod_headers.c>\n\
+       Header always set X-Content-Type-Options nosniff\n\
+       Header always set X-XSS-Protection "1; mode=block"\n\
+       Header always set X-Robots-Tag none\n\
+       Header always set X-Frame-Options SAMEORIGIN\n\
+    </IfModule>\n\
+\n\
+    SetEnv APP_DIR /var/www/html/monarc\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+# Allow Apache override to all
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
+# Create necessary directories
+RUN mkdir -p /var/www/html/monarc/data/cache \
+    /var/www/html/monarc/data/LazyServices/Proxy \
+    /var/www/html/monarc/data/DoctrineORMModule/Proxy \
+    /var/www/html/monarc/data/import/files \
+    /var/www/html/monarc/public
+
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENV APP_ENV=production
+ENV APP_DIR=/var/www/html/monarc
+ENV MONARC_PREPARED_RELEASE=1
+
+COPY . /var/www/html/monarc
+RUN chown -R www-data:www-data /var/www/html/monarc
+
+EXPOSE 80
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apachectl", "-D", "FOREGROUND"]
