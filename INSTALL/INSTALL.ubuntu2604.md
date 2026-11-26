@@ -99,7 +99,7 @@ sudo systemctl restart mariadb
 # 2. Monarc files
 
 Use an approved, assembled BackOffice release archive containing `vendor`,
-frontend dependencies, resource links, translations and fonts. For a release
+frontend dependencies, resource links, translations and report templates. For a release
 candidate, prepare it on a separate build machine with
 [`prepare-release.sh`](../scripts/prepare-release.sh), as described in
 [released component assembly](../README.md#released-component-assembly).
@@ -133,9 +133,29 @@ sudo chmod -R u=rwX,g=rX,o= /var/lib/monarc/bo/data /var/lib/monarc/bo/public/ca
 sudo -u www-data bash -c 'cd /var/lib/monarc/bo && php8.4 tests/released-sources.php && php8.4 tests/locked-doctrine.php'
 ```
 
-Use a fresh destination. Preserve the packaged `data/fonts` directory and keep
-application source and `vendor` read-only to Apache. Do not unpack a fresh
-installation over an existing site's configuration or uploads.
+Use a fresh destination and keep application source and `vendor` read-only to
+Apache. BO does not package FO's `data/fonts` CAPTCHA directory. Do not unpack a
+fresh installation over an existing site's configuration or uploads.
+
+Initialize BO's four default report templates on this fresh installation. Their
+database rows point to writable files under `data/monarc/models`, while the
+release packages the source DOCX files under `deliveries/cases`:
+
+```bash
+bo_app=/var/lib/monarc/bo
+for language in FR EN DE NE; do
+    sudo install -d -m 0750 -o www-data -g www-data "$bo_app/data/monarc/models/$language"
+    for category in 1 2 3 4; do
+        sudo install -m 0640 -o www-data -g www-data \
+            "$bo_app/deliveries/cases/$language/$category.docx" \
+            "$bo_app/data/monarc/models/$language/$category.docx"
+    done
+done
+```
+
+On upgrades, preserve existing templates and their database paths; do not rerun
+this initialization over BO customizations. For transferring approved templates
+to an FO, use the [linked pair guide's template procedure](https://github.com/monarc-project/MonarcAppFO/blob/master/INSTALL/INSTALL.ubuntu2604-fo-bo.md#91-transfer-bo-report-templates-to-the-matching-fo).
 
 # 3. Webserver
 

@@ -66,9 +66,29 @@ guest OS before changing packages, installs the pinned frontend revisions, and
 runs ``scripts/upgrade-db.sh`` to apply Core and office migrations. MariaDB root
 administration uses the guest's local Unix socket.
 
+Every privileged APT command passes ``DEBIAN_FRONTEND=noninteractive`` through
+``sudo`` so unattended package configuration does not depend on sudo preserving
+the caller's environment.
+
+Ubuntu 26.04's Apache service makes home directories read-only. The Vagrant
+bootstrap creates ``/etc/systemd/system/apache2.service.d/monarc-vagrant.conf``
+with ``ReadWritePaths`` entries for ``/home/vagrant/monarc/data`` and
+``/home/vagrant/monarc/public/captcha``, then reloads systemd before restarting
+Apache. These exceptions allow runtime caches, uploads and CAPTCHA images in
+the synced checkout while its application source remains read-only to the service.
+
 Validation on 2026-11-24: both Vagrantfiles pass ``vagrant validate``, both
 bootstraps pass Bash syntax checks, and regression tests cover rejection of older
 guests and stopping after an APT index failure. PHP 8.4 installation, frontend
 ``npm ci``/canvas loading and Poetry-managed Python 3.12 were checked in a
 disposable Ubuntu 26.04 arm64 container. Full VM provisioning, database migrations
 and application startup still need an end-to-end Vagrant run.
+
+Validation on 2026-11-26: four regression tests pass, including all package
+commands under simulated sudo environment filtering and both Apache overrides.
+An Ubuntu 26.04 container reproduced HTTP 500 with a read-only home directory;
+with each override's writable paths, Apache/PHP returned HTTP 200, wrote cache
+and CAPTCHA files, and could not write application source. Both service
+configurations passed ``systemd-analyze verify``. Noninteractive package
+configuration also completed with stdin closed. This checks the fixes in a mount
+namespace; a complete Vagrant VM provision has not been rerun.
