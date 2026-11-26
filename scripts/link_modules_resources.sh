@@ -65,5 +65,5 @@ cd ..
 cd ../..
 
 pushd node_modules/ng_backoffice
-grunt concat
+./node_modules/.bin/grunt concat
 popd

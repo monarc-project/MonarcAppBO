@@ -262,10 +262,13 @@ The schema-specific privileges include the DDL operations needed by migrations.
 In the same MariaDB session:
 
 ```sql
-CREATE DATABASE monarc_common CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE DATABASE monarc_master CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE monarc_common CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE monarc_master CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 QUIT;
 ```
+
+Use `utf8mb4_general_ci` consistently with the FrontOffice installation guides
+and the Docker development database defaults.
 
 `monarc_common` contains reference definitions and models. `monarc_master` contains
 the BackOffice users and client/organization information.
