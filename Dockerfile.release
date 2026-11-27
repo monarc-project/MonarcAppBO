@@ -1,0 +1,77 @@
+# syntax=docker/dockerfile:1
+FROM php:8.4-apache-bookworm AS php-base
+
+# Compile extensions once per target architecture; build dependencies stay here.
+FROM php-base AS extensions
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        $PHPIZE_DEPS libfreetype6-dev libicu-dev libjpeg62-turbo-dev \
+        libmagickwand-dev libonig-dev libpng-dev libzip-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" bcmath gd gettext intl mbstring pdo_mysql zip \
+    && pecl install imagick-3.8.1 \
+    && docker-php-ext-enable imagick
+
+FROM php-base AS runtime
+ENV LANGUAGE=en_US.UTF-8 \
+    LANG=en_US.UTF-8 \
+    LC_ALL=en_US.UTF-8 \
+    APP_ENV=production \
+    APP_DIR=/var/www/html/monarc \
+    MONARC_PREPARED_RELEASE=1
+
+# Keep document conversion and database tools, without compilers or JS build tools.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates curl gsfonts libfreetype6 libicu72 libjpeg62-turbo \
+        libmagickwand-6.q16-6 libonig5 libpng16-16 libzip4 \
+        libreoffice-writer locales mariadb-client \
+    && apt-get purge -y --auto-remove $PHPIZE_DEPS \
+    && localedef -i en_US -f UTF-8 en_US.UTF-8 \
+    && rm -rf /var/lib/apt/lists/* /tmp/pear
+
+COPY --from=extensions /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=extensions /usr/local/etc/php/conf.d/docker-php-ext-*.ini /usr/local/etc/php/conf.d/
+COPY docker/php/monarc.ini $PHP_INI_DIR/conf.d/99-monarc.ini
+RUN a2enmod rewrite ssl headers \
+    && echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf \
+    && a2enconf servername
+
+WORKDIR /var/www/html/monarc
+
+# Configure Apache
+RUN echo '<VirtualHost *:80>\n\
+    ServerName localhost\n\
+    DocumentRoot /var/www/html/monarc/public\n\
+\n\
+    <Directory /var/www/html/monarc/public>\n\
+        DirectoryIndex index.php\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+\n\
+    <IfModule mod_headers.c>\n\
+       Header always set X-Content-Type-Options nosniff\n\
+       Header always set X-XSS-Protection "1; mode=block"\n\
+       Header always set X-Robots-Tag none\n\
+       Header always set X-Frame-Options SAMEORIGIN\n\
+    </IfModule>\n\
+\n\
+    SetEnv APP_DIR /var/www/html/monarc\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+
+COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+# Dockerfile.release.dockerignore permits only packaged code and runtime assets.
+COPY --chown=www-data:www-data . /var/www/html/monarc
+RUN mkdir -p data/cache data/LazyServices/Proxy data/DoctrineORMModule/Proxy \
+        data/import/files public/captcha \
+    && chown -R www-data:www-data data public/captcha \
+    && php tests/released-sources.php \
+    && php tests/locked-doctrine.php \
+    && php tests/release-image.php \
+    && apache2ctl configtest
+
+EXPOSE 80
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apachectl", "-D", "FOREGROUND"]

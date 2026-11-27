@@ -37,8 +37,6 @@ return array(
         'Laminas\Paginator',
         'Laminas\Hydrator',
         'Laminas\Router',
-        'Laminas\Log',
-        'Laminas\Mail',
         'Laminas\Validator',
         'Laminas\I18n',
         'Laminas\Mvc\Middleware',

@@ -1,11 +1,17 @@
 name: MonarcAppBO releases
 
+# Publish images only after a GitHub release is published.
 on:
-  push:
-    branches: [ 'master' ]
-    tags: [ 'v*.*', 'v*.*.*', 'v*.*.*-*' ]
-  pull_request:
-    branches: [ 'master' ]
+  release:
+    types: [published]
+
+concurrency:
+  group: ghcr-release-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  packages: write
 
 jobs:
   build:
@@ -14,10 +20,12 @@ jobs:
     strategy:
       matrix:
         node-version: [ "16.x" ]
-        php-version: [ "8.1" ]
+        php-version: [ "8.4" ]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
+      with:
+        ref: ${{ github.sha }}
 
     - name: install deps
       run: sudo apt-get update && sudo apt install -y gettext
@@ -25,83 +33,83 @@ jobs:
     # PHP
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
+      env:
+        update: "true"
       with:
         php-version: ${{ matrix.php-version }}
-        tools: composer:v2.3
+        tools: composer:v2
         extensions: bcmath
-
-    - name: Validate composer.json and composer.lock
-      run: composer validate
-
-    - name: Install PHP dependencies
-      run: composer ins --prefer-dist --no-progress --no-suggest --no-dev
-
-    - name: Symlink Monarc modules
-      run: |
-        mkdir -p module/Monarc
-        ln -s ../../vendor/monarc/core module/Monarc/Core
-        ln -s ../../vendor/monarc/backoffice module/Monarc/BackOffice
 
     # javascript
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v7
       with:
         node-version: ${{ matrix.node-version }}
+        package-manager-cache: false
 
-    - uses: oprypin/find-latest-tag@v1
-      with:
-        repository: monarc-project/ng-anr
-        releases-only: true
-      id: ng_anr_lasttag
-
-    - run: echo "ng-anr is at version ${{ steps.ng_anr_lasttag.outputs.tag }}"
-
-    - name: Install ng-anr
-      uses: actions/checkout@v3
-      with:
-        repository: monarc-project/ng-anr
-        ref: ${{ steps.ng_anr_lasttag.outputs.tag }}
-        path: './node_modules/ng_anr'
-
-    - uses: oprypin/find-latest-tag@v1
-      with:
-        repository: monarc-project/ng-backoffice
-        releases-only: true
-      id: ng_backoffice_lasttag
-
-    - run: echo "ng-backoffice is at version ${{ steps.ng_backoffice_lasttag.outputs.tag }}"
-
-    - name: Install ng-backoffice
-      uses: actions/checkout@v3
-      with:
-        repository: monarc-project/ng-backoffice
-        ref: ${{ steps.ng_backoffice_lasttag.outputs.tag }}
-        path: './node_modules/ng_backoffice'
-
-    - name: Install ng-backoffice dependencies
-      run: |
-        cd node_modules/ng_backoffice
-        npm ci
-
-    # final "cleanup"
-    - name: post job
-      run: |
-        bash -ex ./scripts/link_modules_resources.sh
-        bash -ex ./scripts/compile_translations.sh
+    - name: Assemble locked backend and frontend releases
+      run: bash scripts/prepare-release.sh
 
     # prepare release
     - name: Get repository name
       id: repository
-      run: echo "::set-output name=pathref::$(echo '${{ github.repository }}' | cut -d'/' -f2)-$(echo '${{ github.ref_name }}' | sed 's/[^[:alnum:]\.-]/_/g')"
+      run: |
+        repo_name="${GITHUB_REPOSITORY#*/}"
+        safe_ref=$(printf '%s' "$GITHUB_REF_NAME" | sed 's/[^[:alnum:].-]/_/g')
+        echo "pathref=${repo_name}-${safe_ref}" >> "$GITHUB_OUTPUT"
 
     - name: create artifact archive
       run: |
         tar --exclude .git --exclude .github -zcf '../${{ steps.repository.outputs.pathref }}.tar.gz' .
 
-    - name: release
-      uses: softprops/action-gh-release@v1
+    - name: Upload archive to the published release
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RELEASE_TAG: ${{ github.event.release.tag_name }}
+      run: |
+        gh release upload "$RELEASE_TAG" '../${{ steps.repository.outputs.pathref }}.tar.gz' --clobber --repo "$GITHUB_REPOSITORY"
+
+    - name: Set image names
+      id: image_names
+      run: |
+        owner=$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')
+        repo=$(echo "${GITHUB_REPOSITORY#*/}" | tr '[:upper:]' '[:lower:]')
+        echo "app=ghcr.io/${owner}/${repo}" >> "$GITHUB_OUTPUT"
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v4
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v4
+
+    - name: Log in to GHCR
+      uses: docker/login-action@v4
       with:
-        files: |
-          ../${{ steps.repository.outputs.pathref }}.tar.gz
-        fail_on_unmatched_files: true
-      if: startsWith(github.ref, 'refs/tags/')
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Docker metadata (app)
+      id: meta_app
+      uses: docker/metadata-action@v6
+      with:
+        images: ${{ steps.image_names.outputs.app }}
+        tags: |
+          type=raw,value=${{ github.event.release.tag_name }}
+          type=raw,value=latest,enable=${{ !github.event.release.prerelease && !contains(github.event.release.tag_name, '-') }}
+        labels: |
+          org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+          org.opencontainers.image.revision=${{ github.sha }}
+
+    - name: Build and push app image
+      uses: docker/build-push-action@v7
+      with:
+        context: .
+        file: ./Dockerfile.ghcr
+        pull: true
+        push: true
+        platforms: linux/amd64,linux/arm64
+        cache-from: type=gha,scope=release-app-image
+        cache-to: type=gha,mode=max,scope=release-app-image
+        tags: ${{ steps.meta_app.outputs.tags }}
+        labels: ${{ steps.meta_app.outputs.labels }}

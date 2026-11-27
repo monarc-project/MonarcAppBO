@@ -81,10 +81,10 @@ parent-directory/
 
 The development environment includes the following services:
 
-| Service | Description | Port | Container Name |
-|---------|-------------|------|----------------|
-| monarc | Main BackOffice application (PHP/Apache) | 5002 | monarc-bo-app |
-| db | MariaDB database | 3306 | monarc-bo-db |
+| Service | Description | Host port | Container port | Override |
+|---------|-------------|-----------|----------------|----------|
+| monarcboapp | Main BackOffice application (PHP/Apache) | 5002 | 80 | `MONARC_BO_APP_PORT` |
+| bodb | MariaDB database | 3308 | 3306 | `MONARC_BO_DB_PORT` |
 
 ## Development Workflow
 
@@ -107,14 +107,27 @@ make reset         # Reset everything (removes all data)
 
 ### Live Code Editing
 
+Run frontend installation and updates inside the container, which provides
+Node.js 16.x for the locked frontend dependencies:
+
+```bash
+make shell
+# Inside the container:
+./scripts/update-all.sh
+```
+
+Host builds also require Node.js 16.x. On Apple Silicon, use an ARM64 Node
+runtime with ARM64 developer tools. Dependencies containing native binaries
+must be installed again when switching between the host and container.
+
 The application source code is mounted as a volume, so changes you make on your host machine will be immediately reflected in the container. After making changes:
 
 1. **PHP/Backend changes**: Apache automatically reloads modified files
 2. **Frontend changes**: You may need to rebuild the frontend:
    ```bash
-   docker exec -it monarc-bo-app bash
+   docker compose -f docker-compose.dev.yml exec monarcboapp bash
    cd /var/www/html/monarc
-   ./scripts/update-all.sh -d
+   ./scripts/update-all.sh
    ```
 
 ### Developing sibling repositories
@@ -152,7 +165,7 @@ make shell
 
 Or directly with docker:
 ```bash
-docker exec -it monarc-bo-app bash
+docker compose -f docker-compose.dev.yml exec monarcboapp bash
 ```
 
 ### Database Access
@@ -165,7 +178,7 @@ make db  # Connect to MariaDB
 Or directly with docker:
 ```bash
 # Connect to MariaDB
-docker exec -it monarc-bo-db mysql -usqlmonarcuser -psqlmonarcuser monarc_common
+docker compose -f docker-compose.dev.yml exec bodb sh -c 'MYSQL_PWD="$MYSQL_PASSWORD" exec mysql -u"$MYSQL_USER" "$MYSQL_DATABASE"'
 ```
 
 ### Viewing Logs
@@ -182,7 +195,7 @@ Or directly with docker compose:
 docker compose -f docker-compose.dev.yml logs -f
 
 # View logs for a specific service
-docker compose -f docker-compose.dev.yml logs -f monarc
+docker compose -f docker-compose.dev.yml logs -f monarcboapp
 ```
 
 ### Restarting Services
@@ -198,7 +211,7 @@ Or directly with docker compose:
 docker compose -f docker-compose.dev.yml restart
 
 # Restart a specific service
-docker compose -f docker-compose.dev.yml restart monarc
+docker compose -f docker-compose.dev.yml restart monarcboapp
 ```
 
 ### Stopping the Environment
@@ -242,14 +255,14 @@ docker compose -f docker-compose.dev.yml up --build
 ### Installing New PHP Dependencies
 
 ```bash
-docker exec -it monarc-bo-app bash
+docker compose -f docker-compose.dev.yml exec monarcboapp bash
 composer require package/name
 ```
 
 ### Installing New Node Dependencies
 
 ```bash
-docker exec -it monarc-bo-app bash
+docker compose -f docker-compose.dev.yml exec monarcboapp bash
 cd node_modules/ng_backoffice  # or ng_anr
 npm install package-name
 ```
@@ -257,16 +270,16 @@ npm install package-name
 ### Running Database Migrations
 
 ```bash
-docker exec -it monarc-bo-app bash
+docker compose -f docker-compose.dev.yml exec monarcboapp bash
 php ./vendor/robmorgan/phinx/bin/phinx migrate -c ./module/Monarc/BackOffice/migrations/phinx.php
 ```
 
 ### Rebuilding Frontend
 
 ```bash
-docker exec -it monarc-bo-app bash
+docker compose -f docker-compose.dev.yml exec monarcboapp bash
 cd /var/www/html/monarc
-./scripts/update-all.sh -d
+./scripts/update-all.sh
 ```
 
 ## Debugging
@@ -298,7 +311,7 @@ For PhpStorm:
 docker compose -f docker-compose.dev.yml ps
 
 # Check specific service health
-docker compose -f docker-compose.dev.yml ps monarc
+docker compose -f docker-compose.dev.yml ps monarcboapp
 ```
 
 ## Troubleshooting
@@ -315,7 +328,7 @@ ports:
 
 If you encounter permission issues with mounted volumes:
 ```bash
-docker exec -it monarc-bo-app bash
+docker compose -f docker-compose.dev.yml exec monarcboapp bash
 chown -R www-data:www-data /var/www/html/monarc/data
 chmod -R 775 /var/www/html/monarc/data
 ```
@@ -324,12 +337,12 @@ chmod -R 775 /var/www/html/monarc/data
 
 Check if the database is healthy:
 ```bash
-docker compose -f docker-compose.dev.yml ps db
+docker compose -f docker-compose.dev.yml ps bodb
 ```
 
 If needed, restart the database:
 ```bash
-docker compose -f docker-compose.dev.yml restart db
+docker compose -f docker-compose.dev.yml restart bodb
 ```
 
 ### Rebuilding from Scratch
@@ -370,6 +383,76 @@ For better performance on macOS and Windows:
 | Live code reload | Yes | Yes |
 | Learning curve | Moderate | Low |
 
+### Public URL for password-reset links
+
+`PUBLIC_HOST` is the externally reachable absolute http(s) URL for this instance,
+including any public port and installation path. Development defaults to
+`http://localhost:5002` and follows `MONARC_BO_APP_PORT` in `.env.dev`.
+Override it for a reverse proxy or server, for example
+`PUBLIC_HOST=https://monarc.example.org`. Credentials, query strings and URL
+fragments are rejected. The value is never taken from the request `Host` header.
+
+Fresh Docker initialization requires a valid `PUBLIC_HOST` before installing
+packages or changing databases. Release images have no implicit public URL;
+provide it explicitly. Existing initialized containers keep their existing
+`config/autoload/local.php`: add/update its top-level `publicHost` manually,
+clear that application's generated configuration cache and restart it. Changing
+`.env` alone does not rewrite an initialized application's local configuration.
+
+## Building a release image
+
+Release images use a clean checkout with the locked PHP packages, compiled
+frontend bundles and translations already assembled. On a build machine with
+PHP 8.4, Node 16 and the documented build dependencies, run in that clean checkout:
+
+```bash
+bash scripts/prepare-release.sh
+docker build --file Dockerfile.release --tag monarc-bo:local-release .
+```
+
+`Dockerfile.release.dockerignore` supplies the release inclusion rules and takes
+precedence over the development `.dockerignore`. It excludes local databases,
+configuration, caches and macOS metadata while retaining required assets and
+translations. No separate copied build context is needed.
+
+The resulting image contains the PHP runtime, database clients and LibreOffice.
+Node/npm, Composer, Grunt and compilers remain on the build machine. Deploy a new
+image for code updates; do not run `update-all.sh` inside a release container.
+
+## GHCR application images
+
+The release and stage publishers use `Dockerfile.ghcr` with the same prepared
+application sources. This separate build copies PHP and its runtime libraries
+into Debian slim, leaving the PHP base image's compiler layers out of GHCR.
+BackOffice omits LibreOffice; document conversion runs in FrontOffice.
+Database clients remain available for initialization and backups. The archive
+release, `Dockerfile.release` and development builds use their existing paths.
+
+Production publishing starts only when you publish a GitHub release. The workflow
+builds that release's commit, attaches the prepared archive to the existing
+release and publishes images using its tag. Pushing a tag, saving a draft or
+editing release notes does not start publishing. Prereleases receive their
+version tag without updating `latest`.
+
+Stage publishing is manual: open **Actions → MonarcAppBO stage images → Run workflow**,
+select the source branch (normally `stage`).
+It publishes `stage` and `stage-<commit>` tags. Normal pushes still run CI, but
+publish no images. The manual workflow must first exist on the default branch.
+
+You can also start it with GitHub CLI:
+
+```bash
+gh workflow run stage-image.yml --repo monarc-project/MonarcAppBO --ref stage
+```
+
+To build the GHCR variant locally after `scripts/prepare-release.sh`:
+
+```bash
+docker build --file Dockerfile.ghcr --tag monarc-bo:local-ghcr .
+```
+
+`Dockerfile.ghcr.dockerignore` applies the same inclusion rules as the release build.
+
 ## Environment Variables Reference
 
 All environment variables are defined in the `.env` file:
@@ -381,6 +464,7 @@ All environment variables are defined in the `.env` file:
 | `DBNAME_MASTER` | Master database name | `monarc_master` |
 | `DBUSER_MONARC` | Database user | `sqlmonarcuser` |
 | `DBPASSWORD_MONARC` | Database password | `sqlmonarcuser` |
+| `PUBLIC_HOST` | Public base URL for password-reset links; required on first initialization | `http://localhost:5002` (dev) |
 | `XDEBUG_ENABLED` | Enable Xdebug in the build (`1/0`, `true/false`, `yes/no`) | `1` |
 | `XDEBUG_MODE` | Xdebug modes (`debug`, `develop`, etc.) | `debug` |
 | `XDEBUG_START_WITH_REQUEST` | Start mode (`trigger` or `yes`) | `trigger` |
